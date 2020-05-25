@@ -11,6 +11,3 @@ def clean_data(directory):
         d = os.path.join(directory, el)
         if os.path.isdir(d):
             clean_data(d)
-
-root = "/home/utente/Scaricati/program/ML_DL/FPAR/GTEA61"
-clean_data(root)
