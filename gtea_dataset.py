@@ -1,4 +1,5 @@
 from torchvision.datasets import VisionDataset
+from spatial_transforms import ToTensor
 from PIL import Image
 from math import ceil
 import numpy as np
@@ -54,6 +55,11 @@ class GTEA61(VisionDataset):
         self.labels = []
         # n_frames[i] contains the number of frames available for i-th video
         self.n_frames = []
+        # check if ToTensor is among the transformations
+        check_totensor = [isinstance(tr, ToTensor) for tr in self.transform.transforms]
+        self.has_to_tensor = True in check_totensor
+        if not self.has_to_tensor:
+            raise ValueError("you did NOT provide ToTensor as a transformation")
 
         # we expect datadir to be GTEA61, so we add FRAME_FOLDER to get to the frames
         frame_dir = os.path.join(self.datadir, FRAME_FOLDER)
@@ -120,10 +126,11 @@ class GTEA61(VisionDataset):
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             sequence = [self.transform(image) for image in sequence]
-        # now, since the last transformation applied is always toTensor(),
-        # we have in sequence a list of tensor, so we use stack along dimension 0
-        # to create a tensor with one more dimension that contains them all
-        sequence = torch.stack(sequence, 0)
+            # now, if the ToTensor transformation is applied
+            # we have in sequence a list of tensor, so we use stack along dimension 0
+            # to create a tensor with one more dimension that contains them all
+            if self.has_to_tensor:
+                sequence = torch.stack(sequence, 0)
 
         return sequence, label
 
@@ -156,6 +163,11 @@ class GTEA61_flow(VisionDataset):
         self.labels = []
         # n_frames[i] contains the number of frames available for i-th video
         self.n_frames = []
+        # check if ToTensor is among the transformations
+        check_totensor = [isinstance(tr, ToTensor) for tr in self.transform.transforms]
+        self.has_to_tensor = True in check_totensor
+        if not self.has_to_tensor:
+            raise ValueError("you did NOT provide ToTensor as a transformation")
 
         # we expect datadir to be GTEA61, so we add the flow folder to get to the flow frames
         flow_dir = os.path.join(self.datadir, FLOW_X_FOLDER)
@@ -246,12 +258,13 @@ class GTEA61_flow(VisionDataset):
             # specifically, inv=True will create the negative image for x frames
             sequence[::2] = [self.transform(image, inv=True, flow=True) for image in sequence[::2]]
             sequence[1::2] = [self.transform(image, inv=False, flow=True) for image in sequence[1::2]]
-        # now, since the last transformation applied is always toTensor(),
-        # we have in 'sequence' a list of tensors, so we use stack along dimension 0
-        # to create a tensor with one more dimension that contains them all
-        # then we apply squeeze along the 1 dimension, because the images are gray-scale,
-        # so there is only one channel and we eliminate that dimension
-        sequence = torch.stack(sequence, 0).squeeze(1)
+            # now, if the ToTensor transformation is applied
+            # we have in 'sequence' a list of tensors, so we use stack along dimension 0
+            # to create a tensor with one more dimension that contains them all
+            # then we apply squeeze along the 1 dimension, because the images are gray-scale,
+            # so there is only one channel and we eliminate that dimension
+            if self.has_to_tensor:
+                sequence = torch.stack(sequence, 0).squeeze(1)
 
         return sequence, label
 
