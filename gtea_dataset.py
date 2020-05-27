@@ -17,6 +17,8 @@ FLOW_X_FOLDER = "flow_x_processed"
 FLOW_Y_FOLDER = "flow_y_processed"
 # directory containing the rgb frames
 FRAME_FOLDER = "processed_frames2"
+RGB_FOLDER = 'rgb'
+MMAPS_FOLDER = 'mmaps'
 
 
 def pil_loader(path):
@@ -37,11 +39,12 @@ def grey_scale_pil_loader(path):
 
 class GTEA61(VisionDataset):
     # this class inherites from VisionDataset and represents the rgb frames of the dataset
-    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None, label_map=None, folder='rgb'):
+    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None, label_map=None, mmaps=False):
         super(GTEA61, self).__init__(root, transform=transform, target_transform=target_transform)
         self.datadir = root
         # split indicates whether we should load the train or test split
         self.split = split
+        self.get_mmaps = mmaps
         # seq len tells us how many frames for each video we are going to consider
         # frames will be taken uniformly spaced
         self.seq_len = seq_len
@@ -51,7 +54,10 @@ class GTEA61(VisionDataset):
             # if the label map dictionary is not provided, we are going to build it
             self.label_map = {}
         # videos is a list containing for each video, its path where you can find all its frames
+        # whereas mmaps contains the path of the mmaps
         self.videos = []
+        if mmaps:
+            self.mmaps = []
         # labels[i] contains the class ID of the i-th video
         self.labels = []
         # n_frames[i] contains the number of frames available for i-th video
@@ -93,7 +99,10 @@ class GTEA61(VisionDataset):
                 for element in os.listdir(action_dir):
                     # we add rgb to the path since there is an additional folder inside S1/1/rgb
                     # before the frames
-                    frames = os.path.join(action_dir, element, folder)
+                    frames = os.path.join(action_dir, element, RGB_FOLDER)
+                    if self.get_mmaps:
+                        mmap = os.path.join(action_dir, element, MMAPS_FOLDER)
+                        self.mmaps.append(mmap)
                     # we append in videos the path
                     self.videos.append(frames)
                     # in labels the label, using the label map
@@ -123,10 +132,11 @@ class GTEA61(VisionDataset):
         # append to each file its path
         select_files = [os.path.join(vid, frame) for frame in select_frames]
         # use pil_loader to get pil objects
-        if self.folder == 'mmaps':
-            sequence = [grey_scale_pil_loader(file) for file in select_files]
-        else:
-            sequence = [pil_loader(file) for file in select_files]
+        sequence = [pil_loader(file) for file in select_files]
+        if self.get_mmaps:
+            select_map = [file.replace(RGB_FOLDER, MMAPS_FOLDER) for file in select_files]
+            maps_sequence = [grey_scale_pil_loader(file) for file in select_files]
+        
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             sequence = [self.transform(image) for image in sequence]
@@ -135,8 +145,14 @@ class GTEA61(VisionDataset):
             # to create a tensor with one more dimension that contains them all
             if self.has_to_tensor:
                 sequence = torch.stack(sequence, 0)
-                if self.folder == 'mmaps':
-                    sequence = sequence.squeeze(1)
+                
+            if self.get_mmaps:
+                maps_sequence = [self.transform(mmap) for mmap in maps_sequence]
+                if self.has_to_tensor:
+                    maps_sequence = torch.stack(maps_sequence, 0)
+                maps_sequence = maps_sequence.squeeze(1)
+
+                return sequence, maps_sequence, label
 
         return sequence, label
 
