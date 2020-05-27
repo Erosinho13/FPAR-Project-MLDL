@@ -8,9 +8,10 @@ class MSBlock(nn.Module):
         
         self.reducer = nn.Sequential(
             nn.Conv2d(512, 100, kernel_size = 1),
-            nn.ReLU(inplace = True),
+            nn.ReLU(inplace = True)
         )
         self.linearizer = nn.Sequential(
+            nn.Dropout(),
             nn.Linear(100*7*7, 49),
             nn.Softmax(dim = 1)
         )
