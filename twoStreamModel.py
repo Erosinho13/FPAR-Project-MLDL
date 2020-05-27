@@ -22,4 +22,4 @@ class twoStreamAttentionModel(nn.Module):
         _, flowFeats = self.flowModel(inputVariableFlow)
         _, rgbFeats = self.frameModel(inputVariableFrame)
         twoStreamFeats = torch.cat((flowFeats, rgbFeats), 1)
-        return self.classifier(twoStreamFeats), flowFeats, rgbFeats
+        return self.classifier(twoStreamFeats)
