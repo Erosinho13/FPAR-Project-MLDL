@@ -37,7 +37,7 @@ def flow_pil_loader(path):
 
 class GTEA61(VisionDataset):
     # this class inherites from VisionDataset and represents the rgb frames of the dataset
-    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None, label_map=None):
+    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None, label_map=None, folder='rgb'):
         super(GTEA61, self).__init__(root, transform=transform, target_transform=target_transform)
         self.datadir = root
         # split indicates whether we should load the train or test split
@@ -92,7 +92,7 @@ class GTEA61(VisionDataset):
                 for element in os.listdir(action_dir):
                     # we add rgb to the path since there is an additional folder inside S1/1/rgb
                     # before the frames
-                    frames = os.path.join(action_dir, element, "rgb")
+                    frames = os.path.join(action_dir, element, folder)
                     # we append in videos the path
                     self.videos.append(frames)
                     # in labels the label, using the label map
