@@ -49,6 +49,7 @@ class GTEA61(VisionDataset):
         # frames will be taken uniformly spaced
         self.seq_len = seq_len
         self.label_map = label_map
+
         if label_map is None:
             # if the label map dictionary is not provided, we are going to build it
             self.label_map = {}
