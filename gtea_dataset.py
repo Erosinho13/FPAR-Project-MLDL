@@ -135,6 +135,8 @@ class GTEA61(VisionDataset):
             # to create a tensor with one more dimension that contains them all
             if self.has_to_tensor:
                 sequence = torch.stack(sequence, 0)
+                if self.folder == 'mmaps':
+                    sequence = sequence.squeeze(1)
 
         return sequence, label
 
