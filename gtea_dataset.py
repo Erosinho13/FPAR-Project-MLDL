@@ -27,9 +27,9 @@ def pil_loader(path):
         return img.convert('RGB')
 
 
-def flow_pil_loader(path):
+def grey_scale_pil_loader(path):
     # open path as file to avoid ResourceWarning (https://github.com/python-pillow/Pillow/issues/835)
-    # functions that loads an image as a gray-scale pil object
+    # functions that loads an image as a grey-scale pil object
     with open(path, 'rb') as f:
         img = Image.open(f)
         return img.convert('L')
@@ -46,6 +46,7 @@ class GTEA61(VisionDataset):
         # frames will be taken uniformly spaced
         self.seq_len = seq_len
         self.label_map = label_map
+        self.folder = folder
         if label_map is None:
             # if the label map dictionary is not provided, we are going to build it
             self.label_map = {}
@@ -122,7 +123,10 @@ class GTEA61(VisionDataset):
         # append to each file its path
         select_files = [os.path.join(vid, frame) for frame in select_frames]
         # use pil_loader to get pil objects
-        sequence = [pil_loader(file) for file in select_files]
+        if self.folder == 'mmaps':
+            sequence = [grey_scale_pil_loader(file) for file in select_files]
+        else:
+            sequence = [pil_loader(file) for file in select_files]
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             sequence = [self.transform(image) for image in sequence]
@@ -251,7 +255,7 @@ class GTEA61_flow(VisionDataset):
         select_files = [os.path.join(vid_x, frame) for frame in select_frames]
         select_files[1::2] = [y_files.replace('x','y') for y_files in select_files[1::2]]
         # create pil objects
-        sequence = [flow_pil_loader(file) for file in select_files]
+        sequence = [grey_scale_pil_loader(file) for file in select_files]
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             # we apply different transformations for x and y frames
@@ -261,7 +265,7 @@ class GTEA61_flow(VisionDataset):
             # now, if the ToTensor transformation is applied
             # we have in 'sequence' a list of tensors, so we use stack along dimension 0
             # to create a tensor with one more dimension that contains them all
-            # then we apply squeeze along the 1 dimension, because the images are gray-scale,
+            # then we apply squeeze along the 1 dimension, because the images are grey-scale,
             # so there is only one channel and we eliminate that dimension
             if self.has_to_tensor:
                 sequence = torch.stack(sequence, 0).squeeze(1)
