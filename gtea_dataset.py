@@ -231,7 +231,7 @@ class GTEA61_flow(VisionDataset):
             startFrame = random.randint(0, length - self.seq_len)
         else:
             # if we are testing, we take a centered interval
-            startFrame = np.ceil((length - self.seq_len) / 2)
+            startFrame = np.ceil((length - self.seq_len) / 2).astype('int')
         # the frames will be sequential, so the select indices are
         # from startFrame to starFrame + seq_len
         select_indices = startFrame + np.arange(0, self.seq_len)
