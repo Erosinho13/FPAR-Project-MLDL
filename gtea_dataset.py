@@ -162,12 +162,14 @@ class GTEA61(VisionDataset):
 
 class GTEA61_flow(VisionDataset):
     # this class inherites from VisionDataset and represents the rgb frames of the dataset
-    def __init__(self, root, split='train', seq_len=5, transform=None, target_transform=None, label_map=None):
+    def __init__(self, root, split='train', seq_len=5, transform=None, target_transform=None,
+                 label_map=None, n_seq=-1):
         super(GTEA61_flow, self).__init__(root, transform=transform, target_transform=target_transform)
         # we expect datadir to be ../GTEA61
         self.datadir = root
         # split indicates whether we should load the train or test split
         self.split = split
+        self.n_seq = n_seq
         # seq len here tells us how many optical frames for each video
         # we are going to consider; note that now
         # frames will be sequential and not uniformly spaced
@@ -234,6 +236,33 @@ class GTEA61_flow(VisionDataset):
                     # put here the number of flow frames
                     self.n_frames.append(len(os.listdir(frames)))
 
+    def get_selected_files(self, vid_x, frames_x, frames_y, select_indices):
+        # select the frames using numpy fancy indexing
+        # note these are arrays of strings, containing the file names
+        select_x_frames = frames_x[select_indices]
+        select_y_frames = frames_y[select_indices]
+        # this will position the elements of select_x_frames and select_y_frames
+        # alternatively in a numpy array. remember these file names of the frames
+        select_frames = np.ravel(np.column_stack((select_x_frames, select_y_frames)))
+        # append to each file the root path. we use the one for  x frames,
+        # then replace with y for y frames.x frames are in even positions, y in odd positions
+        select_files = [os.path.join(vid_x, frame) for frame in select_frames]
+        select_files[1::2] = [y_files.replace('x', 'y') for y_files in select_files[1::2]]
+        # create pil objects
+        sequence = [grey_scale_pil_loader(file) for file in select_files]
+        # Applies preprocessing when accessing the image
+        if self.transform is not None:
+            # inv=True will create the negative image for x frames
+            sequence[::2] = [self.transform(image, inv=True, flow=True) for image in sequence[::2]]
+            sequence[1::2] = [self.transform(image, inv=False, flow=True) for image in sequence[1::2]]
+            # if the ToTensor transformation is applied
+            # 'sequence' is a list of tensors, so we stack along dimension 0 in a single tensor
+            # then we apply squeeze along the 1 dimension, because the images are grey-scale,
+            # so there is only one channel and we eliminate that dimension
+            if self.has_to_tensor:
+                sequence = torch.stack(sequence, 0).squeeze(1)
+        return sequence
+
     def __getitem__(self, index):
         # get the paths of the x video, y, label and length
         vid_x = self.x_frames[index]
@@ -242,53 +271,33 @@ class GTEA61_flow(VisionDataset):
         length = self.n_frames[index]
         # needed to randomize the parameters of the custom transformations
         self.transform.randomize_parameters()
-
-        # sort the list of frames since the name is like flow_x_002.png
-        # so we use the last number as an ordering
+        # sort list of frames since the name is like flow_x_002.png, last number as ordering
         frames_x = np.array(sorted(os.listdir(vid_x)))
         # do the same for y
         frames_y = np.array(sorted(os.listdir(vid_y)))
-        if self.split == 'train':
-            # if we are training, we take a random starting frame
-            startFrame = random.randint(0, length - self.seq_len)
+        if self.n_seq > 0:
+            segments = []
+            starting_frames = np.linspace(1, length-self.seq_len+1, self.n_seq, endpoint=False, dtype=int)
+            for start_frame in starting_frames:
+                select_indices = start_frame + np.arange(0, self.seq_len)
+                sequence = self.get_selected_files(vid_x, frames_x, frames_y, select_indices)
+                segments.append(sequence)
+            segments = torch.stack(segments, 0)
+
+            return segments, label
         else:
-            # if we are testing, we take a centered interval
-            startFrame = np.ceil((length - self.seq_len) / 2).astype('int')
-        # the frames will be sequential, so the select indices are
-        # from startFrame to starFrame + seq_len
-        select_indices = startFrame + np.arange(0, self.seq_len)
-        # we then select the frames using numpy fancy indexing
-        # note that the numpy arrays are arrays of strings, containing the file names
-        # nevertheless, numpy will work with string arrays as well
-        select_x_frames = frames_x[select_indices]
-        select_y_frames = frames_y[select_indices]
-        # this will position the elements of select_x_frames and select_y_frames
-        # alternatively in a numpy array. select_frames is gonna be like x_frame, y_frame, x_frame, y _frame...
-        # remember that these array contain the file names of the frames
-        select_frames = np.ravel(np.column_stack((select_x_frames, select_y_frames)))
+            if self.split == 'train':
+                # if we are training, we take a random starting frame
+                start_frame = random.randint(0, length - self.seq_len)
+            else:
+                # if we are testing, we take a centered interval
+                start_frame = np.ceil((length - self.seq_len) / 2).astype('int')
+            # the frames will be sequential, so the select indices are
+            # from startFrame to starFrame + seq_len
+            select_indices = start_frame + np.arange(0, self.seq_len)
+            sequence = self.get_selected_files(vid_x, frames_x, frames_y, select_indices)
 
-        # append to each file the root path. for the root path we use the one for
-        # x frames, and then replace it with a y for the y frames
-        # remember that x frames are in even positions, and y in odd positions
-        select_files = [os.path.join(vid_x, frame) for frame in select_frames]
-        select_files[1::2] = [y_files.replace('x','y') for y_files in select_files[1::2]]
-        # create pil objects
-        sequence = [grey_scale_pil_loader(file) for file in select_files]
-        # Applies preprocessing when accessing the image
-        if self.transform is not None:
-            # we apply different transformations for x and y frames
-            # specifically, inv=True will create the negative image for x frames
-            sequence[::2] = [self.transform(image, inv=True, flow=True) for image in sequence[::2]]
-            sequence[1::2] = [self.transform(image, inv=False, flow=True) for image in sequence[1::2]]
-            # now, if the ToTensor transformation is applied
-            # we have in 'sequence' a list of tensors, so we use stack along dimension 0
-            # to create a tensor with one more dimension that contains them all
-            # then we apply squeeze along the 1 dimension, because the images are grey-scale,
-            # so there is only one channel and we eliminate that dimension
-            if self.has_to_tensor:
-                sequence = torch.stack(sequence, 0).squeeze(1)
-
-        return sequence, label
+            return sequence, label
 
     def __len__(self):
         return len(self.x_frames)
