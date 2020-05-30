@@ -84,9 +84,6 @@ class AttentionModelMS(nn.Module):
         
         return feats, feats1
         
-            
-            
-        
 
 def attention_model_ms(**kwargs):
     return AttentionModelMS(**kwargs)
