@@ -41,7 +41,8 @@ def grey_scale_pil_loader(path):
 
 class GTEA61(VisionDataset):
     # this class inherites from VisionDataset and represents the rgb frames of the dataset
-    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None, label_map=None, mmaps=False):
+    def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None,
+                 label_map=None, mmaps=False, mmaps_transform=None):
         super(GTEA61, self).__init__(root, transform=transform, target_transform=target_transform)
         self.datadir = root
         # split indicates whether we should load the train or test split
@@ -51,6 +52,7 @@ class GTEA61(VisionDataset):
         # frames will be taken uniformly spaced
         self.seq_len = seq_len
         self.label_map = label_map
+        self.mmaps_transform = mmaps_transform
 
         if label_map is None:
             # if the label map dictionary is not provided, we are going to build it
@@ -68,7 +70,13 @@ class GTEA61(VisionDataset):
         check_totensor = [isinstance(tr, ToTensor) for tr in self.transform.transforms]
         self.has_to_tensor = True in check_totensor
         if not self.has_to_tensor:
-            raise ValueError("you did NOT provide ToTensor as a transformation")
+            raise ValueError("you did NOT provide ToTensor as a transformation for rgbs")
+        
+        if mmaps:
+            check_mmaps_totensor = [isinstance(tr, ToTensor) for tr in self.mmaps_transform.transforms]
+            self.mmaps_has_to_tensor = True in check_totensor
+            if not self.mmaps_has_to_tensor:
+                raise ValueError("you did NOT provide ToTensor as a transformation for mmaps")
 
         # we expect datadir to be GTEA61, so we add FRAME_FOLDER to get to the frames
         frame_dir = os.path.join(self.datadir, FRAME_FOLDER)
@@ -150,7 +158,7 @@ class GTEA61(VisionDataset):
                 sequence = torch.stack(sequence, 0)
                 
             if self.get_mmaps:
-                maps_sequence = [self.transform(mmap) for mmap in maps_sequence]
+                maps_sequence = [self.mmaps_transform(mmap) for mmap in maps_sequence]
                 if self.has_to_tensor:
                     maps_sequence = torch.stack(maps_sequence, 0)
                 maps_sequence = maps_sequence.squeeze(1)
