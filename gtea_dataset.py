@@ -74,7 +74,7 @@ class GTEA61(VisionDataset):
         
         if mmaps:
             check_mmaps_totensor = [isinstance(tr, ToTensor) for tr in self.mmaps_transform.transforms]
-            self.mmaps_has_to_tensor = True in check_totensor
+            self.mmaps_has_to_tensor = True in check_mmaps_totensor
             if not self.mmaps_has_to_tensor:
                 raise ValueError("you did NOT provide ToTensor as a transformation for mmaps")
 
