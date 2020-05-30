@@ -18,7 +18,9 @@ FLOW_Y_FOLDER = "flow_y_processed"
 # directory containing the rgb frames
 FRAME_FOLDER = "processed_frames2"
 RGB_FOLDER = 'rgb'
+RGB_FILENAME = 'rgb'
 MMAPS_FOLDER = 'mmaps'
+MMAP_FILENAME = 'map'
 
 
 def pil_loader(path):
@@ -134,9 +136,11 @@ class GTEA61(VisionDataset):
         # use pil_loader to get pil objects
         sequence = [pil_loader(file) for file in select_files]
         if self.get_mmaps:
-            select_map = [file.replace(RGB_FOLDER, MMAPS_FOLDER) for file in select_files]
-            maps_sequence = [grey_scale_pil_loader(file) for file in select_files]
-        
+            # replace folder
+            print(select_files)
+            select_map = [os.path.join(os.path.dirname(file).replace(RGB_FOLDER, MMAPS_FOLDER), os.path.basename(file).replace(RGB_FILENAME, MMAP_FILENAME) ) for file in select_files]
+            maps_sequence = [grey_scale_pil_loader(file) for file in select_map]
+    
         # Applies preprocessing when accessing the image
         if self.transform is not None:
             sequence = [self.transform(image) for image in sequence]
