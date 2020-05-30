@@ -420,3 +420,63 @@ class FlippedImagesTest(object):
 
     def randomize_parameters(self):
         pass
+    
+
+class DownSampling(object):
+    
+    
+    def __init__(self, len_x = 224, len_y = 224, num_x = 7, num_y = 7):
+        
+        self.len_x = len_x
+        self.num_x = num_x
+        
+        self.len_y = len_y
+        self.num_y = num_y
+
+    
+    def __call__(self, tensor, inv, flow):
+        
+        tensor = tensor[0]
+        
+        pos_x = self.__getPositions(self.len_x, self.num_x)
+        pos_y = self.__getPositions(self.len_y, self.num_y)
+        
+        new_tensor = []
+        
+        tmin = tensor.min()
+                    
+        for i, x in enumerate(pos_x):
+            
+            new_tensor.append([])
+            
+            for y in pos_y:
+                
+#                 if bool(tensor[x][y] == tmin):
+#                     tensor[x][y] = torch.Tensor([0])
+#                 else:
+#                     tensor[x][y] = torch.Tensor([1])
+#                 print(i, x, y)    
+                new_tensor[i].append(int(tensor[x][y]))
+
+        return torch.Tensor(new_tensor[i])
+    
+    
+    def __getPositions(self, length, num):
+    
+        pos = []
+
+        step = int(length/num)
+        curr_pos = int(np.ceil((length%num)/2))
+
+        if curr_pos == 0:
+            curr_pos = int(length/(2*num))
+
+        while curr_pos < length:
+            pos.append(curr_pos)
+            curr_pos += step
+
+        return pos
+    
+    
+    def randomize_parameters(self):
+        pass
