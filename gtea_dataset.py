@@ -137,7 +137,6 @@ class GTEA61(VisionDataset):
         sequence = [pil_loader(file) for file in select_files]
         if self.get_mmaps:
             # replace folder
-            print(select_files)
             select_map = [os.path.join(os.path.dirname(file).replace(RGB_FOLDER, MMAPS_FOLDER), os.path.basename(file).replace(RGB_FILENAME, MMAP_FILENAME) ) for file in select_files]
             maps_sequence = [grey_scale_pil_loader(file) for file in select_map]
     
