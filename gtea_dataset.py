@@ -52,6 +52,7 @@ class GTEA61(VisionDataset):
         # frames will be taken uniformly spaced
         self.seq_len = seq_len
         self.label_map = label_map
+        self.mmaps = mmaps
         self.mmaps_transform = mmaps_transform
 
         if label_map is None:
@@ -128,6 +129,10 @@ class GTEA61(VisionDataset):
         if self.transform is not None:
             # this is needed to randomize the parameters of the random transformations
             self.transform.randomize_parameters()
+            
+        if self.mmaps:
+            if self.mmaps_transform is not None:
+                self.mmaps_transform.randomize_parameters()
 
         # sort the list of frames since the name is like rgb002.png
         # so we use the last number as an ordering
