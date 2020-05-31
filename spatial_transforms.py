@@ -493,13 +493,11 @@ class To1Dimension(object):
         
         l = []
         
-        print(tensor)
         for i in tensor:
-            print(i)
             for j in i:
                 l.append(int(j))
         
-        return torch.Tensor(j)
+        return torch.Tensor(l)
     
     
     def randomize_parameters(self):
