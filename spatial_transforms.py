@@ -436,29 +436,33 @@ class DownSampling(object):
     
     def __call__(self, tensor, inv, flow):
         
-        tensor = tensor[0]
+        final_tensor = []
         
         pos_x = self.__getPositions(self.len_x, self.num_x)
         pos_y = self.__getPositions(self.len_y, self.num_y)
         
-        new_tensor = []
+        for t in tensor:
         
-        tmin = tensor.min()
-                    
-        for i, x in enumerate(pos_x):
-            
-            new_tensor.append([])
-            
-            for y in pos_y:
-                
-#                 if bool(tensor[x][y] == tmin):
-#                     tensor[x][y] = torch.Tensor([0])
-#                 else:
-#                     tensor[x][y] = torch.Tensor([1])
-#                 print(i, x, y)    
-                new_tensor[i].append(int(tensor[x][y]))
+            new_tensor = []
 
-        return torch.Tensor(new_tensor[i])
+#             tmin = t.min()
+
+            for i, x in enumerate(pos_x):
+
+                new_tensor.append([])
+
+                for y in pos_y:
+
+#                     if bool(tensor[x][y] == tmin):
+#                         tensor[x][y] = torch.Tensor([0])
+#                     else:
+#                         tensor[x][y] = torch.Tensor([1])
+    
+                    new_tensor[i].append(int(t[x][y]))
+            
+            final_tensor.append(new_tensor)
+        
+        return torch.Tensor(final_tensor)
     
     
     def __getPositions(self, length, num):
@@ -480,3 +484,27 @@ class DownSampling(object):
     
     def randomize_parameters(self):
         pass
+   
+    
+class To1Dimension(object):
+    
+    
+    def __init__(self):
+        pass
+        
+        
+    def __call__(self, tensor, inv, flow):
+        
+        l = []
+        
+        print(tensor)
+        for i in tensor:
+            print(i)
+            for j in i:
+                l.append(int(j))
+        
+        return torch.Tensor(j)
+    
+    
+    def randomize_parameters(self):
+        pass    
