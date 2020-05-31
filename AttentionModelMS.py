@@ -36,8 +36,8 @@ class AttentionModelMS(nn.Module):
         ms_out = []
         
         state = (
-            Variable(torch.zeros((inputVariable.size(1), self.mem_size, 7, 7))),
-            Variable(torch.zeros((inputVariable.size(1), self.mem_size, 7, 7)))
+            Variable(torch.zeros((inputVariable.size(1), self.mem_size, 7, 7)).cuda()),
+            Variable(torch.zeros((inputVariable.size(1), self.mem_size, 7, 7)).cuda())
         )
         
         if not no_cam:
