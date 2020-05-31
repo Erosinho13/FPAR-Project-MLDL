@@ -1,5 +1,11 @@
 import pickle
 
+RGB_PREFIX = 'model_rgb_state_dict'
+FLOW_PREFIX = 'model_flow_state_dict'
+JOINT_PREFIX = 'model_twoStream_state_dict'
+LOG_PREFIX = 'log_stage'
+VAL_LOG_PREFIX = 'val_log_stage'
+
 class Logger():
     def __init__(self, **params):
         self.params = params
