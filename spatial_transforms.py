@@ -443,19 +443,9 @@ class DownSampling(object):
         
         new_tensor = []
 
-#         tmin = t.min()
-
         for i, x in enumerate(pos_x):
-
             new_tensor.append([])
-
             for y in pos_y:
-
-#                 if bool(tensor[x][y] == tmin):
-#                     tensor[x][y] = torch.Tensor([0])
-#                 else:
-#                     tensor[x][y] = torch.Tensor([1])
-
                 new_tensor[i].append(int(tensor[x][y]))
         
         return torch.Tensor(new_tensor)
@@ -480,8 +470,77 @@ class DownSampling(object):
     
     def randomize_parameters(self):
         pass
-   
+
     
+class KNN_DownSampling(object):
+    
+    
+    def __init__(self, len_x = 224, len_y = 224, num_x = 7, num_y = 7, K = 0):
+        
+        self.len_x = len_x
+        self.num_x = num_x
+        
+        self.len_y = len_y
+        self.num_y = num_y
+        
+        self.K = K
+
+    
+    def __call__(self, tensor, inv, flow):
+        
+        K = self.K
+        
+        tensor = tensor[0]
+        
+        pos_x = self.__getPositions(self.len_x, self.num_x)
+        pos_y = self.__getPositions(self.len_y, self.num_y)
+        
+        new_tensor = []
+
+        for i, x in enumerate(pos_x):
+            
+            new_tensor.append([])
+            start_x = x - K
+            end_x = x + K + 1
+            
+            if start_x < 0 or end_x > self.len_x:
+                raise Exception("ERROR - x out of bounds")
+            
+            for y in pos_y:
+                
+                start_y = y - K
+                end_y = y + K + 1
+                
+                if start_y < 0 or end_y > self.len_y:
+                    raise Exception("ERROR - y out of bounds")
+                    
+                value = round(int(tensor[start_x:end_x, start_y:end_y].sum())/((2*K+1)**2), 0)
+                new_tensor[i].append(value)
+        
+        return torch.Tensor(new_tensor)
+    
+    
+    def __getPositions(self, length, num):
+    
+        pos = []
+
+        step = int(length/num)
+        curr_pos = int(np.ceil((length%num)/2))
+
+        if curr_pos == 0:
+            curr_pos = int(length/(2*num))
+
+        while curr_pos < length:
+            pos.append(curr_pos)
+            curr_pos += step
+
+        return pos
+    
+    
+    def randomize_parameters(self):
+        pass
+
+
 class To1Dimension(object):
     
     
