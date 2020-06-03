@@ -4,12 +4,12 @@ from torch.nn import functional as F
 from torch.autograd import Variable
 from MyConvLSTMCell import *
 from resnetMod import resnet34
-from MSBlock import msblock
+from MS_regressor import ms_regressor
 
 
-class AttentionModelMS(nn.Module):
+class AttentionModelMSReg(nn.Module):
     def __init__(self, num_classes = 61, mem_size = 512):
-        super(AttentionModelMS, self).__init__()
+        super(AttentionModelMSReg, self).__init__()
         
         self.num_classes = num_classes
         self.mem_size = mem_size
@@ -25,7 +25,7 @@ class AttentionModelMS(nn.Module):
         
         self.classifier = nn.Sequential(self.dropout, self.fc)
         
-        self.msBlock = msblock()
+        self.msBlock = ms_regressor()
 
         
     def forward(self, inputVariable, no_cam = False, mmaps = False):
@@ -57,6 +57,7 @@ class AttentionModelMS(nn.Module):
                 attentionFeat = feature_convNBN * attentionMAP.expand_as(feature_conv)
 
                 state = self.lstm_cell(attentionFeat, state)
+
         else:
             for t in range(inputVariable.size(0)):
 
@@ -77,5 +78,5 @@ class AttentionModelMS(nn.Module):
         return feats, feats1
         
 
-def attention_model_ms(**kwargs):
-    return AttentionModelMS(**kwargs)
+def attention_model_ms_reg(**kwargs):
+    return AttentionModelMSReg(**kwargs)
