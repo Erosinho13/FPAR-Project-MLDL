@@ -11,12 +11,18 @@ class Logger():
         self.params = params
         self.data = []
         self.step_data = []
+<<<<<<< HEAD
 
     def add_epoch_data(self, epoch, acc, loss, dual_loss=False):
         if dual_loss is not False:
             self.data.append({epoch:(acc, loss, dual_loss)})
         else:
             self.data.append({epoch:(acc, loss)})
+=======
+        
+    def add_epoch_data(self, epoch, acc, loss):
+        self.data.append({epoch:(acc, loss)})
+>>>>>>> 366c8f346d5f1034807b6b240d34c1089228a3ad
         
     def add_step_data(self, step, acc, loss):
         self.step_data.append({step:(acc, loss)})
