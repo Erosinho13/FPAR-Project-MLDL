@@ -41,7 +41,7 @@ class attentionMap(nn.Module):
 
 
 
-def genAttentionMap(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem_size = 512):
+def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem_size = 512):
 
   FRAME_FOLDER = "processed_frames2"
   CAM_FOLDER = "../Gen_CAMS"
