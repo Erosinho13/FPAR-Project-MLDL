@@ -1,0 +1,104 @@
+\documentclass[10pt,twocolumn,hidelinks,letterpaper]{article}
+
+\usepackage[table]{xcolor}
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{lipsum}
+
+\usepackage[framed , numbered]{matlab-prettifier}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
+\usepackage{geometry}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{float}
+
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[breaklinks=true,bookmarks=false]{hyperref}
+
+\cvprfinalcopy % *** Uncomment this line for the final submission
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+%\ifcvprfinal\pagestyle{empty}\fi
+\setcounter{page}{1}
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{01TXFSM - Machine Learning and Deep Learning \\
+\vspace{0.3in}
+Final Project \\
+First Person Action Recognition}
+
+\author{Eros Fanì - s269781\\
+Politecnico di Torino\\
+{\tt\small eros.fani@studenti.polito.it}
+\and
+Gabriele Trivigno - s276807\\
+Politecnico di Torino\\
+{\tt\small gabriele.trivigno@studenti.polito.it}
+\and
+Cristiano Gerbino - s277058\\
+Politecnico di Torino\\
+{\tt\small s277058@studenti.polito.it}
+}
+
+\maketitle
+%\thispagestyle{empty}
+
+\lstset{language=python,%
+  %basicstyle=\color{red},
+  breaklines=true,%
+  morekeywords={matlab2tikz},
+  keywordstyle={\small \color{blue}},%
+  morekeywords=[2]{1}, keywordstyle=[2]{\small \color{black}},
+  identifierstyle={\small \color{black}},%
+  stringstyle={\small \color{mylilas}},
+  commentstyle={\small \color{mygreen}},%
+  showstringspaces=false,%without this there will be a symbol in the places where there is a space
+  numbers=left,%
+  numberstyle={\small \color{black}},% size of the numbers
+  numbersep=7pt, % this defines how far the numbers are from the text
+  emph=[1]{error,warning},emphstyle=[1]{\small \color{red}} %some words to emphasise
+  %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+%%%%%%%%% BODY TEXT
+\newcommand{\quotes}[1]{“#1”}
+\newcommand{\reff}[1]{Figure \ref{#1}}
+\setlength{\parindent}{0pt}
+\setstretch{0.1}
+\setlength{\parskip}{1em}
+\definecolor{TopRow}{HTML}{E6E6FF}
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{Goal}
+
+The goal of the project is to replicate some of the experiments performed in \cite{egornn} and \cite{sparnet}
+
+
+{\small
+\bibliographystyle{ieee}
+\bibliography{egbib}
+}
+
+\end{document}
