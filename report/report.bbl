@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{sparnet}
+M.~Planamente, A.~Bottino, and B.~Caputo.
+\newblock Joint encoding of appearance and motion features with
+  self-supervision for first person action recognition, 2020.
+
+\bibitem{egornn}
+S.~Sudhakaran and O.~Lanz.
+\newblock Attention is all we need: Nailing down object-centric attention for
+  egocentric activity recognition, 2018.
+
+\end{thebibliography}
