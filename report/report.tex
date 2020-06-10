@@ -93,11 +93,19 @@ First Person Action Recognition}
 
 \end{abstract}
 
-\section{Introduction and data exploration}
+\section{Introduction}
+
+\subsection{Goals}
 
 The first goal of the project is to replicate some of the experiments performed in \cite{egornn} and \cite{sparnet}. The objective of these studies is the First Person Action Recognition: they tried to implement a deep learning model capable to extract meaningful features to automatically predict the action filmed by a wearable camera.
 
-The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech Egocentric Activity Datasets: \small{\url{http://cbs.ic.gatech.edu/fpv/}}}. The dataset contains the videos in form of frames, and also two kind of preprocessed images: \textit{motion maps} and \textit{optical flows}. The folder schema of the dataset is shown in \reff{folder_schema}.
+After having replicated these experiments we performed a grid search on the experiments to find the best set of values for the hyperparameters.
+
+At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas.
+
+\subsection{Data exploration}
+
+The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech Egocentric Activity Datasets: \small{\url{http://cbs.ic.gatech.edu/fpv/}}}. The dataset contains the videos in form of frames, and also two kind of preprocessed images: \textit{motion maps} and \textit{optical flows}. The folder schema of the dataset is shown in \reff{folder_schema}. Videos represent 61 class actions performed by 4 different users (\textit{S1}, \textit{S2}, \textit{S3}, \textit{S4}). Sometimes for some actions more than one video is available. The total number of videos in the dataset is, however, 457, which actually means that it is a quite small dataset.
 
 \begin{figure*}
 	\centering
@@ -106,13 +114,11 @@ The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech
 	\label{folder_schema}
 \end{figure*}
 
-At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas.
-
 The optical flow methods try to calculate the motion between two image frames which are taken at times $t$ and $t + \Delta t$ at every voxel position. The warp flow methods try also to remove the motion of the wearable camera. We have two kind of these last representations in our dataset: one computed in the horizontal axis (folder \textit{flow\_x\_processed}) and one other computed in the vertical axis (folder \textit{flow\_y\_processed}).
 
 The motion maps are special black-and-white images which represent the spatial location in which the Motion Segmentation task of \cite{sparnet} focuses its attention per each frame. The mmaps present large similarities with the warp flows.
 
-The difference between the kind of available images in our dataset are shown in \reff{image_comparison}.
+The differences between the kind of available images in our dataset are shown in \reff{image_comparison}.
 
 \begin{figure*}
   \centering
@@ -156,6 +162,7 @@ The difference between the kind of available images in our dataset are shown in 
   \label{image_comparison}
 \end{figure*}
 
+\subsection{Data cleaning}
 
 {\small
 \bibliographystyle{ieee}
