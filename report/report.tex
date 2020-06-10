@@ -46,17 +46,18 @@
 Final Project \\
 First Person Action Recognition}
 
-\author{Eros Fanì - s269781\\
-Politecnico di Torino\\
-{\tt\small eros.fani@studenti.polito.it}
-\and
-Gabriele Trivigno - s276807\\
-Politecnico di Torino\\
-{\tt\small gabriele.trivigno@studenti.polito.it}
-\and
-Cristiano Gerbino - s277058\\
-Politecnico di Torino\\
-{\tt\small s277058@studenti.polito.it}
+\author{
+  Eros Fanì - s269781\\
+  Politecnico di Torino\\
+  {\tt\small eros.fani@studenti.polito.it}
+  \and
+  Gabriele Trivigno - s276807\\
+  Politecnico di Torino\\
+  {\tt\small gabriele.trivigno@studenti.polito.it}
+  \and
+  Cristiano Gerbino - s277058\\
+  Politecnico di Torino\\
+  {\tt\small s277058@studenti.polito.it}
 }
 
 \maketitle
@@ -89,11 +90,71 @@ Politecnico di Torino\\
 
 \begin{abstract}
 
+
 \end{abstract}
 
-\section{Goal}
+\section{Introduction and data exploration}
 
-The goal of the project is to replicate some of the experiments performed in \cite{egornn} and \cite{sparnet}
+The first goal of the project is to replicate some of the experiments performed in \cite{egornn} and \cite{sparnet}. The objective of these studies is the First Person Action Recognition: they tried to implement a deep learning model capable to extract meaningful features to automatically predict the action filmed by a wearable camera.
+
+The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech Egocentric Activity Datasets: \small{\url{http://cbs.ic.gatech.edu/fpv/}}}. The dataset contains the videos in form of frames, and also two kind of preprocessed images: \textit{motion maps} and \textit{optical flows}. The folder schema of the dataset is shown in \reff{folder_schema}.
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=.9\linewidth]{images/folder_schema.png}
+	\caption{Folder schema of our GTEA61}
+	\label{folder_schema}
+\end{figure*}
+
+At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas.
+
+The optical flow methods try to calculate the motion between two image frames which are taken at times $t$ and $t + \Delta t$ at every voxel position. The warp flow methods try also to remove the motion of the wearable camera. We have two kind of these last representations in our dataset: one computed in the horizontal axis (folder \textit{flow\_x\_processed}) and one other computed in the vertical axis (folder \textit{flow\_y\_processed}).
+
+The motion maps are special black-and-white images which represent the spatial location in which the Motion Segmentation task of \cite{sparnet} focuses its attention per each frame. The mmaps present large similarities with the warp flows.
+
+The difference between the kind of available images in our dataset are shown in \reff{image_comparison}.
+
+\begin{figure*}
+  \centering
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/rgb0001.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_x_00002.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_y_00001.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/map0001.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/rgb0011.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_x_00011.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_y_00011.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/map0011.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/rgb0020.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_x_00020.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/flow_y_00020.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/img_comp/map0020.png}
+  \end{subfigure}
+  \caption{Types of images in our dataset. In this example is shown a sample of images from the \textit{close\_chocolate} action. From the left column to the right column: rgbs, warp flows x, warp flows y, motion maps}
+  \label{image_comparison}
+\end{figure*}
 
 
 {\small
