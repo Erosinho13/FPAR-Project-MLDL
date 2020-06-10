@@ -475,7 +475,7 @@ class DownSampling(object):
 class KNN_DownSampling(object):
     
     
-    def __init__(self, len_x = 224, len_y = 224, num_x = 7, num_y = 7, K = 0):
+    def __init__(self, len_x = 224, len_y = 224, num_x = 7, num_y = 7, K = 0, regression = False, full224 = False):
         
         self.len_x = len_x
         self.num_x = num_x
@@ -484,6 +484,9 @@ class KNN_DownSampling(object):
         self.num_y = num_y
         
         self.K = K
+        
+        self.regression = regression
+        self.full224 = full224
 
     
     def __call__(self, tensor, inv, flow):
@@ -497,25 +500,50 @@ class KNN_DownSampling(object):
         
         new_tensor = []
 
-        for i, x in enumerate(pos_x):
+        if not self.full224:
             
-            new_tensor.append([])
-            start_x = x - K
-            end_x = x + K + 1
+            for i, x in enumerate(pos_x):
+
+                new_tensor.append([])
+                start_x = x - K
+                end_x = x + K + 1
+
+                if start_x < 0 or end_x > self.len_x:
+                    raise Exception("ERROR - x out of bounds")
+
+                for y in pos_y:
+
+                    start_y = y - K
+                    end_y = y + K + 1
+
+                    if start_y < 0 or end_y > self.len_y:
+                        raise Exception("ERROR - y out of bounds")
+
+                    if not self.regression:
+                        value = round(int(tensor[start_x:end_x, start_y:end_y].sum())/((2*K+1)**2), 0)
+                    else:
+                        value = tensor[start_x:end_x, start_y:end_y].sum()/((2*K+1)**2)
+
+                    new_tensor[i].append(value)
             
-            if start_x < 0 or end_x > self.len_x:
-                raise Exception("ERROR - x out of bounds")
-            
-            for y in pos_y:
+        else:
+
+            step = int(224/self.num_x)
+            jumps = np.arange(0, 224, step)
+
+            for pos, i in enumerate(jumps):
                 
-                start_y = y - K
-                end_y = y + K + 1
-                
-                if start_y < 0 or end_y > self.len_y:
-                    raise Exception("ERROR - y out of bounds")
+                new_tensor.append([])
+
+                for j in jumps:
+
+                    if not self.regression:
+                        value = round(int(tensor[i:i+step, j:j+step].sum())/(step**2), 0)
+                    else:
+                        value = tensor[i:i+step, j:j+step].sum()/(step**2)
                     
-                value = round(int(tensor[start_x:end_x, start_y:end_y].sum())/((2*K+1)**2), 0)
-                new_tensor[i].append(value)
+                    new_tensor[pos].append(value)
+                
         
         return torch.Tensor(new_tensor)
     
