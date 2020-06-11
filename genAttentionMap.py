@@ -8,7 +8,8 @@ import torch.nn.functional as F
 import sys
 from torchvision import transforms
 from objectAttentionModelConvLSTM import *
-from AttentionModelMS import *
+#from AttentionModelMS import *
+from AttentMS2 import *
 from PIL import Image
 
 class attentionMap(nn.Module):
@@ -47,7 +48,8 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
   CAM_FOLDER = "../Gen_CAMS"
   
   model1 = attentionModel(num_classes = num_classes, mem_size = mem_size)
-  model2 = AttentionModelMS(num_classes = num_classes, mem_size = mem_size)
+  #model2 = AttentionModelMS(num_classes = num_classes, mem_size = mem_size)
+  model2 = attention_model_ms(num_classes = num_classes, mem_size = mem_size)
   
   model1.load_state_dict(torch.load(rgbModel))
   model2.load_state_dict(torch.load(rgbModel_MS))
