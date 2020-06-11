@@ -11,7 +11,7 @@ class MSBlock28(nn.Module):
         )
         self.linearizer = nn.Sequential(
             nn.Dropout(0.2),
-            nn.Linear(100*28*28, 49),
+            nn.Linear(100*28*28, 28*28),
         )
         
     def forward(self, x):
