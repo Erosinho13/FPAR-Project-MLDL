@@ -103,6 +103,10 @@ After having replicated these experiments we performed a grid search on the expe
 
 At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas.
 
+\subsection{Our contribution}
+
+\[...\]
+
 \subsection{Data exploration}
 
 The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech Egocentric Activity Datasets: \small{\url{http://cbs.ic.gatech.edu/fpv/}}}. The dataset contains the videos in form of frames, and also two kind of preprocessed images: \textit{motion maps} and \textit{optical flows}. The folder schema of the dataset is shown in \reff{folder_schema}. Videos represent 61 class actions performed by 4 different users (\textit{S1}, \textit{S2}, \textit{S3}, \textit{S4}). Sometimes for some actions more than one video is available. The total number of videos in the dataset is, however, 457, which actually means that it is a quite small dataset.
@@ -163,6 +167,55 @@ The differences between the kind of available images in our dataset are shown in
 \end{figure*}
 
 \subsection{Data cleaning}
+
+The dataset was almost clean already from the beginning, but we encountered two problems within it:
+\begin{itemize}
+  \item there were hidden useless folders \textit{.DSstore} inside each one of the user folders. These have been removed
+  \item some of the first mmaps of some videos were missing. In these cases we have simply duplicated the second mmap
+\end{itemize}
+
+\section{Descriptions of the models}
+
+Here we describe the models that we have used to perform our experiments.
+
+\subsection{Egornn}
+
+Egornn is a Recurrent Neural Network. The overall architecture of \textit{egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we'll call these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
+
+At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It includes a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax. We can graphically see some of our CAMs in \reff{cams}.
+
+%%% ADD CAMS %%%
+
+The output of the CAM is then sent to a \textit{softmax} layer to obtain a probability map, which is called \textit{Spatial Attention Layer} (SAM). The output of the SAM is finally multiplied, cell by cell (Hadamard product), with the output of \textit{conv5}, obtaining another tensor of weights which is sent to a \textit{Convolutional Long Term Support Memory} block (ConvLSTM).
+
+The reason for the usage of the ConvLSTM block is that, up to now, what the net does is to take each frame and to try to make predictions based only on the features that the net can extract from those frames, without taking into consideration the temporal encoding of frame level features. The convLSTM block take into consideration, for each frame $i$, both the output of the SAM for the layer i and the output of the ConvLSTM for the layer $i-1$, constituting a recursive structure.
+
+The last output of the ConvLSTM (the output obtained from the last frame of a particular video) is average pooled and reshaped to obtain a final classification layer with 61 neurons (i.e. the number of classes of our dataset).
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{images/egornn.png}
+	\caption{Architecture of \textit{egornn}}
+	\label{egornn_arch}
+\end{figure*}
+
+\subsection{Flow\_resnet34}
+
+\subsection{Motion Segmentation branch applied to egornn}
+%
+% Egornn learns motion and appearence features separately
+
+\subsection{}
+
+\section{Experiments}
+
+\subsection{Egornn}
+
+\subsection{Motion Segmentation branch applied to egornn}
+
+% \subsection
+
+
 
 {\small
 \bibliographystyle{ieee}
