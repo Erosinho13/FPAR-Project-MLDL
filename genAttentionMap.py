@@ -44,11 +44,10 @@ class attentionMap(nn.Module):
 
 def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem_size = 512):
 
-  FRAME_FOLDER = "processed_frames2"
+  FRAME_FOLDER = "processed_frames2/S2"
   CAM_FOLDER = "../Gen_CAMS"
   
   model1 = attentionModel(num_classes = num_classes, mem_size = mem_size)
-  #model2 = AttentionModelMS(num_classes = num_classes, mem_size = mem_size)
   model2 = attention_model_ms(num_classes = num_classes, mem_size = mem_size)
   
   model1.load_state_dict(torch.load(rgbModel))
@@ -70,30 +69,21 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
     params.requires_grad = False
   
   rgb_dir = os.path.join(DATA_DIR, FRAME_FOLDER)
-  subfolders = os.listdir(rgb_dir)
-  
-  if len(subfolders) != 4:
-    raise FileNotFoundError("you specified the wrong directory")
-
+ 
   #generate the folder
   os.mkdir("../Gen_CAMS")
-  users = []
   actions = []
   images = []
-
-  #select n_videos random users
-  for i in range(n_videos):
-    users.append(subfolders[rand.randint(len(subfolders))])
-
-  for user in users:
-    user_dir = os.path.join(rgb_dir, user)
     
-    #we select a random action
-    acts = os.listdir(user_dir)
+  #we select random actions
+  while len(actions) < n_videos:
+    acts = os.listdir(rgb_dir)
     action = acts[rand.randint(len(acts))]
-    actions.append(action)
+    if action not in actions:
+      actions.append(action)
 
-    frame_dir = os.path.join(user_dir, action, "1", "rgb")
+  for action in actions:
+    frame_dir = os.path.join(rgb_dir, action, "1", "rgb")
     frames = np.array(sorted(os.listdir(frame_dir)))
     select_indices = np.linspace(0, len(frames), 5, endpoint=False, dtype=int)
     select_frames = frames[select_indices]
@@ -115,8 +105,8 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
       normalize])
 
   #cicle all images
-  for frames, user, action in zip(images, users, actions):
-    path_folder = os.path.join(CAM_FOLDER, f"{user}_{action}")
+  for frames, action in zip(images, actions):
+    path_folder = os.path.join(CAM_FOLDER, f"S2_{action}")
     os.mkdir(path_folder)
     for frame in frames:
       
@@ -143,7 +133,7 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
       cv2.imwrite(fl_cam_MS, attentionMap_image_MS)
       
       
-def genAttentionMapForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61, mem_size = 512):
+def genCAMSForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61, mem_size = 512):
 
   FRAME_FOLDER = "processed_frames2/S2"
   CAM_FOLDER = "../Gen_Specific_CAMS"
