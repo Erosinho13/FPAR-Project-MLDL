@@ -182,8 +182,9 @@ Here we describe the models that we have used to perform our experiments.
 
 Egornn is a Recurrent Neural Network. The overall architecture of \textit{egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we'll call these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
 
-At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It includes a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax. We can graphically see some of our CAMs in \reff{cams}.
+At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It includes a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax.
 
+% We can graphically see some of our CAMs in \reff{cams}.
 %%% ADD CAMS %%%
 
 The output of the CAM is then sent to a \textit{softmax} layer to obtain a probability map, which is called \textit{Spatial Attention Layer} (SAM). The output of the SAM is finally multiplied, cell by cell (Hadamard product), with the output of \textit{conv5}, obtaining another tensor of weights which is sent to a \textit{Convolutional Long Term Support Memory} block (ConvLSTM).
@@ -201,11 +202,24 @@ The last output of the ConvLSTM (the output obtained from the last frame of a pa
 
 \subsection{Flow\_resnet34}
 
-\subsection{Motion Segmentation branch applied to egornn}
-%
-% Egornn learns motion and appearence features separately
+\textit{Flow\_resnet34} is just a \textit{resnet34} edited to work with the warp flows. It gets five warp flows from \textit{processed\_frames\_x} and five from \textit{processed\_frames\_y} in form of a tensor of ten channels and tries to make predictions on the 61 classes.
 
-\subsection{}
+\subsection{Two stream model}
+
+Egornn learns appearence features, while \textit{flow\_resnet34} learns motion features. The way to join the two nets is to concatenate the two output layers and to add at the end a fully connected layer to get the class category scores.
+
+\subsection{Motion Segmentation branch applied to egornn}
+
+The problem which \cite{sparnet} tries to overcome is that in the two stream model motion and appearence are actually separately learned, without taking into account the spatial-temporal relationships.
+
+We have built an architecture similar to \textit{sparnet}, where the \textit{motion segmentation block} is the same but the \textit{action recognition block} has been substituted by egornn (like in one of the attempts in \cite{sparnet}). The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the main blocks are always as shown in \reff{msblock_arch}. The input of the convolutional layer of MS Block is taken from one of the convolutional layers of \textit{resnet34} of egornn (the actual layer varies with our experiments). Then, after the convolutional layer, there is a fully connected layer followed by a softmax which normalizes the weights between 0 and 1. \textit{mmaps ground truth} and \textit{rgb ground truth} represent the mmaps and the rgb after the trasformations. The trasformations applied to the mmaps are the same applied to the rgbs, plus a small amount of proper mmaps trasformations which always ends with a trasformation which linearizes the pixels (from a 2 dimensional tensor per mmap we get a 1 dimensional tensor per mmap). For the msblock these linearized pixels represent a real ground truth, because each of the output neurons of the MS Block is used to predict the values of the mmaps ground truth. The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the egornn loss ($L_c$). The final loss is used to compute the gradients to update the weights.
+
+\begin{figure*}
+	\centering
+	\includegraphics[width=\linewidth]{images/egornn+msblock_architecture.png}
+	\caption{Generic architecture of motion segmentation branch applied to \textit{egornn}}
+	\label{msblock_arch}
+\end{figure*}
 
 \section{Experiments}
 
