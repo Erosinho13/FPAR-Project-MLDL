@@ -141,3 +141,92 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
       #save the new images
       cv2.imwrite(fl_cam, attentionMap_image)
       cv2.imwrite(fl_cam_MS, attentionMap_image_MS)
+      
+      
+def genAttentionMapForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61, mem_size = 512):
+
+  FRAME_FOLDER = "processed_frames2/S2"
+  CAM_FOLDER = "../Gen_Specific_CAMS"
+  
+  model1 = attentionModel(num_classes = num_classes, mem_size = mem_size)
+  model2 = attention_model_ms(num_classes = num_classes, mem_size = mem_size)
+  model1.load_state_dict(torch.load(rgbModel))
+  model2.load_state_dict(torch.load(rgbModel_MS))
+  
+  model1_backbone = model1.resNet
+  model2_backbone = model2.resNet
+
+  #we istantiate attentionMapModel using the backbone of already trained stage2 rgb model
+  attentionMapModel = attentionMap(model1_backbone).cuda()
+  attentionMapModel.train(False)
+  for params in attentionMapModel.parameters():
+    params.requires_grad = False
+
+  #we istantiate attentionMapModel_MS using the backbone of already trained stage2 rgb model_MS
+  attentionMapModel_MS = attentionMap(model2_backbone).cuda()
+  attentionMapModel_MS.train(False)
+  for params in attentionMapModel_MS.parameters():
+    params.requires_grad = False
+  
+  rgb_dir = os.path.join(DATA_DIR, FRAME_FOLDER)
+  # subfolders = os.listdir(rgb_dir)
+  
+  # if len(subfolders) != 4:
+  #   raise FileNotFoundError("you specified the wrong directory")
+
+  #generate the folder
+  os.mkdir("../Gen_Specific_CAMS")
+  images = []
+
+    
+  for action in actions:
+    frame_dir = os.path.join(rgb_dir, action, "1", "rgb")
+    frames = np.array(sorted(os.listdir(frame_dir)))
+    select_indices = np.linspace(0, len(frames), 5, endpoint=False, dtype=int)
+    select_frames = frames[select_indices]
+    selected_images = [os.path.join(frame_dir, frame) for frame in select_frames]
+    images.append(selected_images)
+
+    
+  #use default transfomations
+  normalize = transforms.Normalize(
+   mean=[0.485, 0.456, 0.406],
+   std=[0.229, 0.224, 0.225]
+   )
+  preprocess1 = transforms.Compose([
+    transforms.Scale(256),
+    transforms.CenterCrop(224),
+  ])
+
+  preprocess2 = transforms.Compose([
+      transforms.ToTensor(),
+      normalize])
+
+  #cicle all images
+  for frames, action in zip(images, actions):
+    path_folder = os.path.join(CAM_FOLDER, f"S2_{action}")
+    os.mkdir(path_folder)
+    for frame in frames:
+      
+      filename = os.path.split(frame)[-1].split(".")[0]
+      
+      fl_nocam = os.path.join(path_folder, f"{filename}.png")
+      fl_cam = os.path.join(path_folder, f"{filename}_CAM.png")
+      fl_cam_MS = os.path.join(path_folder, f"{filename}_CAM_MS.png")
+      img_pil = Image.open(frame)
+      img_pil1 = preprocess1(img_pil)
+      size_upsample = img_pil1.size
+      
+      #save the original image
+      img_pil1.save(fl_nocam)
+
+      img_tensor = preprocess2(img_pil1) #3*224*224
+      img_variable = Variable(img_tensor.unsqueeze(0).cuda()) #1*3*224*224
+      img = np.asarray(img_pil1)
+      attentionMap_image = attentionMapModel(img_variable, img, size_upsample)
+      attentionMap_image_MS = attentionMapModel_MS(img_variable, img, size_upsample)
+      
+      #save the new images
+      cv2.imwrite(fl_cam, attentionMap_image)
+      cv2.imwrite(fl_cam_MS, attentionMap_image_MS)
+
