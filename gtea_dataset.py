@@ -7,6 +7,7 @@ import random
 import os
 import sys
 import torch
+from random import randrange
 
 IMAGE = 0
 LABEL = 1
@@ -42,7 +43,7 @@ def grey_scale_pil_loader(path):
 class GTEA61(VisionDataset):
     # this class inherites from VisionDataset and represents the rgb frames of the dataset
     def __init__(self, root, split='train', seq_len=16, transform=None, target_transform=None,
-                 label_map=None, mmaps=False, mmaps_transform=None):
+                 label_map=None, mmaps=False, mmaps_transform=None, static_frames=False):
         super(GTEA61, self).__init__(root, transform=transform, target_transform=target_transform)
         self.datadir = root
         # split indicates whether we should load the train or test split
@@ -54,6 +55,7 @@ class GTEA61(VisionDataset):
         self.label_map = label_map
         self.mmaps = mmaps
         self.mmaps_transform = mmaps_transform
+        self.static_frames = static_frames
 
         if label_map is None:
             # if the label map dictionary is not provided, we are going to build it
@@ -154,23 +156,54 @@ class GTEA61(VisionDataset):
             maps_sequence = [grey_scale_pil_loader(file) for file in select_map]
     
         # Applies preprocessing when accessing the image
-        if self.transform is not None:
-            sequence = [self.transform(image) for image in sequence]
-            # now, if the ToTensor transformation is applied
-            # we have in sequence a list of tensor, so we use stack along dimension 0
-            # to create a tensor with one more dimension that contains them all
-            if self.has_to_tensor:
-                sequence = torch.stack(sequence, 0)
-                
-            if self.get_mmaps:
-                maps_sequence = [self.mmaps_transform(mmap) for mmap in maps_sequence]
+        
+        if not self.static_frames:
+            
+            if self.transform is not None:
+                sequence = [self.transform(image) for image in sequence]
+                # now, if the ToTensor transformation is applied
+                # we have in sequence a list of tensor, so we use stack along dimension 0
+                # to create a tensor with one more dimension that contains them all
                 if self.has_to_tensor:
-                    maps_sequence = torch.stack(maps_sequence, 0)
-                maps_sequence = maps_sequence.squeeze(1)
+                    sequence = torch.stack(sequence, 0)
 
-                return sequence, maps_sequence, label
+                if self.get_mmaps:
+                    maps_sequence = [self.mmaps_transform(mmap) for mmap in maps_sequence]
+                    if self.has_to_tensor:
+                        maps_sequence = torch.stack(maps_sequence, 0)
+                    maps_sequence = maps_sequence.squeeze(1)
 
-        return sequence, label
+                    return sequence, maps_sequence, label
+
+            return sequence, label
+        
+        else:
+            
+            random_number = randrange(self.seq_len)
+            
+            if self.transform is not None:
+                sequence = [self.transform(image) for image in sequence]
+                # now, if the ToTensor transformation is applied
+                # we have in sequence a list of tensor, so we use stack along dimension 0
+                # to create a tensor with one more dimension that contains them all
+                if self.has_to_tensor:
+                    sequence = torch.stack(sequence, 0)
+                
+                static_sequence = [sequence[random_number] for i in range(self.seq_len)]
+                
+                if self.has_to_tensor:
+                    static_sequence = torch.stack(static_sequence, 0)
+                
+                if self.get_mmaps:
+                    maps_sequence = [self.mmaps_transform(mmap) for mmap in maps_sequence]
+                    if self.has_to_tensor:
+                        maps_sequence = torch.stack(maps_sequence, 0)
+                    maps_sequence = maps_sequence.squeeze(1)
+
+                    return sequence, static_sequence, maps_sequence, label
+
+            return sequence, static_sequence, label
+            
 
     def __len__(self):
         return len(self.videos)

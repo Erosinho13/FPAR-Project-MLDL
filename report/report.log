@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  11 JUN 2020 21:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  12 JUN 2020 13:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -607,104 +607,79 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
+Underfull \vbox (badness 3646) has occurred while \output is active []
 
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 100.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 100.
-
-
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 104.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 104.
-
-
-LaTeX Warning: Reference `folder_schema' on page 1 undefined on input line 112.
-
-
-
-Underfull \vbox (badness 3536) has occurred while \output is active []
-
-<images/folder_schema.png, id=6, 881.2925pt x 657.45625pt>
+<images/folder_schema.png, id=11, 881.2925pt x 657.45625pt>
 File: images/folder_schema.png Graphic file (type png)
 <use images/folder_schema.png>
 Package pdftex.def Info: images/folder_schema.png  used on input line 116.
 (pdftex.def)             Requested size: 387.00153pt x 288.70982pt.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 123.
-
-
-LaTeX Warning: Reference `image_comparison' on page 1 undefined on input line 1
-25.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-<images/img_comp/rgb0001.png, id=25, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0001.png, id=35, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0001.png Graphic file (type png)
 <use images/img_comp/rgb0001.png>
 Package pdftex.def Info: images/img_comp/rgb0001.png  used on input line 130.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00002.png, id=26, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00002.png, id=36, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00002.png Graphic file (type png)
 <use images/img_comp/flow_x_00002.png>
 Package pdftex.def Info: images/img_comp/flow_x_00002.png  used on input line 1
 33.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00001.png, id=27, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00001.png, id=37, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00001.png Graphic file (type png)
 <use images/img_comp/flow_y_00001.png>
 Package pdftex.def Info: images/img_comp/flow_y_00001.png  used on input line 1
 36.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0001.png, id=28, 456.70625pt x 256.96pt>
+<images/img_comp/map0001.png, id=38, 456.70625pt x 256.96pt>
 File: images/img_comp/map0001.png Graphic file (type png)
 <use images/img_comp/map0001.png>
 Package pdftex.def Info: images/img_comp/map0001.png  used on input line 139.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/rgb0011.png, id=29, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0011.png, id=39, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0011.png Graphic file (type png)
 <use images/img_comp/rgb0011.png>
 Package pdftex.def Info: images/img_comp/rgb0011.png  used on input line 142.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00011.png, id=30, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00011.png, id=40, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00011.png Graphic file (type png)
 <use images/img_comp/flow_x_00011.png>
 Package pdftex.def Info: images/img_comp/flow_x_00011.png  used on input line 1
 45.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00011.png, id=31, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00011.png, id=41, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00011.png Graphic file (type png)
 <use images/img_comp/flow_y_00011.png>
 Package pdftex.def Info: images/img_comp/flow_y_00011.png  used on input line 1
 48.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0011.png, id=32, 456.70625pt x 256.96pt>
+<images/img_comp/map0011.png, id=42, 456.70625pt x 256.96pt>
 File: images/img_comp/map0011.png Graphic file (type png)
 <use images/img_comp/map0011.png>
 Package pdftex.def Info: images/img_comp/map0011.png  used on input line 151.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/rgb0020.png, id=33, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0020.png, id=43, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0020.png Graphic file (type png)
 <use images/img_comp/rgb0020.png>
 Package pdftex.def Info: images/img_comp/rgb0020.png  used on input line 154.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00020.png, id=34, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00020.png, id=44, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00020.png Graphic file (type png)
 <use images/img_comp/flow_x_00020.png>
 Package pdftex.def Info: images/img_comp/flow_x_00020.png  used on input line 1
 57.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00020.png, id=35, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00020.png, id=45, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00020.png Graphic file (type png)
 <use images/img_comp/flow_y_00020.png>
 Package pdftex.def Info: images/img_comp/flow_y_00020.png  used on input line 1
 60.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0020.png, id=36, 456.70625pt x 256.96pt>
+<images/img_comp/map0020.png, id=46, 456.70625pt x 256.96pt>
 File: images/img_comp/map0020.png Graphic file (type png)
 <use images/img_comp/map0020.png>
 Package pdftex.def Info: images/img_comp/map0020.png  used on input line 163.
@@ -718,73 +693,70 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-LaTeX Warning: Reference `egornn_arch' on page 2 undefined on input line 183.
-
-
-LaTeX Warning: Citation `resnet' on page 2 undefined on input line 183.
-
-
-LaTeX Warning: Reference `egornn_arch' on page 2 undefined on input line 183.
-
-
-LaTeX Warning: Reference `cams' on page 2 undefined on input line 185.
-
-
-Underfull \vbox (badness 4886) has occurred while \output is active []
+Underfull \vbox (badness 5316) has occurred while \output is active []
 
  [2 <./images/folder_schema.png>]
-<images/egornn.png, id=46, 1003.75pt x 290.08376pt>
+<images/egornn.png, id=61, 1003.75pt x 290.08376pt>
 File: images/egornn.png Graphic file (type png)
 <use images/egornn.png>
-Package pdftex.def Info: images/egornn.png  used on input line 197.
+Package pdftex.def Info: images/egornn.png  used on input line 198.
 (pdftex.def)             Requested size: 430.00462pt x 124.27324pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
+[]\OT1/ptm/m/n/10 Egornn learns ap-pearence fea-tures, while
+ []
+
+
+Underfull \hbox (badness 6859) in paragraph at lines 209--210
+\OT1/ptm/m/it/10 flow[]resnet34 \OT1/ptm/m/n/10 learns mo-tion fea-tures. The
+ []
+
+[3 <./images/img_comp/rgb0001.png (PNG copy)> <./images/img_comp/flow_x_00002.p
+ng (PNG copy)> <./images/img_comp/flow_y_00001.png (PNG copy)> <./images/img_co
+mp/map0001.png (PNG copy)> <./images/img_comp/rgb0011.png (PNG copy)> <./images
+/img_comp/flow_x_00011.png (PNG copy)> <./images/img_comp/flow_y_00011.png (PNG
+ copy)> <./images/img_comp/map0011.png (PNG copy)> <./images/img_comp/rgb0020.p
+ng (PNG copy)> <./images/img_comp/flow_x_00020.png (PNG copy)> <./images/img_co
+mp/flow_y_00020.png (PNG copy)> <./images/img_comp/map0020.png (PNG copy)>]
+<images/egornn+msblock_architecture.png, id=75, 930.47626pt x 468.75125pt>
+File: images/egornn+msblock_architecture.png Graphic file (type png)
+<use images/egornn+msblock_architecture.png>
+Package pdftex.def Info: images/egornn+msblock_architecture.png  used on input 
+line 219.
+(pdftex.def)             Requested size: 430.00462pt x 216.62239pt.
+
 (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
- [3 <./images/img_comp/rgb0001.png (PNG copy)> <./images/img_comp/flow_x_00002.
-png (PNG copy)> <./images/img_comp/flow_y_00001.png (PNG copy)> <./images/img_c
-omp/map0001.png (PNG copy)> <./images/img_comp/rgb0011.png (PNG copy)> <./image
-s/img_comp/flow_x_00011.png (PNG copy)> <./images/img_comp/flow_y_00011.png (PN
-G copy)> <./images/img_comp/map0011.png (PNG copy)> <./images/img_comp/rgb0020.
-png (PNG copy)> <./images/img_comp/flow_x_00020.png (PNG copy)> <./images/img_c
-omp/flow_y_00020.png (PNG copy)> <./images/img_comp/map0020.png (PNG copy)>] [4
- <./images/egornn.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 239.
+ [4 <./images/egornn.png>] [5 <./images/egornn+msblock_architecture.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 239.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 225.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 239.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 239.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 239.
  ) 
 Here is how much of TeX's memory you used:
- 12340 strings out of 481239
- 190776 string characters out of 5920377
- 747928 words of memory out of 5000000
- 27304 multiletter control sequences out of 15000+600000
- 560156 words of font info for 84 fonts, out of 8000000 for 9000
+ 12346 strings out of 481239
+ 191026 string characters out of 5920377
+ 750374 words of memory out of 5000000
+ 27308 multiletter control sequences out of 15000+600000
+ 558530 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,10n,46p,692b,709s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,10n,46p,1541b,709s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (4 pages, 884558 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (5 pages, 922362 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
- 26 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 125 PDF objects out of 1000 (max. 8388607)
+ 91 compressed objects within 1 object stream
+ 28 named destinations out of 1000 (max. 500000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
