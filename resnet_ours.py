@@ -153,7 +153,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x, get_conv3=False):
+    def forward(self, x, get_conv3=False, get_conv4=False):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
@@ -163,6 +163,7 @@ class ResNet(nn.Module):
         x = self.layer2(x)
         conv3 = x
         x = self.layer3(x)
+        conv4 = x
         if self.noBN:
             conv_layer4BN, conv_layer4NBN = self.layer4(x)
         else:
@@ -174,6 +175,8 @@ class ResNet(nn.Module):
         if self.noBN:
             if get_conv3:
                 return x, conv_layer4BN, conv_layer4NBN, conv3
+            elif get_conv4:
+                return x, conv_layer4BN, conv_layer4NBN, conv4
             else:
                 return x, conv_layer4BN, conv_layer4NBN
         else:

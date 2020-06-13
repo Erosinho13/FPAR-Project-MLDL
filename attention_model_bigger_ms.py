@@ -8,9 +8,14 @@ from bigger_ms_block import msblock
 
 
 class AttentionModelMSRegBig(nn.Module):
-    def __init__(self, num_classes = 61, mem_size = 512):
+    def __init__(self, num_classes = 61, mem_size = 512, dim_block=28):
         super(AttentionModelMSRegBig, self).__init__()
-        
+        self.get_conv4 = False
+        self.get_conv3 = False
+        if dim_block == 28:
+            self.get_conv3 = True
+        elif:
+            self.get_conv4 = True
         self.num_classes = num_classes
         self.mem_size = mem_size
         
@@ -25,7 +30,7 @@ class AttentionModelMSRegBig(nn.Module):
         
         self.classifier = nn.Sequential(self.dropout, self.fc)
         
-        self.msBlock = msblock()
+        self.msBlock = msblock(dim_block)
 
         
     def forward(self, inputVariable, no_cam = False, mmaps = False):
@@ -41,8 +46,8 @@ class AttentionModelMSRegBig(nn.Module):
                 if not mmaps:
                     logit, feature_conv, feature_convNBN = self.resNet(inputVariable[t])
                 else:
-                    logit, feature_conv, feature_convNBN, feat_conv3 = self.resNet(inputVariable[t], get_conv3=True)                    
-                    ms_out.append(self.msBlock(feat_conv3))
+                    logit, feature_conv, feature_convNBN, feat_conv3_4 = self.resNet(inputVariable[t], get_conv3=self.get_conv3, get_conv4=self.get_conv4)                    
+                    ms_out.append(self.msBlock(feat_conv3_4))
                 
                 bz, nc, h, w = feature_conv.size()
                 feature_conv1 = feature_conv.view(bz, nc, h*w)
