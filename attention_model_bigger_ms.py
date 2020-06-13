@@ -14,7 +14,7 @@ class AttentionModelMSRegBig(nn.Module):
         self.get_conv3 = False
         if dim_block == 28:
             self.get_conv3 = True
-        elif:
+        elif dim_block == 14:
             self.get_conv4 = True
         self.num_classes = num_classes
         self.mem_size = mem_size
