@@ -180,7 +180,7 @@ Here we describe the models that we have used to perform our experiments.
 
 \subsection{Egornn}
 
-Egornn is a Recurrent Neural Network. The overall architecture of \textit{egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we will refer to these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
+\textit{Egornn} is a Recurrent Neural Network. The overall architecture of \textit{Egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we will refer to these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
 
 At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It includes a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax.
 
@@ -206,13 +206,13 @@ The last output of the ConvLSTM (the output obtained from the last frame of a pa
 
 \subsection{Two stream model}
 
-Egornn learns appearence features, while \textit{flow\_resnet34} learns motion features. The way to join the two nets is to concatenate the two output layers and to add at the end a fully connected layer to get the class category scores.
+\textit{Egornn} learns appearence features, while \textit{flow\_resnet34} learns motion features. The way to join the two nets is to concatenate the two output layers and to add at the end a fully connected layer to get the class category scores.
 
-\subsection{Motion Segmentation branch applied to egornn}
+\subsection{Motion Segmentation branch applied to \textit{egornn}}
 
 The problem which \cite{sparnet} tries to overcome is that in the two stream model motion and appearence are actually separately learned, without taking into account the spatial-temporal relationships.
 
-We have built an architecture similar to \textit{sparnet}, where the \textit{motion segmentation block} is the same but the \textit{action recognition block} has been substituted by egornn (like in one of the attempts in \cite{sparnet}). The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the main blocks are always as shown in \reff{msblock_arch}. The input of the convolutional layer of MS Block is taken from one of the convolutional layers of \textit{resnet34} of egornn (the actual layer varies with our experiments). Then, after the convolutional layer, there is a fully connected layer followed by a softmax which normalizes the weights between 0 and 1. \textit{mmaps ground truth} and \textit{rgb ground truth} represent the mmaps and the rgb after the trasformations. The trasformations applied to the mmaps are the same applied to the rgbs, plus a small amount of proper mmaps trasformations which always ends with a trasformation which linearizes the pixels (from a 2 dimensional tensor per mmap we get a 1 dimensional tensor per mmap). For the msblock these linearized pixels represent a real ground truth, because each of the output neurons of the MS Block is used to predict the values of the mmaps ground truth. The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the egornn loss ($L_c$). The final loss is used to compute the gradients to update the weights.
+We have built an architecture similar to \textit{sparnet}, where the \textit{motion segmentation block} is the same but the \textit{action recognition block} has been substituted by \textit{egornn} (like in one of the attempts in \cite{sparnet}). The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the main blocks are always as shown in \reff{msblock_arch}. The input of the convolutional layer of MS Block is taken from one of the convolutional layers of \textit{resnet34} of egornn (the actual layer varies with our experiments). Then, after the convolutional layer, there is a fully connected layer followed by a softmax which normalizes the weights between 0 and 1. \textit{mmaps ground truth} and \textit{rgb ground truth} represent the mmaps and the rgb after the trasformations. The trasformations applied to the mmaps are the same applied to the rgbs, plus a small amount of proper mmaps trasformations which always ends with a trasformation which linearizes the pixels (from a 2 dimensional tensor per mmap we get a 1 dimensional tensor per mmap). For the msblock these linearized pixels represent a real ground truth, because each of the output neurons of the MS Block is used to predict the values of the mmaps ground truth. The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the \textit{egornn} loss ($L_c$). The final loss is used to compute the gradients to update the weights.
 
 \begin{figure*}
 	\centering
@@ -223,11 +223,11 @@ We have built an architecture similar to \textit{sparnet}, where the \textit{mot
 
 \subsection{Static-dynamic discriminator}
 
-Starting from the model described above, we have added a final binary classifier to egornn after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kind of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
+Starting from the model described above, we have added a final binary classifier to \textit{egornn} after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kind of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
 
 \section{Experiments}
 
-Our nets are always trained on a predefined train set, which includes all and only the videos of the users \textit{S1}, \textit{S3} and \textit{S4}, while validation and test sets coincide and is constituted by all and only the videos of a single user, \textit{S2}. In addition, the weights of the \textit{resnet34} are pretrained on ImageNet.
+Our nets are always trained on a predefined train set, which includes all and only the videos of the users \textit{S1}, \textit{S3} and \textit{S4}, while validation and test sets coincide and is constituted by all and only the videos of a single user, \textit{S2}. In addition, the weights of the \textit{resnet34} are pretrained on ImageNet. Each model is always validated while it is trained, so for each training phase we selected the weights with the highest accuracy at a particular epoch as the best ones. 
 
 Due to Colab limitations of GPU memory, we have only been able to perform experiments on a limited amount of frames (7 or, in less cases, 16). Due to this problem our results should be interpreted not as absolute value of the accuracy, but as a sort of relative value with respect to the number of frames for each video in our batches.
 
@@ -237,7 +237,7 @@ The size of our batches has always been left to 32, as well as the number of hid
 
 We have replied some of the same experiments of \cite{egornn} on the original egornn. We have run each of these experiments three times and then we have averaged the results.
 
-First, we have performed the classification by using the egornn without and with the CAM. The training phase has been divided in two parts, as in the original paper:
+First, we have performed the classification by using the \textit{egornn} without and with the CAM. The training phase has been divided in two parts, as in the original paper:
 
 \begin{enumerate}
   \item train of ConvLSTM and Classifier (green blocks in \reff{egornn_arch})
@@ -277,7 +277,7 @@ While, for the second stage, they are:
   		 \hline
   		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
   		 \hline
-  		 \textbf{NUM\_EPOCHS} & 200 \\
+  		 \textbf{NUM\_EPOCHS} & 150 \\
   		 \hline
   		 \textbf{STEP\_SIZE} & [25, 75] \\
   		 \hline
@@ -290,22 +290,84 @@ While, for the second stage, they are:
 
 Then, we have also trained \textit{flow\_resnet34} alone. In this case we used only 5 frames per each flow (x and y) due to the fact that for some videos no more than 5 frames were provided.
 
-At last we performed the two stream training.
+The values of the hyperparameters in this case are:
 
-\[...\]
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 1e-2 \\
+  		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 5e-4 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 750 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [150, 300, 500] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.5 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
 
-The summary of our results is shown in \reff{step1_table}.
+At last we performed the two stream training with the following values for the hyperparameters:
+
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 0.99 \\
+   		 \hline
+   		 \textbf{LR\_FLOW} & 1e-4 \\
+  		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 5e-4 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 250 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [1] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.5 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
+
+Where LR is the learning rate of \textit{egornn} and LR\_FLOW is the learning rate of \textit{flow\_resnet34}.
+
+The summary of our results is shown in \reff{step1_table}.  From here it raises that the best model is the two-stream (joint train) with 16 frames, followed by EGO-RNN - stage 2 with 16 frames, which is behind the two-stream model by less than 1 point of mean accuracy. Due to the averaging between three identical runs we can rely on this result and assert that the contribution of \textit{flow\_resnet34} slightly increases the performances, but also that the most of the contribution is given by \textit{egornn}.
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=\linewidth]{images/step1_table.png}
-	\caption{Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small{*the number of frames refers to the egornn branch (for the flow\_resnet34 branch the number of frames is always 5)}}
+	\caption{Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small{*the number of frames refers to the \textit{egornn} branch (for the flow\_resnet34 branch the number of frames is always 5)}}
 	\label{step1_table}
 \end{figure}
 
+In \reff{step1_acc} and \reff{step1_loss} are shown respectively the validation accuracy and the validation loss by epoch of one random extracted run per each one of the attempts with 16 frames (5 in case of \textit{flow\_resnet34}) and only for the stage 2 when a two stage training is requiered.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{images/step1_acc.jpg}
+	\caption{Validation accuracy by epoch of one random extracted run for the four most interesting training configurations}
+	\label{step1_acc}
+\end{figure}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{images/step1_loss.jpg}
+	\caption{Validation loss by epoch of one random extracted run for the four most interesting training configurations. The losses are the average of each batch loss within a single epoch}
+	\label{step1_loss}
+\end{figure}
+
+From \reff{step1_acc} and \reff{step1_loss} is even more evident that \textit{flow\_resnet34} is highly inefficient alone, and that the results with the CAM are heavily better than the results without the CAM (higher accuracy and lower loss at every epoch). The two-stream model requieres more time to get high accuracies, and overall it seems to have the same behaviour of \textit{egornn} when at full capacity, but it is noisier and so it is easier that for some epoch the accuracy is higher.
+
 \subsection{Motion Segmentation branch applied to egornn}
 
-First of all we have replied the same experiment of \cite{sparnet} (with egornn in place of the Action Recognition Block). The results are shown in \reff{ms_table}.
+First of all we have replied the same experiment of \cite{sparnet} (with \textit{egornn} in place of the Action Recognition Block). The results are shown in \reff{ms_table}.
 
 %inserire ms_table
 
@@ -329,26 +391,26 @@ To overcome these problems we have tried to increase the resolution of the downs
 	\centering
 
 	\begin{subfigure}{.4\linewidth}
-		\includegraphics[width=\linewidth]{images/downsampling224x224_bw.png}
+		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling224x224_bw.png}
 	\end{subfigure}
   \begin{subfigure}{.59\linewidth}
     \begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling7x7_bw.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling7x7_bw.png}
   	\end{subfigure}
   	\begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling14x14_bw.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling14x14_bw.png}
   	\end{subfigure}
   	\begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling28x28_bw.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling28x28_bw.png}
   	\end{subfigure}
   	\begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling7x7_gray.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling7x7_gray.png}
   	\end{subfigure}
   	\begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling14x14_gray.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling14x14_gray.png}
   	\end{subfigure}
   	\begin{subfigure}{.325\linewidth}
-  		\includegraphics[width=\linewidth]{images/downsampling28x28_gray.png}
+  		\includegraphics[width=\linewidth]{images/mmaps_example/downsampling28x28_gray.png}
   	\end{subfigure}
   \end{subfigure}
 
