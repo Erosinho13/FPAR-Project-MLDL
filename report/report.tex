@@ -13,7 +13,7 @@
 \usepackage{url}
 \usepackage{lipsum}
 
-\usepackage[framed , numbered]{matlab-prettifier}
+\usepackage[framed, numbered]{matlab-prettifier}
 \usepackage{listings}
 \usepackage{setspace}
 \usepackage{color} %red, green, blue, yellow, cyan, magenta, black, white
@@ -221,11 +221,91 @@ We have built an architecture similar to \textit{sparnet}, where the \textit{mot
 	\label{msblock_arch}
 \end{figure*}
 
+\subsection{Static-dynamic discriminator}
+
+Starting from the model described above, we have added a final binary classifier to egornn after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kind of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
+
 \section{Experiments}
+
+Our nets are always trained on a predefined train set, which includes all and only the videos of the users \textit{S1}, \textit{S3} and \textit{S4}, while validation and test sets coincide and is constituted by all and only the videos of a single user, \textit{S2}. In addition, the weights of the \textit{resnet34} are pretrained on ImageNet.
+
+Due to Colab limitations of GPU memory, we have only been able to perform experiments on a limited amount of frames (7 or, in less cases, 16). Due to this problem our results should be interpreted not as absolute value of the accuracy, but as a sort of relative value with respect to the number of frames for each video in our batches.
+
+The size of our batches has always been left to 32, as well as the number of hidden units of the convLSTM module, fixed at 512. Our optimization algorithm is always Adaptive moment estimation (ADAM) with the only exception of \textit{flow\_resnet34}, for which it is Stochastic Gradient Descent (SGD). When using this last optimizer, the momentum has always been left to 0.9. The scheduler is a MultiStepLR scheduler, which decreases the original learing rate LR by a factor GAMMA at each value of STEP\_SIZE.
 
 \subsection{Egornn}
 
+We have replied some of the same experiments of \cite{egornn} on the original egornn. We have run each of these experiments three times and then we have averaged the results.
+
+First, we have performed the classification by using the egornn without and with the CAM. The training phase has been divided in two parts, as in the original paper:
+
+\begin{enumerate}
+  \item train of ConvLSTM and Classifier (green blocks in \reff{egornn_arch})
+  \item train of conv5 (layer4 of \textit{resnet34}), FC(1000), Spatial Attention Layer (orange blocks in \reff{egornn_arch}) in addition to the previously listed blocks
+\end{enumerate}
+
+The values of the hyperparameters for the first stage are:
+
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 1e-3 \\
+  		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 200 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [25, 75, 150] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.1 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
+
+While, for the second stage, they are:
+
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 1e-4 \\
+  		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 200 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [25, 75] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.1 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
+
+Then, we have also trained \textit{flow\_resnet34} alone. In this case we used only 5 frames per each flow (x and y) due to the fact that for some videos no more than 5 frames were provided.
+
+At last we performed the two stream training.
+
+\[...\]
+
+The summary of our results is shown in \reff{step1_table}.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{images/step1_table.png}
+	\caption{Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small{*the number of frames refers to the egornn branch (for the flow\_resnet34 branch the number of frames is always 5)}}
+	\label{step1_table}
+\end{figure}
+
 \subsection{Motion Segmentation branch applied to egornn}
+
+First of all we have replied the same experiment of \cite{sparnet}. The mmaps 
 
 % \subsection
 
