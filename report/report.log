@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  13 JUN 2020 17:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  14 JUN 2020 15:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -740,22 +740,83 @@ File: images/step1_table.png Graphic file (type png)
 <use images/step1_table.png>
 Package pdftex.def Info: images/step1_table.png  used on input line 301.
 (pdftex.def)             Requested size: 203.71013pt x 203.71289pt.
-(./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 318.
- [5 <./images/egornn+msblock_architecture.png>] [6
 
- <./images/step1_table.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 318.
- (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 318.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 318.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 318.
+LaTeX Warning: Reference `ms_table' on page 5 undefined on input line 308.
+
+
+LaTeX Warning: Reference `ms_reg_table' on page 5 undefined on input line 316.
+
+[5 <./images/egornn+msblock_architecture.png>]
+Underfull \hbox (badness 3229) in paragraph at lines 320--321
+[]\OT1/ptm/m/n/10 [DESCRIZIONE PROB-LEMA LOSS E MIS-
+ []
+
+<images/downsampling224x224_bw.png, id=100, 257.96375pt x 252.945pt>
+File: images/downsampling224x224_bw.png Graphic file (type png)
+<use images/downsampling224x224_bw.png>
+Package pdftex.def Info: images/downsampling224x224_bw.png  used on input line 
+328.
+(pdftex.def)             Requested size: 171.99922pt x 168.65788pt.
+<images/downsampling7x7_bw.png, id=101, 245.91875pt x 248.93pt>
+File: images/downsampling7x7_bw.png Graphic file (type png)
+<use images/downsampling7x7_bw.png>
+Package pdftex.def Info: images/downsampling7x7_bw.png  used on input line 332.
+
+(pdftex.def)             Requested size: 82.45209pt x 83.46138pt.
+<images/downsampling14x14_bw.png, id=102, 251.94125pt x 248.93pt>
+File: images/downsampling14x14_bw.png Graphic file (type png)
+<use images/downsampling14x14_bw.png>
+Package pdftex.def Info: images/downsampling14x14_bw.png  used on input line 33
+5.
+(pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
+<images/downsampling28x28_bw.png, id=103, 251.94125pt x 248.93pt>
+File: images/downsampling28x28_bw.png Graphic file (type png)
+<use images/downsampling28x28_bw.png>
+Package pdftex.def Info: images/downsampling28x28_bw.png  used on input line 33
+8.
+(pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
+<images/downsampling7x7_gray.png, id=104, 245.91875pt x 248.93pt>
+File: images/downsampling7x7_gray.png Graphic file (type png)
+<use images/downsampling7x7_gray.png>
+Package pdftex.def Info: images/downsampling7x7_gray.png  used on input line 34
+1.
+(pdftex.def)             Requested size: 82.45209pt x 83.46138pt.
+<images/downsampling14x14_gray.png, id=105, 251.94125pt x 248.93pt>
+File: images/downsampling14x14_gray.png Graphic file (type png)
+<use images/downsampling14x14_gray.png>
+Package pdftex.def Info: images/downsampling14x14_gray.png  used on input line 
+344.
+(pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
+<images/downsampling28x28_gray.png, id=106, 251.94125pt x 248.93pt>
+File: images/downsampling28x28_gray.png Graphic file (type png)
+<use images/downsampling28x28_gray.png>
+Package pdftex.def Info: images/downsampling28x28_gray.png  used on input line 
+347.
+(pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
+(./report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 369.
+ [6
+
+ <./images/step1_table.png>] [7 <./images/downsampling224x224_bw.png> <./images
+/downsampling7x7_bw.png> <./images/downsampling14x14_bw.png> <./images/downsamp
+ling28x28_bw.png> <./images/downsampling7x7_gray.png> <./images/downsampling14x
+14_gray.png> <./images/downsampling28x28_gray.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 369.
+
+(./report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 369.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 369.
+
+
+LaTeX Warning: There were undefined references.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 369.
  ) 
 Here is how much of TeX's memory you used:
- 12360 strings out of 481239
- 191251 string characters out of 5920377
- 750671 words of memory out of 5000000
- 27315 multiletter control sequences out of 15000+600000
+ 12408 strings out of 481239
+ 192722 string characters out of 5920377
+ 750702 words of memory out of 5000000
+ 27354 multiletter control sequences out of 15000+600000
  560156 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,10n,46p,1541b,709s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -767,10 +828,10 @@ ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
 rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (6 pages, 956565 bytes).
+Output written on report.pdf (7 pages, 978821 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 103 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 163 PDF objects out of 1000 (max. 8388607)
+ 110 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 
