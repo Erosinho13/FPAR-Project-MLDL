@@ -227,7 +227,7 @@ Starting from the model described above, we have added a final binary classifier
 
 \section{Experiments}
 
-Our nets are always trained on a predefined train set, which includes all and only the videos of the users \textit{S1}, \textit{S3} and \textit{S4}, while validation and test sets coincide and is constituted by all and only the videos of a single user, \textit{S2}. In addition, the weights of the \textit{resnet34} are pretrained on ImageNet. Each model is always validated while it is trained, so for each training phase we selected the weights with the highest accuracy at a particular epoch as the best ones. 
+Our nets are always trained on a predefined train set, which includes all and only the videos of the users \textit{S1}, \textit{S3} and \textit{S4}, while validation and test sets coincide and is constituted by all and only the videos of a single user, \textit{S2}. In addition, the weights of the \textit{resnet34} are pretrained on ImageNet. Each model is always validated while it is trained, so for each training phase we selected the weights with the highest accuracy at a particular epoch as the best ones.
 
 Due to Colab limitations of GPU memory, we have only been able to perform experiments on a limited amount of frames (7 or, in less cases, 16). Due to this problem our results should be interpreted not as absolute value of the accuracy, but as a sort of relative value with respect to the number of frames for each video in our batches.
 
@@ -342,7 +342,7 @@ The summary of our results is shown in \reff{step1_table}.  From here it raises 
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=\linewidth]{images/step1_table.png}
+	\includegraphics[width=\linewidth]{images/step1_table.jpg}
 	\caption{Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small{*the number of frames refers to the \textit{egornn} branch (for the flow\_resnet34 branch the number of frames is always 5)}}
 	\label{step1_table}
 \end{figure}
@@ -367,11 +367,62 @@ From \reff{step1_acc} and \reff{step1_loss} is even more evident that \textit{fl
 
 \subsection{Motion Segmentation branch applied to egornn}
 
-First of all we have replied the same experiment of \cite{sparnet} (with \textit{egornn} in place of the Action Recognition Block). The results are shown in \reff{ms_table}.
+First of all we have replied the same experiment of \cite{sparnet} (the one in which \textit{egornn} is the Action Recognition Block). The hyperparameters used are:
 
-%inserire ms_table
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 1e-3 \\
+   		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 150 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [50, 100] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.1 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
 
-[RISULTATI, QUALE È IL MIGLIORE, LOSS E ACCURACY...]
+for the stage1, while they are the following:
+
+\begin{center}
+	\setstretch{1}
+  \scalebox{0.7}{
+  	\begin{tabular}{|c|c|}
+  		 \hline
+  		 \textbf{LR} & 1e-4 \\
+   		 \hline
+  		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
+  		 \hline
+  		 \textbf{NUM\_EPOCHS} & 150 \\
+  		 \hline
+  		 \textbf{STEP\_SIZE} & [25, 75] \\
+  		 \hline
+  		 \textbf{GAMMA} & 0.1 \\
+  		 \hline
+  	\end{tabular}
+  }
+	\setstretch{0.1}
+\end{center}
+
+for the stage2. We have decreased the number of epochs for the stage1 because we have observed that going too far with the epochs, with the loss decreased after the steps of the optimizer, would be meaningless and does not give any significant result.
+
+The results with the same values for the hyperparameters are shown in \reff{ms_table}.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.6\linewidth]{images/step2.1_table.jpg}
+	\caption{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames}
+	\label{ms_table}
+\end{figure}
+
+Thereafter, we have performed a grid search for the tuning of the hyperparameters.
 
 We have also replied this experiment as a regression problem.
 [GABRIELE SPIEGA]
