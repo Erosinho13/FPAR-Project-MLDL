@@ -466,7 +466,7 @@ As we can observe the best performances are achieved with:
 
 In general we can say that the performances are better with the classification method, and this is a surprisingly result based on the observations without the grid. The reason for the previous result was that, as emerges from \reff{ms_grid} and \reff{ms_reg_grid}, the optimal values for the hyperparameters falls in a total different region with respect to the two different methodologies.
 
-In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss of both train and validation and over three different experiments present in the grid search with the classification methodology. The colors underline the different learning rate before ad after each step of the optimizer. The steps are shown on the x axis and marked with a vertical gray line. In (a) is shown the best result obtained, while (b) and (c) are representative examples with different tuned values for the hyperparameters. In (a) the loss already start from a low value and the accuracy already starts from an high value. To explain this has been picked the example in (b), which has the same STEP\_SIZE but different values for the other parameters. We can observe that, from \reff{ms_grid}, there is not a tangible difference between the column with GAMMA = 0.1 and the column with GAMMA = 0.2, while it is more evident that with GAMMA = 0.5 the accuracy worsen a bit. So, it has been selected another example, (c),  with GAMMA = 0.1 (which is a different gamma with respect to (a)) and the same values of LR and WEIGHT\_DECAY (which differs from (a)), and with another STEP\_SIZE. The effect of this slight variation on the STEP\_SIZE seems to be not so meaningful, while the actual main characters of the different behaviour of the net are LR and WEIGHT\_DECAY, together with GAMMA which is good when it is 0.1 as well as when in is 0.2. As last observations:
+In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss of both train and validation and over three different experiments present in the grid search with the classification methodology. The colors of the graphs underline the different learning rate before ad after each step of the optimizer. The steps are shown on the x axis and marked with a vertical gray line. In (a) is shown the best result obtained, while (b) and (c) are representative examples with different tuned values for the hyperparameters. In (a) the loss already starts from a low value and the accuracy already starts from an high value. To explain this has been picked the example in (b), which has the same STEP\_SIZE but different values for the other hyperparameters. We can observe that, from \reff{ms_grid}, there is not a tangible difference between the column with GAMMA = 0.1 and the column with GAMMA = 0.2, while it is more evident that with GAMMA = 0.5 the accuracy worsen a bit. So, it has been selected another example, (c),  with GAMMA = 0.1 (which is a different gamma with respect to (a)) and the same values of LR and WEIGHT\_DECAY (which differs from (a)), and with another STEP\_SIZE. The effect of this slight variation on the STEP\_SIZE seems to be not so meaningful, while the actual main characters of the different behaviour of the net are LR and WEIGHT\_DECAY, together with GAMMA which is good when it is 0.1 as well as when in is 0.2. In addition, LR highly influences the starting point of the accuracy and the loss in epoch 1 (higher LR $\rightarrow$ lower initial accuracy and higher initial loss) As last observations:
 \begin{itemize}
   \item is evident from all the three experiments that the train accuracy continue growing also when the validation accuracy starts flattening, and the behaviour is the relative one for the loss
   \item both the losses and the accuracies are \quotes{noisier} when the learning rate is higher
@@ -478,15 +478,15 @@ In \reff{grid_comparison} we can observe the effects of the values of the hyperp
   \captionsetup[subfigure]{justification=centering}
   \begin{subfigure}{.325\linewidth}
   	\includegraphics[width=\linewidth]{images/grid_comparison/acc75no_reg.png}
-    \subcaption{\\LR = 1e-4\\WEIGHT\_DECAY = 4e-3\\STEP\_SIZE = [40, 80]\\GAMMA = 0.2\\Highest accuracy = 75.00 at epoch 66}
+    \subcaption{\\LR = 1e-4\\WEIGHT\_DECAY = 4e-3\\STEP\_SIZE = [40, 80]\\GAMMA = 0.2\\Highest accuracy = 75.00\\at epoch 66}
   \end{subfigure}
   \begin{subfigure}{.325\linewidth}
   	\includegraphics[width=\linewidth]{images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png}
-    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [40, 80]\\GAMMA = 0.5\\Highest accuracy = 62.07 at epoch 57}
+    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [40, 80]\\GAMMA = 0.5\\Highest accuracy = 62.07\\at epoch 57}
   \end{subfigure}
   \begin{subfigure}{.325\linewidth}
   	\includegraphics[width=\linewidth]{images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png}
-    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [50, 100]\\GAMMA = 0.1\\Highest accuracy = 68.97 at epoch 98}
+    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [50, 100]\\GAMMA = 0.1\\Highest accuracy = 68.97\\at epoch 98}
   \end{subfigure}
   \caption{Comparison between three representative experiments in the grid search with the classification method}
   \label{grid_comparison}
