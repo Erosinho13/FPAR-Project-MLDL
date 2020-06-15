@@ -213,7 +213,7 @@ The architecture is shown in \reff{msblock_arch}. We have used this architecture
 
 \subsubsection{MS task as regression}
 
-A possible variation of this task was to implement this self-supervised task as a regressor. In this way, the network output is not anymore a softmax unit that estimates the probability of the possible classes, but is now a single value for each pixel interpreted as the mean of a conditional gaussian 
+A possible variation of this task was to implement this self-supervised task as a regressor. In this way, the network output is not anymore a softmax unit that estimates the probability of the possible classes, but is now a single value for each pixel interpreted as the mean of a conditional gaussian
 
 \begin{align*}
 \hat{y} = W^Th + b\\
@@ -231,7 +231,7 @@ After summing the squared errors in our batch, we divide again by batch size and
 
 \subsubsection{Our variation on the MS task}
 
-Analyzing and comparing the results of this architecture with the one of \cite{egornn} what we found is that even though it did improve the motion embedding into the features and we show this in the experiments section. Though one thing that this model actually suffered from was the lack of precision in the spatial localisation of motion. For example, looking at misclassified examples, we saw that often an action was mistaken for another if it involved grabbing objects that were close to each other. We argue that a a possible solution to counteract on this, is to move the self-supervised block to the \textit{con3} and \textit{con4} outputs of the CNN backbone. Experimenting with this we found that there actually is a trade of, since the network can definitely benefit from having a finer granularity in the motion maps, but if this map is applied to more low-level features, the representation loses some of its power since there are many more features who are being moved around, and probably a part of that motion is just due to camera shiftings. So trying to get the most efficient trade-of between high-level features, and resolution of the maps, we found that implementing the self-supervised task as a regressor applied at \textit{conv4}, so with 14x14 maps, can 
+Analyzing and comparing the results of this architecture with the one of \cite{egornn} what we found is that even though it did improve the motion embedding into the features and we show this in the experiments section. Though one thing that this model actually suffered from was the lack of precision in the spatial localisation of motion. For example, looking at misclassified examples, we saw that often an action was mistaken for another if it involved grabbing objects that were close to each other. We argue that a a possible solution to counteract on this, is to move the self-supervised block to the \textit{con3} and \textit{con4} outputs of the CNN backbone. Experimenting with this we found that there actually is a trade of, since the network can definitely benefit from having a finer granularity in the motion maps, but if this map is applied to more low-level features, the representation loses some of its power since there are many more features who are being moved around, and probably a part of that motion is just due to camera shiftings. So trying to get the most efficient trade-of between high-level features, and resolution of the maps, we found that implementing the self-supervised task as a regressor applied at \textit{conv4}, so with 14x14 maps, can
 be actually quite helpful and achieve a 10 percent performance boost using only 7 frames with respect to the baseline with same number of frames.
 We chose the regressor over the classifier for the ms block since it gives us the possibility of applying a little trick. Using regression we can obtain the ground truth, instead of downsampling, by taking the mean of the square around the pixel of interest. In this way our ground truths are not anymore binary but actually a grayscale ranging from \textit{static} (0) and \textit{moving} (1).
 
@@ -240,24 +240,26 @@ We chose the regressor over the classifier for the ms block since it gives us th
 
 Our previous variations of increasing the resolution of the MS task stemmed from the observation that
 the model suffered from a lack of precision in identifying the motion location. Even with that modifications, the network still had problems in completely discerning between symmetrical actions, like open/close objects. The architecture that we propose to improve upon this situation includes a discriminator at the end of the convLSTM module, trained to discern amongst 2 classes :\textit{static} and \textit{dynamic}. The idea is, instead of struggling to extract feature that encode motion from RGB frames
-in a CNN which is not built to encode temporal differences, move this task to the convLSTM module, 
+in a CNN which is not built to encode temporal differences, move this task to the convLSTM module,
 which natively has the capability of representing features that evolve through time. This discriminator is trained jointly with the rest of the network, and is fed with 2 types of inputs:
 - a first forward pass consisting of the actual output of the CNN, for all frames, labeled as \textit{dynamic}
 - a second forward pass using n (with n number of frames) times the same feature map.
-The idea is that in this way the discriminator should penalyze the features that do not encode 
+The idea is that in this way the discriminator should penalyze the features that do not encode
 any motion information, and privilege the others, resulting in a model that is better able to
 keep track of motions.
 This task is implemented as a simple binary classification problem with again a Cross Entropy Loss.
 The final minimization problem, which also includes the MS task from \cite{sparnet}, is the following,
 where $t$ is the label of this new discriminator $t \in {\textit{static}, \textit{dynamic}}$ ,
-$\theta_d$ represents the discriminator classification space, and the rest of the notations is the same as 
+$\theta_d$ represents the discriminator classification space, and the rest of the notations is the same as
 before. The resulting loss to minimize in reported in the last row, and includes weighting parameter $\alpha$ to adjust the importance to give to the discriminator.
 
 \begin{align*}
-L_c(x,y) = - \sum_{i=1}^{n} y_i log(p(y|x, \theta_c, \theta_f))\\
-L_d(x,t) = - \sum_{i=1}^{n} t_i log(p(t|x, \theta_d, \theta_f))\\
-L_{ms}(x,m) = - \sum_{i=1}^{n} \sum_{k=1}^{N} \sum_{j=1}^{s^2} m_i^k(j)log(l_i^k(j)) \\
-L(x,y,m,t| \theta_M) = L_c(x,y|\theta_f, \theta_c) + L_{ms}(x,m| \theta_f, \theta_{ms} + \alpha L_d(x,t| \theta_f, \theta_{d}  ) 
+L_c(x,y) &= - \sum_{i=1}^{n} y_i log(p(y|x, \theta_c, \theta_f))\\
+L_d(x,t) &= - \sum_{i=1}^{n} t_i log(p(t|x, \theta_d, \theta_f))\\
+L_{ms}(x,m) &= - \sum_{i=1}^{n} \sum_{k=1}^{N} \sum_{j=1}^{s^2} m_i^k(j)log(l_i^k(j)) \\
+L(x,y,m,t| \theta_M) &= L_c(x,y|\theta_f, \theta_c) + \\
+&+ L_{ms}(x,m| \theta_f, \theta_{ms} + \\
+&+ \alpha L_d(x,t| \theta_f, \theta_{d}  )
 \end{align*}
 
 
