@@ -325,7 +325,7 @@ At last we performed the two stream training with the following values for the h
   \scalebox{0.7}{
   	\begin{tabular}{|c|c|}
   		 \hline
-  		 \textbf{LR} & 0.99 \\
+  		 \textbf{LR} & 1e-2 \\
    		 \hline
    		 \textbf{LR\_FLOW} & 1e-4 \\
   		 \hline
@@ -335,7 +335,7 @@ At last we performed the two stream training with the following values for the h
   		 \hline
   		 \textbf{STEP\_SIZE} & [1] \\
   		 \hline
-  		 \textbf{GAMMA} & 0.5 \\
+  		 \textbf{GAMMA} & 0.99 \\
   		 \hline
   	\end{tabular}
   }
@@ -467,12 +467,12 @@ After this preliminary step, the complete grid search has been executed only on 
 As we can observe the best performances are achieved with:
 \begin{itemize}
   \item $LR = 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-3}, STEP\_SIZE = [40, 80]$ for the classification method, for an accuracy of 75.00
-    \item $LR = 5 \cdot 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-5}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 72.41
+    \item $LR = 5 \cdot 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-5}, STEP\_SIZE = [30, 80]$ for the regression method, for an accuracy of 72.41
 \end{itemize}
 
 In general we can say that the performances are better with the classification method, and this is a surprisingly result based on the observations without the grid. The reason for the previous result was that, as emerges from \reff{ms_grid} and \reff{ms_reg_grid}, the optimal values for the hyperparameters falls in a total different region with respect to the two different methodologies.
 
-In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss of both train and validation and over three different experiments present in the grid search with the classification methodology. The colors of the graphs underline the different learning rate before ad after each step of the optimizer. The steps are shown on the x axis and marked with a vertical gray line. In (a) is shown the best result obtained, while (b) and (c) are representative examples with different tuned values for the hyperparameters. In (a) the loss already starts from a low value and the accuracy already starts from an high value. To explain this has been picked the example in (b), which has the same STEP\_SIZE but different values for the other hyperparameters. We can observe that, from \reff{ms_grid}, there is not a tangible difference between the column with GAMMA = 0.1 and the column with GAMMA = 0.2, while it is more evident that with GAMMA = 0.5 the accuracy worsen a bit. So, it has been selected another example, (c),  with GAMMA = 0.1 (which is a different gamma with respect to (a)) and the same values of LR and WEIGHT\_DECAY (which differs from (a)), and with another STEP\_SIZE. The effect of this slight variation on the STEP\_SIZE seems to be not so meaningful, while the actual main characters of the different behaviour of the net are LR and WEIGHT\_DECAY, together with GAMMA which is good when it is 0.1 as well as when in is 0.2. In addition, LR highly influences the starting point of the accuracy and the loss in epoch 1 (higher LR $\rightarrow$ lower initial accuracy and higher initial loss) As last observations:
+In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss of both train and validation and over three different experiments present in the grid search with the classification methodology. The colors of the graphs underline the different learning rate before ad after each step of the optimizer. The steps are shown on the x axis and marked with a vertical gray line. In (a) is shown the best result obtained, while (b) and (c) are representative examples with different tuned values for the hyperparameters. In (a) the loss already starts from a low value and the accuracy already starts from an high value.LR highly influences the starting point of the accuracy and the loss in epoch 1 (higher LR $\rightarrow$ lower initial accuracy and higher initial loss). To show this behaviour it has been picked the example in (b), which has the same STEP\_SIZE but different values for the other hyperparameters. We can observe that, from \reff{ms_grid}, there is not a tangible difference between the column with GAMMA = 0.1 and the column with GAMMA = 0.2, while it is more evident that with GAMMA = 0.5 the accuracy worsen a bit. So, it has been selected another example, (c),  with GAMMA = 0.1 (which is a different gamma with respect to (a)) and the same values of LR and WEIGHT\_DECAY (which differs from (a)), and with another STEP\_SIZE. The effect of this slight variation on the STEP\_SIZE seems to be not so meaningful, while the actual main characters of the different behaviour of the net are LR and WEIGHT\_DECAY, together with GAMMA which is good when it is 0.1 as well as when in is 0.2. As last observations:
 \begin{itemize}
   \item is evident from all the three experiments that the train accuracy continue growing also when the validation accuracy starts flattening, and the behaviour is the relative one for the loss
   \item both the losses and the accuracies are \quotes{noisier} when the learning rate is higher
