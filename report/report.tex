@@ -262,6 +262,23 @@ L(x,y,m,t| \theta_M) &= L_c(x,y|\theta_f, \theta_c) + \\
 &+ \alpha L_d(x,t| \theta_f, \theta_{d}  )
 \end{align*}
 
+Even though this approach was not able to improve upon our baseline, it did not perform
+badly ad we report it anyway as it is an elegant and simple solution that may turn out to be useful in cases other than our small GTEA61 dataset.
+
+\subsection{Representation Flow layer}
+Optical flow can be a source of useful features that encode motion and temporal clues.
+The problem though, it's that it requires an expensive optimization procedure to be obtained, and when used as usual in 2 stream networks renders the inference time quite long, besided making more expensive the training.
+This idea was based on the works of \cite{motfilt} and \cite{reprflow}. The first one
+introduces the idea of estimating the flow from directly from RGB frames inside the CNN layers. The second one improves to procedure, making it a bit heavier computationally, but more powerful, embedding it in a fully-differentiable and learnable layer to include in a CNN backbone. The authors of \cite{reprflow} found that inserting this layer at the input performs as poorly as a flow only networks, whereas placing it after the \textit{conv3} block of the backbone resNet achieves the best result. This approach leverages the
+fact that by estimating flow on a feature map which is low resolution compared to a full images allows to slim the computational cost, and since it is learned in an end-to-end fashion in the training pipeline, is able to extract motion informations that are more related to the features, and so are even better than the standard optical flow.
+In \cite{reprflow} they apply this to a a CNN backbone, and to a 3D version of it. We argue that including this layer even if it is able to associate the motion information to the feature map that the network extracts, is still lacking a spatio-temporal mapping of the evolution of the features throghout a video. For this reason we included it in 
+our architecture in the following way.
+We take our frames through the first 3 residual blocks of our ResNet34 backbone, then 
+we apply the proposed layer to estimate the optical flow from the features map, and then
+we forward them to the rest of the CNN and afterwards to the convLSTM module. In
+this scenario we deactivate the spatial attention mechanism, as it was oriented to
+highlight regions based on the static appearance, and not to work with more motion-oriented features. 
+
 
 \subsection{Dataset description}
 
