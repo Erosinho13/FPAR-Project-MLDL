@@ -94,16 +94,22 @@ First Person Action Recognition}
 \end{abstract}
 
 \section{Introduction}
+The main scope of this project was the field of First Person Action Recognition, which is one of the up-and-coming domains in modern Computer Vision, due to the recent spread of wearable devices, often camera-equipped.
+Even though action recognition and video analysis in general have been topics of research for quite some time now, this particular task introduces some newly faced challenges such as the strong egomotion component, which is inevitable as cameras are placed directly on the actor. Moreover the First Person point of view lacks some important informations about the actor and its pose, showing only a part of the scenario, making inference harder. The most frequently adopted techniques to tackle this issues combine spatial information, taken from RGB frames, and motion clues, extracted in various ways, such as temporal stream networks based on optical flow, attention modules or 3D CNNs. We will discuss in depth some of this methodologies, highlighting in our opinion what are the weaknesses of such approaches, and proposing possible ways to circumvent them. 
 
 \subsection{Goals}
+The first goal of the project was to replicate the main results of \cite{egornn}. Afterwards, we integrated the cited architecture with the self-supervised block proposed in \cite{sparnet}, implementing it in 2 different ways. 
 
-The first goal of the project is to replicate some of the experiments performed in \cite{egornn} and \cite{sparnet}. The objective of these studies is the First Person Action Recognition: they tried to implement a deep learning model capable to extract meaningful features to automatically predict the action filmed by a wearable camera.
+After trying to replicate these experiments with the hyperparameters setting reported in \cite{egornn}, with the experience acquired we chose other sets of hyperparameters that could potentially fit better our dataset of interest, and so performed a grid search upon them.
 
-After having replicated these experiments we performed a grid search on the experiments to find the best set of values for the hyperparameters.
+At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas of our own.
 
-At last we have tried to improve the performances of the results of \cite{egornn} and \cite{sparnet} with some innovative ideas.
 
 \subsection{Our contribution}
+
+\section{Related works}
+Existing literature has underlined how the must crucial informations to encode into features in order to obtain good performances on the task of First Person Action Recognition are the hands motion of the actor, and the appearance of objects manipulated, as well as their interaction. Putting together this 2 fundamental pieces of informations is perhaps the most challenging task, and more importantly doing so without complicating too much the architecture, which could lead to high computational costs, cutting of potential on-line applications. \cite{egornn} proposes a spatial attention mechanism to focus on the region consisting of the object, arguing that objects handled are strongly representative of egocentric activities. To keep track of said objects throughout frames, this spatial attention is paired with a with a convLSTM module, whose purpose is to temporal encode the frame-level features formerly extracted. In addition to this, they also use a temporal network fed with optical flow images, following the purpose of better encoding motion changes in the considered videos. The task is then addressed with a late fusion of the 2 outputs with a dense layer to finally perform the classification step. Whilst reasonably successful, this approach consists of a two stream network, which requires several training stages
+resulting in a massive number of parameters to train. \cite{sparnet} argues that adding a self-supervised block which leverages motion maps at the output of the CNN backbone can provide the convLSTM module with a richer input that already encloses motion informations. They show that in this way the network is able to obtain a meaningful enough representation of both appearance and movement to achieve state-of-the-art results, so that the temporal network is no longer needed. \cite{reprflow} \cite{motfilt}
 
 \[...\]
 

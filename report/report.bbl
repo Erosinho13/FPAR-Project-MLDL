@@ -4,6 +4,15 @@
 K.~He, X.~Zhang, S.~Ren, and J.~Sun.
 \newblock Deep residual learning for image recognition, 2015.
 
+\bibitem{motfilt}
+M.~Lee, S.~Lee, S.~Son, G.~Park, and N.~Kwak.
+\newblock Motion feature network: Fixed motion filter for action recognition,
+  2018.
+
+\bibitem{reprflow}
+A.~Piergiovanni and M.~S. Ryoo.
+\newblock Representation flow for action recognition, 2019.
+
 \bibitem{sparnet}
 M.~Planamente, A.~Bottino, and B.~Caputo.
 \newblock Joint encoding of appearance and motion features with
