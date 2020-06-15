@@ -506,7 +506,7 @@ In \reff{grid_comparison} we can observe the effects of the values of the hyperp
 
 \subsubsection{The problem of the Motion Maps}
 
-To assert if there is an actual contribution of the Motion Segmentation branch and how much it is significant for the final accuracy we analyzed the loss on the mmaps with a special attention. An example of this loss is shown in \reff{loss_mmaps}. As we can see, the loss on the train set stops to slightly drop after a bunch of epochs.
+To assert if there is an actual contribution of the Motion Segmentation branch and how much it is significant for the final accuracy we analyzed the loss on the mmaps with a special attention. An example of this loss is shown in \reff{loss_mmaps}, which is highly representative because we have observed from several graphs that the behaviour of this loss is always the same. As we can see, the loss on the train set stops to slightly drop after a bunch of epochs.
 
 \begin{figure}[t]
   \centering
@@ -546,7 +546,7 @@ To overcome these problems we have tried to increase the resolution of the downs
   	\end{subfigure}
   \end{subfigure}
 
-	\caption{}
+	\caption{Example of mmap. In the left: original resolution mmap cropped at 224x224. In the right: from left to right mmaps downsampled at 7x7, 14x14 and 28x28 respectively, from top to bottom mmaps classically downsampled and mmaps generated with the \quotes{grid technique}}
 	\label{mmaps}
 \end{figure}
 
@@ -563,10 +563,10 @@ The reasons for this approach are explained in Section \ref{ds_section}. Also he
 
 \subsubsection{Flow di Gabriele} %%%%CHANGE!!
 
-
-\section{Problems occurred and possible ideas}
-
 \section{Conclusion}
+
+In this paper we presented a further analysis of the methods proposed in \cite{egornn} and \cite{sparnet}. We integreted these studies with three custom ideas, trying to spot the bad points of the proposed methodologies, to improve them with our solutions or joining them with other approaches taken from other researches. Possible lines to follow for further works could try to overcome the still unsolved problems that we have found in our study. These span from the research of a good way to integrate of the warp flows directly in the backbone of the net to a more concrete way to extract motion features. The increases in the performances for the two-stream solution was not so astonishing, and this should bring to try to find innovative solutions in this path. The possibility that we exploited from \cite{reprflow} and \cite{motfilt} was original thought for a ...gabri sistema..., and so.... .
+
 
 {\small
 \bibliographystyle{ieee}
