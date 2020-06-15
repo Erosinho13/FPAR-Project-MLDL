@@ -125,7 +125,7 @@ Here we describe the models that we have used to perform our experiments.
 
 The exit of \textit{conv5} is used to generate a \textit{Class Activation Map} (CAM). Let $f_l(i)$ be the activation of a unit l in the final convolutional layer
 at spatial location i and $w_c^l$ be the weight corresponding to class c for unit l. Then the CAM
-for class c, $M_c(i)$, can be represented as 
+for class c, $M_c(i)$, can be represented as
 \begin{equation*}
 M_c(i) = \sum_{l} w_l^c f_l(i)
 \end{equation*}
@@ -134,7 +134,7 @@ Computing this using only the winning class results in a saliency map of the ima
 f_{SA}(i) = f(i) \odot \frac{e^{M_c(i)} }{ \sum_{i^{'}} e^{M_c(i^{'})}}
 \end{equation*}
 where $f(i)$ represents the output feature from the final convolutional layer of ResNet-34 at
-a spatial location i, $M_c(i)$ is the CAM obtained using the winning class c, 
+a spatial location i, $M_c(i)$ is the CAM obtained using the winning class c,
 $f_{SA}(i)$ is the image feature after spatial attention is applied and $\odot$ represents the Hadamard product.
 
 Afterwards the spatial attention is used to feed e convLSTM module that aims at getting a spatial-temporal encoding of the frame-level features extracted by the CNN backbone. It takes into account, for each frame $i$, both the output of the SAM for the layer i and the output of the ConvLSTM for the layer $i-1$, constituting a recurrent structure
@@ -145,7 +145,7 @@ f_t = \sigma(w_x^f * f_{SA} + w_h^f * h_{t-1} + b^f)\\
 \tilde{c_t} = tanh(w_x^{\tilde{c}}*f_{SA}+w_h^{\tilde{c}}*h_{t-1} + b^{\tilde{c}})\\
 c_t = \tilde{c_t} \odot f_{SA} + c_{t-1} \odot f_{t}\\
 o_t = \sigma(w_x^o * f_{SA} + w_h^o * h_{t-1} + b^0)\\
-h_t = o_t \odot tanh(c_t) 
+h_t = o_t \odot tanh(c_t)
 \end{align*}
 where $\sigma$ is the sigmoid function, $i_t$, $f_t$, $o_t$, $c_t$ and $h_t$ represent the input state, forget state,
 output state, memory state and hidden state, respectively, of the convLSTM. The trainable
@@ -585,7 +585,9 @@ The reasons for this approach are explained in Section \ref{ds_section}. Also he
 
 \section{Conclusion}
 
-In this paper we presented a further analysis of the methods proposed in \cite{egornn} and \cite{sparnet}. We integreted these studies with three custom ideas, trying to spot the bad points of the proposed methodologies, to improve them with our solutions or joining them with other approaches taken from other researches. Possible lines to follow for further works could try to overcome the still unsolved problems that we have found in our study. These span from the research of a good way to integrate of the warp flows directly in the backbone of the net to a more concrete way to extract motion features. The increases in the performances for the two-stream solution was not so astonishing, and this should bring to try to find innovative solutions in this path. The possibility that we exploited from \cite{reprflow} and \cite{motfilt} was original thought for a ...gabri sistema..., and so.... .
+In this paper we presented a further analysis of the methods proposed in \cite{egornn} and \cite{sparnet}. We integreted these studies with three custom ideas, trying to spot the bad points of the proposed methodologies, to improve them with our solutions or joining them with other approaches taken from other researches. Possible lines to follow for further works could try to overcome the still unsolved problems that we have found in our study. These span from the research of a good way to integrate of the warp flows directly in the backbone of the net to a more concrete way to extract motion features. The increases in the performances for the two-stream solution was not so astonishing, and this should bring to try to find innovative solutions in this path. The possibility that we exploited from \cite{reprflow} and \cite{motfilt} was original thought for a ...gabri sistema..., and so...., but ... , so we excluded the possibility to use this in other work based on egocentric action regognition despite of third person action recognition (sistema!!!). Other possibilities for this are...
+Following the same ideas we also tried to enforce the net to learn the motion features through the Static-Dynamic block with a discretely good result. But the results tell us that our main contribution goes in the direction of the motion maps. We got really high improvements with a simple and elegant idea, based on strong observations on the loss decay of the Motion Segmentation branch. This results give also strength to the study in \cite{sparnet} because the main components of the net that we used are the same of the net in \cite{sparnet}. We hope we could reply (and also improve!) these results in some future work by exploiting a more adequate hardware infrastructure, which would be capable to handle also 16 and 25 frames for each video in our batches. Finally, other attempts that are possible to improve this work is to combine the two-stream methodology with the different downsampling of the mmaps, by treating the motion segmentation branch as regression problem together with the usage of the Static-Dynamic block at the top of \textit{egornn}, and all the other possible combinations of our ideas and of the paper's approaches that have not been explored.
+
 
 
 {\small

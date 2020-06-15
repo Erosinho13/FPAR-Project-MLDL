@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 17:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 18:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -870,6 +870,10 @@ Package pdftex.def Info: images/mmaps_example/downsampling28x28_gray.png  used
 on input line 565.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
 
+
+LaTeX Warning: Reference `ds_section' on page 10 undefined on input line 575.
+
+
 Underfull \hbox (badness 5133) in paragraph at lines 579--580
 []\OT1/ptm/m/n/10 training \OT1/ptm/m/it/10 con-vL-STM \OT1/ptm/m/n/10 and the 
 fi-nal static-
@@ -881,11 +885,8 @@ Underfull \hbox (badness 5133) in paragraph at lines 580--581
 fi-nal static-
  []
 
-(./report.bbl [10]
+[10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \vbox (badness 1199) has occurred while \output is active []
 
  [11 <./images/grid_comparison/acc75no_reg.png> <./images/grid_comparison/acc62
 lr5e-4step4080gamma05_no_reg.png> <./images/grid_comparison/acc69lr5e-4step5010
@@ -894,26 +895,26 @@ ling224x224_bw.png> <./images/mmaps_example/downsampling7x7_bw.png> <./images/m
 maps_example/downsampling14x14_bw.png> <./images/mmaps_example/downsampling28x2
 8_bw.png> <./images/mmaps_example/downsampling7x7_gray.png> <./images/mmaps_exa
 mple/downsampling14x14_gray.png> <./images/mmaps_example/downsampling28x28_gray
-.png>])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 596.
-
-[12
+.png>]
+(./report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 598.
+ [12
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 596.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 598.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 596.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 596.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 598.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 598.
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 596.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 598.
  ) 
 Here is how much of TeX's memory you used:
  12754 strings out of 481239
  198524 string characters out of 5920377
- 756420 words of memory out of 5000000
+ 758355 words of memory out of 5000000
  27658 multiletter control sequences out of 15000+600000
  562347 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -931,10 +932,10 @@ y5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 exlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on report.pdf (12 pages, 1572314 bytes).
+Output written on report.pdf (12 pages, 1574348 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 196 compressed objects within 2 object streams
+ 272 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
  60 named destinations out of 1000 (max. 500000)
  166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
