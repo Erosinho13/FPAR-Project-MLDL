@@ -55,58 +55,67 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}MS task as regression}{5}{subsubsection.3.4.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Our variation on the MS task}{5}{subsubsection.3.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}\hskip -1em.~Static-dynamic discriminator}{5}{subsection.3.5}\protected@file@percent }
-\citation{sparnet}
+\citation{motfilt}
+\citation{reprflow}
+\citation{reprflow}
+\citation{reprflow}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Generic architecture of motion segmentation branch applied to \textit  {egornn}\relax }}{6}{figure.caption.2}\protected@file@percent }
 \newlabel{msblock_arch}{{2}{6}{Generic architecture of motion segmentation branch applied to \textit {egornn}\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}\hskip -1em.~Dataset description}{6}{subsection.3.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}\hskip -1em.~Data cleaning}{6}{subsection.3.7}\protected@file@percent }
-\citation{egornn}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Folder schema of our GTEA61\relax }}{7}{figure.caption.3}\protected@file@percent }
-\newlabel{folder_schema}{{3}{7}{Folder schema of our GTEA61\relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.~Experiments}{7}{section.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Types of images in our dataset. In this example is shown a sample of images from the \textit  {close\_chocolate} action. From the left column to the right column: rgbs, warp flows x, warp flows y, motion maps\relax }}{8}{figure.caption.4}\protected@file@percent }
-\newlabel{image_comparison}{{4}{8}{Types of images in our dataset. In this example is shown a sample of images from the \textit {close\_chocolate} action. From the left column to the right column: rgbs, warp flows x, warp flows y, motion maps\relax }{figure.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.~Egornn}{8}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}\hskip -1em.~Representation Flow layer}{6}{subsection.3.6}\protected@file@percent }
 \citation{sparnet}
+\citation{egornn}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}\hskip -1em.~Dataset description}{7}{subsection.3.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.8}\hskip -1em.~Data cleaning}{7}{subsection.3.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.~Experiments}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.~Egornn}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Folder schema of our GTEA61\relax }}{8}{figure.caption.3}\protected@file@percent }
+\newlabel{folder_schema}{{3}{8}{Folder schema of our GTEA61\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Types of images in our dataset. In this example is shown a sample of images from the \textit  {close\_chocolate} action. From the left column to the right column: rgbs, warp flows x, warp flows y, motion maps\relax }}{9}{figure.caption.4}\protected@file@percent }
+\newlabel{image_comparison}{{4}{9}{Types of images in our dataset. In this example is shown a sample of images from the \textit {close\_chocolate} action. From the left column to the right column: rgbs, warp flows x, warp flows y, motion maps\relax }{figure.caption.4}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small  {*the number of frames refers to the \textit  {egornn} branch (for the flow\_resnet34 branch the number of frames is always 5)}\relax }}{9}{figure.caption.5}\protected@file@percent }
 \newlabel{step1_table}{{5}{9}{Summary of the results over different configurations. Each value of the mean accuracy is the mean of the accuracies over three identical experiments. \small {*the number of frames refers to the \textit {egornn} branch (for the flow\_resnet34 branch the number of frames is always 5)}\relax }{figure.caption.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Validation accuracy by epoch of one random extracted run for the four most interesting training configurations\relax }}{9}{figure.caption.6}\protected@file@percent }
-\newlabel{step1_acc}{{6}{9}{Validation accuracy by epoch of one random extracted run for the four most interesting training configurations\relax }{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Validation loss by epoch of one random extracted run for the four most interesting training configurations. The losses are the average of each batch loss within a single epoch\relax }}{9}{figure.caption.7}\protected@file@percent }
-\newlabel{step1_loss}{{7}{9}{Validation loss by epoch of one random extracted run for the four most interesting training configurations. The losses are the average of each batch loss within a single epoch\relax }{figure.caption.7}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.~Motion Segmentation branch applied to egornn}{9}{subsection.4.2}\protected@file@percent }
+\citation{sparnet}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Validation accuracy by epoch of one random extracted run for the four most interesting training configurations\relax }}{10}{figure.caption.6}\protected@file@percent }
+\newlabel{step1_acc}{{6}{10}{Validation accuracy by epoch of one random extracted run for the four most interesting training configurations\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Validation loss by epoch of one random extracted run for the four most interesting training configurations. The losses are the average of each batch loss within a single epoch\relax }}{10}{figure.caption.7}\protected@file@percent }
+\newlabel{step1_loss}{{7}{10}{Validation loss by epoch of one random extracted run for the four most interesting training configurations. The losses are the average of each batch loss within a single epoch\relax }{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.~Motion Segmentation branch applied to egornn}{10}{subsection.4.2}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Example of CAMs from take\_cheese action\relax }}{10}{figure.caption.8}\protected@file@percent }
 \newlabel{cams1_1}{{8}{10}{Example of CAMs from take\_cheese action\relax }{figure.caption.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Example of CAMs from take\_honey action\relax }}{10}{figure.caption.9}\protected@file@percent }
 \newlabel{cams1_2}{{9}{10}{Example of CAMs from take\_honey action\relax }{figure.caption.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - classification experiment\relax }}{10}{figure.caption.10}\protected@file@percent }
-\newlabel{ms_table}{{10}{10}{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - classification experiment\relax }{figure.caption.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - classification experiment\relax }}{11}{figure.caption.10}\protected@file@percent }
+\newlabel{ms_table}{{10}{11}{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - classification experiment\relax }{figure.caption.10}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - regression experiment\relax }}{11}{figure.caption.11}\protected@file@percent }
 \newlabel{ms_reg_table}{{11}{11}{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - regression experiment\relax }{figure.caption.11}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Accuracies at various combinations of hyperparameters for the classification strategy\relax }}{11}{figure.caption.12}\protected@file@percent }
 \newlabel{ms_grid}{{12}{11}{Accuracies at various combinations of hyperparameters for the classification strategy\relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Accuracies at various combinations of hyperparameters for the regression strategy\relax }}{11}{figure.caption.13}\protected@file@percent }
-\newlabel{ms_reg_grid}{{13}{11}{Accuracies at various combinations of hyperparameters for the regression strategy\relax }{figure.caption.13}{}}
-\citation{downsampling}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Accuracies at various combinations of hyperparameters for the regression strategy\relax }}{12}{figure.caption.13}\protected@file@percent }
+\newlabel{ms_reg_grid}{{13}{12}{Accuracies at various combinations of hyperparameters for the regression strategy\relax }{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.~New experiments}{12}{subsection.4.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}The problem of the Motion Maps}{12}{subsubsection.4.3.1}\protected@file@percent }
-\citation{sparnet}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Comparison between three representative experiments in the grid search with the classification method\relax }}{13}{figure.caption.14}\protected@file@percent }
 \newlabel{grid_comparison}{{14}{13}{Comparison between three representative experiments in the grid search with the classification method\relax }{figure.caption.14}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Example of CAMs from take\_honey action generated with \textit  {egornn} with the Motion Segmentation Branch. The CAMs shown in the center is without MS Block, the CAMs on the right are with the MS Block\relax }}{13}{figure.caption.15}\protected@file@percent }
 \newlabel{cams2_1}{{15}{13}{Example of CAMs from take\_honey action generated with \textit {egornn} with the Motion Segmentation Branch. The CAMs shown in the center is without MS Block, the CAMs on the right are with the MS Block\relax }{figure.caption.15}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Example of CAMs from take\_hotdog action generated with \textit  {egornn} with the Motion Segmentation Branch. The CAMs shown in the center is without MS Block, the CAMs on the right are with the MS Block\relax }}{13}{figure.caption.16}\protected@file@percent }
-\newlabel{cams2_1}{{16}{13}{Example of CAMs from take\_hotdog action generated with \textit {egornn} with the Motion Segmentation Branch. The CAMs shown in the center is without MS Block, the CAMs on the right are with the MS Block\relax }{figure.caption.16}{}}
+\newlabel{cams2_2}{{16}{13}{Example of CAMs from take\_hotdog action generated with \textit {egornn} with the Motion Segmentation Branch. The CAMs shown in the center is without MS Block, the CAMs on the right are with the MS Block\relax }{figure.caption.16}{}}
+\citation{downsampling}
+\citation{sparnet}
 \@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces An example of the loss on the classification of the pixels of the downsampled mmaps performed by the Motion Segmentation Branch\relax }}{14}{figure.caption.17}\protected@file@percent }
 \newlabel{loss_mmaps}{{17}{14}{An example of the loss on the classification of the pixels of the downsampled mmaps performed by the Motion Segmentation Branch\relax }{figure.caption.17}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Example of mmap. In the left: original resolution mmap cropped at 224x224. In the right: from left to right mmaps downsampled at 7x7, 14x14 and 28x28 respectively, from top to bottom mmaps classically downsampled and mmaps generated with the \IeC {\textquotedblleft }grid technique\IeC {\textquotedblright }\relax }}{14}{figure.caption.18}\protected@file@percent }
 \newlabel{mmaps}{{18}{14}{Example of mmap. In the left: original resolution mmap cropped at 224x224. In the right: from left to right mmaps downsampled at 7x7, 14x14 and 28x28 respectively, from top to bottom mmaps classically downsampled and mmaps generated with the \quotes {grid technique}\relax }{figure.caption.18}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Summary of the mean accuracy values with different combinations of mmaps downsampling techinque and final resolution\relax }}{14}{figure.caption.19}\protected@file@percent }
 \newlabel{mmaps_table}{{19}{14}{Summary of the mean accuracy values with different combinations of mmaps downsampling techinque and final resolution\relax }{figure.caption.19}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Static-dynamic discriminator}{14}{subsubsection.4.3.2}\protected@file@percent }
 \citation{sparnet}
 \citation{egornn}
 \citation{sparnet}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Static-dynamic discriminator}{15}{subsubsection.4.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Summary of the mean accuracy values for the Static-Dynamic experiments\relax }}{15}{figure.caption.20}\protected@file@percent }
+\newlabel{DS_table}{{20}{15}{Summary of the mean accuracy values for the Static-Dynamic experiments\relax }{figure.caption.20}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Flow di Gabriele}{15}{subsubsection.4.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.~Conclusion}{15}{section.5}\protected@file@percent }
 \citation{reprflow}
 \citation{motfilt}
 \citation{sparnet}
@@ -115,13 +124,9 @@
 \bibdata{egbib}
 \bibcite{resnet}{1}
 \bibcite{motfilt}{2}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Summary of the mean accuracy values for the Static-Dynamic experiments\relax }}{15}{figure.caption.20}\protected@file@percent }
-\newlabel{DS_table}{{20}{15}{Summary of the mean accuracy values for the Static-Dynamic experiments\relax }{figure.caption.20}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Flow di Gabriele}{15}{subsubsection.4.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.~Conclusion}{15}{section.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Summary of the results of our original experiments\relax }}{15}{figure.caption.21}\protected@file@percent }
-\newlabel{DS_table}{{21}{15}{Summary of the results of our original experiments\relax }{figure.caption.21}{}}
 \bibcite{downsampling}{3}
 \bibcite{reprflow}{4}
 \bibcite{sparnet}{5}
 \bibcite{egornn}{6}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Summary of the results of our original experiments\relax }}{16}{figure.caption.21}\protected@file@percent }
+\newlabel{DS_table}{{21}{16}{Summary of the results of our original experiments\relax }{figure.caption.21}{}}
