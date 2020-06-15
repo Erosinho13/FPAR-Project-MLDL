@@ -864,7 +864,7 @@ In \reff{cam3_1} and \reff{cam3_2} are shown examples of CAMs like above: these 
 
 \subsubsection{Static-dynamic discriminator}
 \label{ds_section}
-The reasons for this approach are explained in Section \ref{ds_section}. Also here, due to \textit{Colab out of memory errors}, we had to perform the experiments with 7 frames per video instead than with 16. We have tried four different configurations for the training pipeline, each one tried three times to give consistency to the results:
+The reasons for this approach are explained in Section \ref{ds_section}. Also here, due to \textit{Colab out of memory errors}, we had to perform the experiments with 7 frames per video instead than with 16. We have tried four different configurations for the stage 2 training pipeline, starting from the same stage 1 as before. Each of our experiments is performed three times to give consistency to the results. They are:
 \begin{enumerate}
   \item training of \textit{conv5}, \textit{convLSTM} and the final static-dynamic classifier when forwarding the static frames
   \item training of \textit{convLSTM} and the final static-dynamic classifier when forwarding the static frames
@@ -887,13 +887,13 @@ The results are shown in \reff{DS_table}.
 
 The results show that all our attempts have at least a mean accuracy which is comparable to the corresponding baseline (binary classification baseline on the first row of the table in \reff{mmaps_table}). In particular, in the case with ALPHA = 0.1 we get a significant improvement of 8 points of accuracy.
 
-\subsubsection{Representation Flow} 
+\subsubsection{Representation Flow}
 
 Here we report the experiments introducing the Representation Flow layer suggested in
 \cite{reprflow}. As for the implementation is is worth mentioning the fact that
 we modified the ResNet implementation, to add this layer after \textit{conv3} block. We pool together the feature map of the frames, forward them through the Representation Flow Layer block, and then resume the forwarding through ResNet.
 In the firs implementation we got a result of 43 percent, which is not exciting, but
-still matches the performances of the flow network alone of \cite{egornn}. An intuition that led to improve upon this result, is that once added this layer, the extracted features will no more be focused on recognizing mere objects, as the plain ResNet is training to do. Now the features contain motion clues deriving from the extracted flow, so we deactivated the CAM, which relied on the static object recognition to highlight attention on a specific region. This actualy provided an improvement, boosting performances up to 51 percent. 
+still matches the performances of the flow network alone of \cite{egornn}. An intuition that led to improve upon this result, is that once added this layer, the extracted features will no more be focused on recognizing mere objects, as the plain ResNet is training to do. Now the features contain motion clues deriving from the extracted flow, so we deactivated the CAM, which relied on the static object recognition to highlight attention on a specific region. This actualy provided an improvement, boosting performances up to 51 percent.
 Results clearly indicate that further work has to be done in integrating the motion information extract from flow into the feature representation of the CNN, though this
 can be a starting point for future works.
 
@@ -915,8 +915,8 @@ improving the spacial localization of activities, and the inclusion in the
 feature representation of motion information. Whereas the first idea performed
 pretty well, the other ones more focused on motion feature encoding did not improve the baseline. Infact, nor trying to estimate the flow from the feature maps nor trying to enforce the learning of motion representativ features in the convLSTM through the Static-Dynamic block gave significant improvements, even though they seemed like reasonably good ideas.
 In the end results tell us that our main contribution goes in the direction of the motion maps. We got really high improvements with a simple and elegant idea, based on observations on the attention maps yielded by the \textit{Sparnet} model and of the loss decay of the Motion Segmentation branch. This results give also strength to the study in \cite{sparnet} since the main block that we used is similar to their proposition in \cite{sparnet}
-So possible paths to follow for further works could try to overcome this unsolved problems, spanning from researching a good way to integrate warp flows directly in the backbone of the net to a more efficient way to extract motion features from RGB frames or their feature maps. 
-As for the utilizated architectures, the increase in performances brought by the two-stream solution was not good enough to justify its computational cost, leading us to say that a 2-stream solution lacks the capability of joining together appearance and motion clues. 
+So possible paths to follow for further works could try to overcome this unsolved problems, spanning from researching a good way to integrate warp flows directly in the backbone of the net to a more efficient way to extract motion features from RGB frames or their feature maps.
+As for the utilizated architectures, the increase in performances brought by the two-stream solution was not good enough to justify its computational cost, leading us to say that a 2-stream solution lacks the capability of joining together appearance and motion clues.
 The final takeaway is that in Action Recognition, First Person in particular, it is not sufficient focusing the attention only on objects appearances, as temporal evolution
 and motion clues represent key aspects which cannot be neglected. Also, as it may sound
 appealing, multiple stream architectures should be avoided because of their inefficiency.
