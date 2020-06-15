@@ -69,8 +69,8 @@ class AttentionModelMSRegBig(nn.Module):
                 if not mmaps:
                     logit, feature_conv, feature_convNBN = self.resNet(inputVariable[t])
                 else:
-                    logit, feature_conv, feature_convNBN, feat_conv3 = self.resNet(inputVariable[t], get_conv3=True)                    
-                    ms_out.append(self.msBlock(feat_conv3))
+                    logit, feature_conv, feature_convNBN, feat_conv3_4 = self.resNet(inputVariable[t], get_conv3=self.get_conv3, get_conv4=self.get_conv4)                    
+                    ms_out.append(self.msBlock(feat_conv3_4))
                 
                 state = self.lstm_cell(feature_convNBN, state)
 
