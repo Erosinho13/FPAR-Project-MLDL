@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 15:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -476,7 +476,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip60
 )
-No file report.aux.
+(./report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -497,7 +497,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
 1.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -607,141 +607,92 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
-
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 101.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 101.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 103.
-
-
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 105.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 105.
-
-
-LaTeX Warning: Citation `egornn' on page 1 undefined on input line 111.
-
-
-LaTeX Warning: Citation `sparnet' on page 1 undefined on input line 112.
-
-
-LaTeX Warning: Citation `reprflow' on page 1 undefined on input line 112.
-
-
-LaTeX Warning: Citation `motfilt' on page 1 undefined on input line 112.
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-
-LaTeX Warning: Reference `folder_schema' on page 2 undefined on input line 118.
-
-
-<images/folder_schema.png, id=18, 881.2925pt x 657.45625pt>
+<images/folder_schema.png, id=30, 881.2925pt x 657.45625pt>
 File: images/folder_schema.png Graphic file (type png)
 <use images/folder_schema.png>
 Package pdftex.def Info: images/folder_schema.png  used on input line 122.
 (pdftex.def)             Requested size: 387.00153pt x 288.70982pt.
-
-LaTeX Warning: Citation `sparnet' on page 2 undefined on input line 129.
-
-
-LaTeX Warning: Reference `image_comparison' on page 2 undefined on input line 1
-31.
-
-<images/img_comp/rgb0001.png, id=20, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0001.png, id=34, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0001.png Graphic file (type png)
 <use images/img_comp/rgb0001.png>
 Package pdftex.def Info: images/img_comp/rgb0001.png  used on input line 136.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00002.png, id=21, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00002.png, id=35, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00002.png Graphic file (type png)
 <use images/img_comp/flow_x_00002.png>
 Package pdftex.def Info: images/img_comp/flow_x_00002.png  used on input line 1
 39.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00001.png, id=22, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00001.png, id=36, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00001.png Graphic file (type png)
 <use images/img_comp/flow_y_00001.png>
 Package pdftex.def Info: images/img_comp/flow_y_00001.png  used on input line 1
 42.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0001.png, id=23, 456.70625pt x 256.96pt>
+<images/img_comp/map0001.png, id=37, 456.70625pt x 256.96pt>
 File: images/img_comp/map0001.png Graphic file (type png)
 <use images/img_comp/map0001.png>
 Package pdftex.def Info: images/img_comp/map0001.png  used on input line 145.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/rgb0011.png, id=24, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0011.png, id=38, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0011.png Graphic file (type png)
 <use images/img_comp/rgb0011.png>
 Package pdftex.def Info: images/img_comp/rgb0011.png  used on input line 148.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00011.png, id=25, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00011.png, id=39, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00011.png Graphic file (type png)
 <use images/img_comp/flow_x_00011.png>
 Package pdftex.def Info: images/img_comp/flow_x_00011.png  used on input line 1
 51.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00011.png, id=26, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00011.png, id=40, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00011.png Graphic file (type png)
 <use images/img_comp/flow_y_00011.png>
 Package pdftex.def Info: images/img_comp/flow_y_00011.png  used on input line 1
 54.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0011.png, id=27, 456.70625pt x 256.96pt>
+<images/img_comp/map0011.png, id=41, 456.70625pt x 256.96pt>
 File: images/img_comp/map0011.png Graphic file (type png)
 <use images/img_comp/map0011.png>
 Package pdftex.def Info: images/img_comp/map0011.png  used on input line 157.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/rgb0020.png, id=28, 456.70625pt x 256.96pt>
+<images/img_comp/rgb0020.png, id=42, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0020.png Graphic file (type png)
 <use images/img_comp/rgb0020.png>
 Package pdftex.def Info: images/img_comp/rgb0020.png  used on input line 160.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_x_00020.png, id=29, 456.70625pt x 256.96pt>
+<images/img_comp/flow_x_00020.png, id=43, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00020.png Graphic file (type png)
 <use images/img_comp/flow_x_00020.png>
 Package pdftex.def Info: images/img_comp/flow_x_00020.png  used on input line 1
 63.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/flow_y_00020.png, id=30, 456.70625pt x 256.96pt>
+<images/img_comp/flow_y_00020.png, id=44, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00020.png Graphic file (type png)
 <use images/img_comp/flow_y_00020.png>
 Package pdftex.def Info: images/img_comp/flow_y_00020.png  used on input line 1
 66.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-<images/img_comp/map0020.png, id=31, 456.70625pt x 256.96pt>
+<images/img_comp/map0020.png, id=45, 456.70625pt x 256.96pt>
 File: images/img_comp/map0020.png Graphic file (type png)
 <use images/img_comp/map0020.png>
 Package pdftex.def Info: images/img_comp/map0020.png  used on input line 169.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
 79.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-LaTeX Warning: Reference `egornn_arch' on page 2 undefined on input line 189.
-
-
-LaTeX Warning: Citation `resnet' on page 2 undefined on input line 189.
-
-
-LaTeX Warning: Reference `egornn_arch' on page 2 undefined on input line 189.
-
-[2]
+) [2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<images/egornn.png, id=45, 1003.75pt x 290.08376pt>
+<images/egornn.png, id=68, 1003.75pt x 290.08376pt>
 File: images/egornn.png Graphic file (type png)
 <use images/egornn.png>
 Package pdftex.def Info: images/egornn.png  used on input line 204.
@@ -757,22 +708,9 @@ Underfull \hbox (badness 6859) in paragraph at lines 215--216
  []
 
 
-LaTeX Warning: Citation `sparnet' on page 3 undefined on input line 219.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [3 <./images/folder_schema.png>]
-
-LaTeX Warning: Citation `sparnet' on page 4 undefined on input line 221.
-
-
-LaTeX Warning: Reference `msblock_arch' on page 4 undefined on input line 221.
-
-
-LaTeX Warning: Reference `msblock_arch' on page 4 undefined on input line 221.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -786,26 +724,16 @@ G copy)> <./images/img_comp/map0011.png (PNG copy)> <./images/img_comp/rgb0020.
 png (PNG copy)> <./images/img_comp/flow_x_00020.png (PNG copy)> <./images/img_c
 omp/flow_y_00020.png (PNG copy)> <./images/img_comp/map0020.png (PNG copy)> <./
 images/egornn.png>]
-<images/egornn+msblock_architecture.png, id=63, 930.47626pt x 468.75125pt>
+<images/egornn+msblock_architecture.png, id=88, 930.47626pt x 468.75125pt>
 File: images/egornn+msblock_architecture.png Graphic file (type png)
 <use images/egornn+msblock_architecture.png>
 Package pdftex.def Info: images/egornn+msblock_architecture.png  used on input 
 line 225.
 (pdftex.def)             Requested size: 430.00462pt x 216.62239pt.
 
-
-LaTeX Warning: Citation `egornn' on page 5 undefined on input line 244.
-
-
-LaTeX Warning: Reference `egornn_arch' on page 5 undefined on input line 249.
-
-
 Underfull \hbox (badness 1584) in paragraph at lines 249--250
 []\OT1/ptm/m/n/10 train of Con-vL-STM and Clas-si-fier (green
  []
-
-
-LaTeX Warning: Reference `egornn_arch' on page 5 undefined on input line 250.
 
 [5]
 Underfull \hbox (badness 1127) in paragraph at lines 345--346
@@ -813,80 +741,47 @@ Underfull \hbox (badness 1127) in paragraph at lines 345--346
 1/ptm/m/n/10 and
  []
 
-
-LaTeX Warning: Reference `step1_table' on page 6 undefined on input line 347.
-
-<images/step1_table.jpg, id=74, 328.22626pt x 303.1325pt>
+<images/step1_table.jpg, id=103, 328.22626pt x 303.1325pt>
 File: images/step1_table.jpg Graphic file (type jpg)
 <use images/step1_table.jpg>
 Package pdftex.def Info: images/step1_table.jpg  used on input line 351.
 (pdftex.def)             Requested size: 203.71013pt x 188.1391pt.
-
-LaTeX Warning: Reference `step1_acc' on page 6 undefined on input line 356.
-
-
-LaTeX Warning: Reference `step1_loss' on page 6 undefined on input line 356.
-
-<images/step1_acc.jpg, id=75, 639.23325pt x 393.9224pt>
+<images/step1_acc.jpg, id=106, 639.23325pt x 393.9224pt>
 File: images/step1_acc.jpg Graphic file (type jpg)
 <use images/step1_acc.jpg>
 Package pdftex.def Info: images/step1_acc.jpg  used on input line 360.
 (pdftex.def)             Requested size: 203.71013pt x 125.5348pt.
 [6 <./images/egornn+msblock_architecture.png> <./images/step1_table.jpg>]
-<images/step1_loss.jpg, id=83, 628.03648pt x 389.85085pt>
+<images/step1_loss.jpg, id=115, 628.03648pt x 389.85085pt>
 File: images/step1_loss.jpg Graphic file (type jpg)
 <use images/step1_loss.jpg>
 Package pdftex.def Info: images/step1_loss.jpg  used on input line 367.
 (pdftex.def)             Requested size: 203.71013pt x 126.45016pt.
 
-
-LaTeX Warning: Reference `step1_acc' on page 7 undefined on input line 372.
-
-
-LaTeX Warning: Reference `step1_loss' on page 7 undefined on input line 372.
-
-
-LaTeX Warning: Citation `sparnet' on page 7 undefined on input line 376.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-LaTeX Warning: Reference `ms_table' on page 7 undefined on input line 422.
-
-<images/step2.1_table.jpg, id=84, 208.78pt x 148.555pt>
+<images/step2.1_table.jpg, id=120, 208.78pt x 148.555pt>
 File: images/step2.1_table.jpg Graphic file (type jpg)
 <use images/step2.1_table.jpg>
 Package pdftex.def Info: images/step2.1_table.jpg  used on input line 426.
 (pdftex.def)             Requested size: 122.22731pt x 86.97118pt.
-
-LaTeX Warning: Reference `ms_reg_table' on page 7 undefined on input line 436.
-
-<images/step2.3_table.jpg, id=85, 183.68625pt x 149.55875pt>
+<images/step2.3_table.jpg, id=122, 183.68625pt x 149.55875pt>
 File: images/step2.3_table.jpg Graphic file (type jpg)
 <use images/step2.3_table.jpg>
 Package pdftex.def Info: images/step2.3_table.jpg  used on input line 440.
 (pdftex.def)             Requested size: 105.93013pt x 86.25119pt.
-[7 <./images/step1_acc.jpg> <./images/step1_loss.jpg> <./images/step2.1_table.j
-pg>]
-
-LaTeX Warning: Reference `ms_grid' on page 8 undefined on input line 451.
-
-
-LaTeX Warning: Reference `ms_reg_grid' on page 8 undefined on input line 451.
-
-
+ [7 <./images/step1_acc.jpg> <./images/step1_loss.jpg> <./images/step2.1_table.
+jpg>]
 Underfull \hbox (badness 1454) in paragraph at lines 451--452
 []\OT1/ptm/m/n/10 After this pre-lim-i-nary step, the com-plete grid
  []
 
-<images/grid_no_reg_table.jpg, id=95, 336.25626pt x 311.1625pt>
+<images/grid_no_reg_table.jpg, id=132, 336.25626pt x 311.1625pt>
 File: images/grid_no_reg_table.jpg Graphic file (type jpg)
 <use images/grid_no_reg_table.jpg>
 Package pdftex.def Info: images/grid_no_reg_table.jpg  used on input line 455.
 (pdftex.def)             Requested size: 203.71013pt x 188.5079pt.
-<images/grid_reg_table.jpg, id=96, 342.27875pt x 270.00874pt>
+<images/grid_reg_table.jpg, id=133, 342.27875pt x 270.00874pt>
 File: images/grid_reg_table.jpg Graphic file (type jpg)
 <use images/grid_reg_table.jpg>
 Package pdftex.def Info: images/grid_reg_table.jpg  used on input line 462.
@@ -896,31 +791,17 @@ Underfull \hbox (badness 1142) in paragraph at lines 467--468
 []\OT1/ptm/m/n/10 As we can ob-serve the best per-for-mances are
  []
 
-
-LaTeX Warning: Reference `ms_grid' on page 8 undefined on input line 473.
-
-
-LaTeX Warning: Reference `ms_reg_grid' on page 8 undefined on input line 473.
-
 [8 <./images/step2.3_table.jpg> <./images/grid_no_reg_table.jpg> <./images/grid
-_reg_table.jpg>]
-
-LaTeX Warning: Reference `grid_comparison' on page 9 undefined on input line 47
-5.
-
-
-LaTeX Warning: Reference `ms_grid' on page 9 undefined on input line 475.
-
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+_reg_table.jpg>] (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-<images/grid_comparison/acc75no_reg.png, id=106, 624.3325pt x 823.075pt>
+<images/grid_comparison/acc75no_reg.png, id=147, 624.3325pt x 823.075pt>
 File: images/grid_comparison/acc75no_reg.png Graphic file (type png)
 <use images/grid_comparison/acc75no_reg.png>
 Package pdftex.def Info: images/grid_comparison/acc75no_reg.png  used on input 
 line 486.
 (pdftex.def)             Requested size: 139.75018pt x 184.22939pt.
-<images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png, id=107, 624.3325
+<images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png, id=148, 624.3325
 pt x 823.075pt>
 File: images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png Graphic file
  (type png)
@@ -928,7 +809,7 @@ File: images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png Graphic file
 Package pdftex.def Info: images/grid_comparison/acc62lr5e-4step4080gamma05_no_r
 eg.png  used on input line 490.
 (pdftex.def)             Requested size: 139.75018pt x 184.22939pt.
-<images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png, id=108, 624.332
+<images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png, id=149, 624.332
 5pt x 823.075pt>
 File: images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png Graphic fil
 e (type png)
@@ -940,48 +821,48 @@ reg.png  used on input line 494.
 
 LaTeX Warning: Reference `loss_mmaps' on page 9 undefined on input line 501.
 
-<images/mmaps_example/downsampling224x224_bw.png, id=109, 257.96375pt x 252.945
+<images/mmaps_example/downsampling224x224_bw.png, id=150, 257.96375pt x 252.945
 pt>
 File: images/mmaps_example/downsampling224x224_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling224x224_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling224x224_bw.png  used 
 on input line 518.
 (pdftex.def)             Requested size: 81.4828pt x 79.89809pt.
-<images/mmaps_example/downsampling7x7_bw.png, id=110, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_bw.png, id=151, 245.91875pt x 248.93pt>
 File: images/mmaps_example/downsampling7x7_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_bw.png  used on i
 nput line 522.
 (pdftex.def)             Requested size: 37.15805pt x 37.61136pt.
-<images/mmaps_example/downsampling14x14_bw.png, id=111, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling14x14_bw.png, id=152, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling14x14_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_bw.png  used on
  input line 525.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling28x28_bw.png, id=112, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling28x28_bw.png, id=153, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling28x28_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling28x28_bw.png  used on
  input line 528.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling7x7_gray.png, id=113, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_gray.png, id=154, 245.91875pt x 248.93pt>
 
 File: images/mmaps_example/downsampling7x7_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_gray.png  used on
  input line 531.
 (pdftex.def)             Requested size: 37.15805pt x 37.61136pt.
-<images/mmaps_example/downsampling14x14_gray.png, id=114, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling14x14_gray.png, id=155, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling14x14_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_gray.png  used 
 on input line 534.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling28x28_gray.png, id=115, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling28x28_gray.png, id=156, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling28x28_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_gray.png>
@@ -1008,15 +889,12 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 559.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 559.
  ) 
 Here is how much of TeX's memory you used:
- 12733 strings out of 481239
- 198217 string characters out of 5920377
- 750928 words of memory out of 5000000
+ 12735 strings out of 481239
+ 198239 string characters out of 5920377
+ 752935 words of memory out of 5000000
  27652 multiletter control sequences out of 15000+600000
  562347 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1031,10 +909,10 @@ sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
 8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
 are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (10 pages, 1514121 bytes).
+Output written on report.pdf (10 pages, 1514782 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
+ 225 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
  48 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
