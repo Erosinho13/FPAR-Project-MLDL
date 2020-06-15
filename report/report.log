@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 22:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 23:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -610,15 +610,11 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2019/09/10 1.8c listings language file
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-
-LaTeX Warning: Citation `flow_cit_1' on page 2 undefined on input line 115.
+Underfull \vbox (badness 2932) has occurred while \output is active []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -626,208 +622,158 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [3]
-<images/egornn.png, id=63, 1003.75pt x 290.08376pt>
+<images/egornn.png, id=47, 1003.75pt x 290.08376pt>
 File: images/egornn.png Graphic file (type png)
 <use images/egornn.png>
-Package pdftex.def Info: images/egornn.png  used on input line 174.
+Package pdftex.def Info: images/egornn.png  used on input line 160.
 (pdftex.def)             Requested size: 430.00462pt x 124.27324pt.
+ [3]
+Underfull \vbox (badness 5446) has occurred while \output is active []
 
-Underfull \vbox (badness 1803) has occurred while \output is active []
 
- [4]
-Overfull \hbox (4.8986pt too wide) detected at line 215
+Overfull \hbox (4.8986pt too wide) detected at line 201
 []
  []
 
-<images/egornn+msblock_architecture.png, id=78, 930.47626pt x 468.75125pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4 <./images/egornn.png>]
+<images/egornn+msblock_architecture.png, id=77, 930.47626pt x 468.75125pt>
 File: images/egornn+msblock_architecture.png Graphic file (type png)
 <use images/egornn+msblock_architecture.png>
 Package pdftex.def Info: images/egornn+msblock_architecture.png  used on input 
-line 224.
+line 210.
 (pdftex.def)             Requested size: 430.00462pt x 216.62239pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5 <./images/egornn.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [5]
+Overfull \hbox (2.80661pt too wide) detected at line 264
+[]
+ []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6 <./images/egornn+msblock_architecture.png>]
-Overfull \hbox (2.80661pt too wide) detected at line 278
-[]
- []
-
 <images/flow1.jpg, id=100, 687.31781pt x 349.305pt>
 File: images/flow1.jpg Graphic file (type jpg)
 <use images/flow1.jpg>
-Package pdftex.def Info: images/flow1.jpg  used on input line 299.
+Package pdftex.def Info: images/flow1.jpg  used on input line 285.
 (pdftex.def)             Requested size: 301.00192pt x 152.96979pt.
 <images/flow2.jpg, id=101, 361.35pt x 292.84406pt>
 File: images/flow2.jpg Graphic file (type jpg)
 <use images/flow2.jpg>
-Package pdftex.def Info: images/flow2.jpg  used on input line 305.
+Package pdftex.def Info: images/flow2.jpg  used on input line 291.
 (pdftex.def)             Requested size: 203.71013pt x 165.09077pt.
 <images/folder_schema.png, id=105, 881.2925pt x 657.45625pt>
 File: images/folder_schema.png Graphic file (type png)
 <use images/folder_schema.png>
-Package pdftex.def Info: images/folder_schema.png  used on input line 317.
+Package pdftex.def Info: images/folder_schema.png  used on input line 303.
 (pdftex.def)             Requested size: 387.00153pt x 288.70982pt.
 <images/img_comp/rgb0001.png, id=108, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0001.png Graphic file (type png)
 <use images/img_comp/rgb0001.png>
-Package pdftex.def Info: images/img_comp/rgb0001.png  used on input line 331.
+Package pdftex.def Info: images/img_comp/rgb0001.png  used on input line 317.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_x_00002.png, id=109, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00002.png Graphic file (type png)
 <use images/img_comp/flow_x_00002.png>
 Package pdftex.def Info: images/img_comp/flow_x_00002.png  used on input line 3
-34.
+20.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_y_00001.png, id=110, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00001.png Graphic file (type png)
 <use images/img_comp/flow_y_00001.png>
 Package pdftex.def Info: images/img_comp/flow_y_00001.png  used on input line 3
-37.
+23.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/map0001.png, id=111, 456.70625pt x 256.96pt>
 File: images/img_comp/map0001.png Graphic file (type png)
 <use images/img_comp/map0001.png>
-Package pdftex.def Info: images/img_comp/map0001.png  used on input line 340.
+Package pdftex.def Info: images/img_comp/map0001.png  used on input line 326.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/rgb0011.png, id=112, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0011.png Graphic file (type png)
 <use images/img_comp/rgb0011.png>
-Package pdftex.def Info: images/img_comp/rgb0011.png  used on input line 343.
+Package pdftex.def Info: images/img_comp/rgb0011.png  used on input line 329.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_x_00011.png, id=113, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00011.png Graphic file (type png)
 <use images/img_comp/flow_x_00011.png>
 Package pdftex.def Info: images/img_comp/flow_x_00011.png  used on input line 3
-46.
+32.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_y_00011.png, id=114, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00011.png Graphic file (type png)
 <use images/img_comp/flow_y_00011.png>
 Package pdftex.def Info: images/img_comp/flow_y_00011.png  used on input line 3
-49.
+35.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/map0011.png, id=115, 456.70625pt x 256.96pt>
 File: images/img_comp/map0011.png Graphic file (type png)
 <use images/img_comp/map0011.png>
-Package pdftex.def Info: images/img_comp/map0011.png  used on input line 352.
+Package pdftex.def Info: images/img_comp/map0011.png  used on input line 338.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/rgb0020.png, id=116, 456.70625pt x 256.96pt>
 File: images/img_comp/rgb0020.png Graphic file (type png)
 <use images/img_comp/rgb0020.png>
-Package pdftex.def Info: images/img_comp/rgb0020.png  used on input line 355.
+Package pdftex.def Info: images/img_comp/rgb0020.png  used on input line 341.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_x_00020.png, id=117, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_x_00020.png Graphic file (type png)
 <use images/img_comp/flow_x_00020.png>
 Package pdftex.def Info: images/img_comp/flow_x_00020.png  used on input line 3
-58.
+44.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/flow_y_00020.png, id=118, 456.70625pt x 256.96pt>
 File: images/img_comp/flow_y_00020.png Graphic file (type png)
 <use images/img_comp/flow_y_00020.png>
 Package pdftex.def Info: images/img_comp/flow_y_00020.png  used on input line 3
-61.
+47.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
 <images/img_comp/map0020.png, id=119, 456.70625pt x 256.96pt>
 File: images/img_comp/map0020.png Graphic file (type png)
 <use images/img_comp/map0020.png>
-Package pdftex.def Info: images/img_comp/map0020.png  used on input line 364.
+Package pdftex.def Info: images/img_comp/map0020.png  used on input line 350.
 (pdftex.def)             Requested size: 103.20346pt x 58.06444pt.
-[7]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
-74.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+60.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
+) [7]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8 <./images/flow1.jpg> <./images/flow2.jpg>]
-Underfull \hbox (badness 1584) in paragraph at lines 394--395
+
+Underfull \hbox (badness 1584) in paragraph at lines 380--381
 []\OT1/ptm/m/n/10 train of Con-vL-STM and Clas-si-fier (green
  []
 
-[9 <./images/folder_schema.png>]
-Underfull \hbox (badness 1127) in paragraph at lines 490--491
+[8 <./images/flow1.jpg> <./images/flow2.jpg>]
+Underfull \hbox (badness 1127) in paragraph at lines 476--477
 []\OT1/ptm/m/n/10 Where LR is the learn-ing rate of \OT1/ptm/m/it/10 egornn \OT
 1/ptm/m/n/10 and
  []
 
-<images/step1_table.jpg, id=151, 328.22626pt x 303.1325pt>
+<images/step1_table.jpg, id=145, 328.22626pt x 303.1325pt>
 File: images/step1_table.jpg Graphic file (type jpg)
 <use images/step1_table.jpg>
-Package pdftex.def Info: images/step1_table.jpg  used on input line 496.
+Package pdftex.def Info: images/step1_table.jpg  used on input line 482.
 (pdftex.def)             Requested size: 203.71013pt x 188.1391pt.
-<images/step1_acc.jpg, id=154, 639.23325pt x 393.9224pt>
+[9 <./images/folder_schema.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<images/step1_acc.jpg, id=156, 639.23325pt x 393.9224pt>
 File: images/step1_acc.jpg Graphic file (type jpg)
 <use images/step1_acc.jpg>
-Package pdftex.def Info: images/step1_acc.jpg  used on input line 505.
+Package pdftex.def Info: images/step1_acc.jpg  used on input line 491.
 (pdftex.def)             Requested size: 203.71013pt x 125.5348pt.
-<images/step1_loss.jpg, id=155, 628.03648pt x 389.85085pt>
+<images/step1_loss.jpg, id=157, 628.03648pt x 389.85085pt>
 File: images/step1_loss.jpg Graphic file (type jpg)
 <use images/step1_loss.jpg>
-Package pdftex.def Info: images/step1_loss.jpg  used on input line 512.
+Package pdftex.def Info: images/step1_loss.jpg  used on input line 498.
 (pdftex.def)             Requested size: 203.71013pt x 126.45016pt.
-<images/Cams1/S2_take_cheese/rgb0020.png, id=160, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_cheese/rgb0020.png Graphic file (type png)
-<use images/Cams1/S2_take_cheese/rgb0020.png>
-Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0020.png  used on input
- line 524.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_cheese/rgb0020_CAM.png, id=161, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_cheese/rgb0020_CAM.png Graphic file (type png)
-<use images/Cams1/S2_take_cheese/rgb0020_CAM.png>
-Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0020_CAM.png  used on i
-nput line 527.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_cheese/rgb0027.png, id=162, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_cheese/rgb0027.png Graphic file (type png)
-<use images/Cams1/S2_take_cheese/rgb0027.png>
-Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0027.png  used on input
- line 530.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_cheese/rgb0027_CAM.png, id=163, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_cheese/rgb0027_CAM.png Graphic file (type png)
-<use images/Cams1/S2_take_cheese/rgb0027_CAM.png>
-Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0027_CAM.png  used on i
-nput line 533.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_honey/rgb0004.png, id=164, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_honey/rgb0004.png Graphic file (type png)
-<use images/Cams1/S2_take_honey/rgb0004.png>
-Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0004.png  used on input 
-line 542.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_honey/rgb0004_CAM.png, id=165, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_honey/rgb0004_CAM.png Graphic file (type png)
-<use images/Cams1/S2_take_honey/rgb0004_CAM.png>
-Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0004_CAM.png  used on in
-put line 545.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_honey/rgb0007.png, id=166, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_honey/rgb0007.png Graphic file (type png)
-<use images/Cams1/S2_take_honey/rgb0007.png>
-Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0007.png  used on input 
-line 548.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
-<images/Cams1/S2_take_honey/rgb0007_CAM.png, id=167, 224.84pt x 224.84pt>
-File: images/Cams1/S2_take_honey/rgb0007_CAM.png Graphic file (type png)
-<use images/Cams1/S2_take_honey/rgb0007_CAM.png>
-Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0007_CAM.png  used on in
-put line 551.
-(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1466) has occurred while \output is active []
 
  [10 <./images/img_comp/rgb0001.png (PNG copy)> <./images/img_comp/flow_x_00002
 .png (PNG copy)> <./images/img_comp/flow_y_00001.png (PNG copy)> <./images/img_
@@ -835,232 +781,283 @@ comp/map0001.png (PNG copy)> <./images/img_comp/rgb0011.png (PNG copy)> <./imag
 es/img_comp/flow_x_00011.png (PNG copy)> <./images/img_comp/flow_y_00011.png (P
 NG copy)> <./images/img_comp/map0011.png (PNG copy)> <./images/img_comp/rgb0020
 .png (PNG copy)> <./images/img_comp/flow_x_00020.png (PNG copy)> <./images/img_
-comp/flow_y_00020.png (PNG copy)> <./images/img_comp/map0020.png (PNG copy)>] [
-11 <./images/step1_table.jpg> <./images/step1_acc.jpg> <./images/step1_loss.jpg
-> <./images/Cams1/S2_take_cheese/rgb0020.png (PNG copy)> <./images/Cams1/S2_tak
-e_cheese/rgb0020_CAM.png (PNG copy)> <./images/Cams1/S2_take_cheese/rgb0027.png
- (PNG copy)> <./images/Cams1/S2_take_cheese/rgb0027_CAM.png (PNG copy)>]
-<images/step2.1_table.jpg, id=185, 208.78pt x 148.555pt>
+comp/flow_y_00020.png (PNG copy)> <./images/img_comp/map0020.png (PNG copy)> <.
+/images/step1_table.jpg> <./images/step1_acc.jpg>]
+<images/Cams1/S2_take_cheese/rgb0020.png, id=167, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_cheese/rgb0020.png Graphic file (type png)
+<use images/Cams1/S2_take_cheese/rgb0020.png>
+Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0020.png  used on input
+ line 510.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_cheese/rgb0020_CAM.png, id=168, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_cheese/rgb0020_CAM.png Graphic file (type png)
+<use images/Cams1/S2_take_cheese/rgb0020_CAM.png>
+Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0020_CAM.png  used on i
+nput line 513.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_cheese/rgb0027.png, id=169, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_cheese/rgb0027.png Graphic file (type png)
+<use images/Cams1/S2_take_cheese/rgb0027.png>
+Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0027.png  used on input
+ line 516.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_cheese/rgb0027_CAM.png, id=170, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_cheese/rgb0027_CAM.png Graphic file (type png)
+<use images/Cams1/S2_take_cheese/rgb0027_CAM.png>
+Package pdftex.def Info: images/Cams1/S2_take_cheese/rgb0027_CAM.png  used on i
+nput line 519.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_honey/rgb0004.png, id=171, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_honey/rgb0004.png Graphic file (type png)
+<use images/Cams1/S2_take_honey/rgb0004.png>
+Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0004.png  used on input 
+line 528.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_honey/rgb0004_CAM.png, id=172, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_honey/rgb0004_CAM.png Graphic file (type png)
+<use images/Cams1/S2_take_honey/rgb0004_CAM.png>
+Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0004_CAM.png  used on in
+put line 531.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_honey/rgb0007.png, id=173, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_honey/rgb0007.png Graphic file (type png)
+<use images/Cams1/S2_take_honey/rgb0007.png>
+Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0007.png  used on input 
+line 534.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/Cams1/S2_take_honey/rgb0007_CAM.png, id=174, 224.84pt x 224.84pt>
+File: images/Cams1/S2_take_honey/rgb0007_CAM.png Graphic file (type png)
+<use images/Cams1/S2_take_honey/rgb0007_CAM.png>
+Package pdftex.def Info: images/Cams1/S2_take_honey/rgb0007_CAM.png  used on in
+put line 537.
+(pdftex.def)             Requested size: 71.29977pt x 71.29842pt.
+<images/step2.1_table.jpg, id=177, 208.78pt x 148.555pt>
 File: images/step2.1_table.jpg Graphic file (type jpg)
 <use images/step2.1_table.jpg>
-Package pdftex.def Info: images/step2.1_table.jpg  used on input line 610.
+Package pdftex.def Info: images/step2.1_table.jpg  used on input line 596.
 (pdftex.def)             Requested size: 122.22731pt x 86.97118pt.
-<images/step2.3_table.jpg, id=187, 183.68625pt x 149.55875pt>
+<images/step2.3_table.jpg, id=179, 183.68625pt x 149.55875pt>
 File: images/step2.3_table.jpg Graphic file (type jpg)
 <use images/step2.3_table.jpg>
-Package pdftex.def Info: images/step2.3_table.jpg  used on input line 624.
+Package pdftex.def Info: images/step2.3_table.jpg  used on input line 610.
 (pdftex.def)             Requested size: 105.93013pt x 86.25119pt.
-
-Underfull \hbox (badness 1454) in paragraph at lines 635--636
+ [11 <./images/step1_loss.jpg> <./images/Cams1/S2_take_cheese/rgb0020.png (PNG 
+copy)> <./images/Cams1/S2_take_cheese/rgb0020_CAM.png (PNG copy)> <./images/Cam
+s1/S2_take_cheese/rgb0027.png (PNG copy)> <./images/Cams1/S2_take_cheese/rgb002
+7_CAM.png (PNG copy)> <./images/Cams1/S2_take_honey/rgb0004.png (PNG copy)> <./
+images/Cams1/S2_take_honey/rgb0004_CAM.png (PNG copy)> <./images/Cams1/S2_take_
+honey/rgb0007.png (PNG copy)> <./images/Cams1/S2_take_honey/rgb0007_CAM.png (PN
+G copy)>]
+Underfull \hbox (badness 1454) in paragraph at lines 621--622
 []\OT1/ptm/m/n/10 After this pre-lim-i-nary step, the com-plete grid
  []
 
-<images/grid_no_reg_table.jpg, id=190, 336.25626pt x 311.1625pt>
+
+Underfull \vbox (badness 4713) has occurred while \output is active []
+
+<images/grid_no_reg_table.jpg, id=191, 336.25626pt x 311.1625pt>
 File: images/grid_no_reg_table.jpg Graphic file (type jpg)
 <use images/grid_no_reg_table.jpg>
-Package pdftex.def Info: images/grid_no_reg_table.jpg  used on input line 639.
+Package pdftex.def Info: images/grid_no_reg_table.jpg  used on input line 625.
 (pdftex.def)             Requested size: 203.71013pt x 188.5079pt.
-<images/grid_reg_table.jpg, id=191, 342.27875pt x 270.00874pt>
+<images/grid_reg_table.jpg, id=192, 342.27875pt x 270.00874pt>
 File: images/grid_reg_table.jpg Graphic file (type jpg)
 <use images/grid_reg_table.jpg>
-Package pdftex.def Info: images/grid_reg_table.jpg  used on input line 646.
+Package pdftex.def Info: images/grid_reg_table.jpg  used on input line 632.
 (pdftex.def)             Requested size: 203.71013pt x 160.70044pt.
 
-Underfull \hbox (badness 1142) in paragraph at lines 651--652
+Underfull \hbox (badness 1142) in paragraph at lines 637--638
 []\OT1/ptm/m/n/10 As we can ob-serve the best per-for-mances are
  []
 
-[12 <./images/Cams1/S2_take_honey/rgb0004.png (PNG copy)> <./images/Cams1/S2_ta
-ke_honey/rgb0004_CAM.png (PNG copy)> <./images/Cams1/S2_take_honey/rgb0007.png 
-(PNG copy)> <./images/Cams1/S2_take_honey/rgb0007_CAM.png (PNG copy)> <./images
-/step2.1_table.jpg> <./images/step2.3_table.jpg>]
+
+Underfull \vbox (badness 1308) has occurred while \output is active []
+
+ [12 <./images/step2.1_table.jpg> <./images/step2.3_table.jpg> <./images/grid_n
+o_reg_table.jpg> <./images/grid_reg_table.jpg>]
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-<images/grid_comparison/acc75no_reg.png, id=204, 624.3325pt x 823.075pt>
+<images/grid_comparison/acc75no_reg.png, id=203, 624.3325pt x 823.075pt>
 File: images/grid_comparison/acc75no_reg.png Graphic file (type png)
 <use images/grid_comparison/acc75no_reg.png>
 Package pdftex.def Info: images/grid_comparison/acc75no_reg.png  used on input 
-line 670.
+line 656.
 (pdftex.def)             Requested size: 139.75018pt x 184.22939pt.
-<images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png, id=205, 624.3325
+<images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png, id=204, 624.3325
 pt x 823.075pt>
 File: images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png Graphic file
  (type png)
 <use images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png>
 Package pdftex.def Info: images/grid_comparison/acc62lr5e-4step4080gamma05_no_r
-eg.png  used on input line 674.
+eg.png  used on input line 660.
 (pdftex.def)             Requested size: 139.75018pt x 184.22939pt.
-<images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png, id=206, 624.332
+<images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png, id=205, 624.332
 5pt x 823.075pt>
 File: images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png Graphic fil
 e (type png)
 <use images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png>
 Package pdftex.def Info: images/grid_comparison/acc69lr5e-4step50100gamma01_no_
-reg.png  used on input line 678.
+reg.png  used on input line 664.
 (pdftex.def)             Requested size: 139.75018pt x 184.22939pt.
-<images/Cams2/S2_take_honey/rgb0004.png, id=209, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0004.png, id=208, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0004.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0004.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0004.png  used on input 
-line 690.
+line 676.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2_take_honey/rgb0004_CAM.png, id=210, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0004_CAM.png, id=209, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0004_CAM.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0004_CAM.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0004_CAM.png  used on in
-put line 693.
+put line 679.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2_take_honey/rgb0004_CAM_MS.png, id=211, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0004_CAM_MS.png, id=210, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0004_CAM_MS.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0004_CAM_MS.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0004_CAM_MS.png  used on
- input line 696.
+ input line 682.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2_take_honey/rgb0007.png, id=212, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0007.png, id=211, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0007.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0007.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0007.png  used on input 
-line 699.
+line 685.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2_take_honey/rgb0007_CAM.png, id=213, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0007_CAM.png, id=212, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0007_CAM.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0007_CAM.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0007_CAM.png  used on in
-put line 702.
+put line 688.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2_take_honey/rgb0007_CAM_MS.png, id=214, 224.84pt x 224.84pt>
+<images/Cams2/S2_take_honey/rgb0007_CAM_MS.png, id=213, 224.84pt x 224.84pt>
 File: images/Cams2/S2_take_honey/rgb0007_CAM_MS.png Graphic file (type png)
 <use images/Cams2/S2_take_honey/rgb0007_CAM_MS.png>
 Package pdftex.def Info: images/Cams2/S2_take_honey/rgb0007_CAM_MS.png  used on
- input line 705.
+ input line 691.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0057.png, id=215, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0057.png, id=214, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0057.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0057.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0057.png  used on input
- line 714.
+ line 700.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0057_CAM.png, id=216, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0057_CAM.png, id=215, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0057_CAM.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0057_CAM.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0057_CAM.png  used on i
-nput line 717.
+nput line 703.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png, id=217, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png, id=216, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png  used o
-n input line 720.
+n input line 706.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0076.png, id=218, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0076.png, id=217, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0076.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0076.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0076.png  used on input
- line 723.
+ line 709.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0076_CAM.png, id=219, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0076_CAM.png, id=218, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0076_CAM.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0076_CAM.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0076_CAM.png  used on i
-nput line 726.
+nput line 712.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
-<images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png, id=220, 224.84pt x 224.84pt>
+<images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png, id=219, 224.84pt x 224.84pt>
 File: images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png Graphic file (type png)
 <use images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png>
 Package pdftex.def Info: images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png  used o
-n input line 729.
+n input line 715.
 (pdftex.def)             Requested size: 65.18872pt x 65.1882pt.
- [13 <./images/grid_no_reg_table.jpg> <./images/grid_reg_table.jpg>]
-<images/mmaps_loss.jpg, id=230, 664.4825pt x 390.45876pt>
+<images/mmaps_loss.jpg, id=221, 664.4825pt x 390.45876pt>
 File: images/mmaps_loss.jpg Graphic file (type jpg)
 <use images/mmaps_loss.jpg>
-Package pdftex.def Info: images/mmaps_loss.jpg  used on input line 747.
+Package pdftex.def Info: images/mmaps_loss.jpg  used on input line 733.
 (pdftex.def)             Requested size: 203.71013pt x 119.70042pt.
-
-Underfull \vbox (badness 2253) has occurred while \output is active []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14 <./images/grid_comparison/acc75no_reg.png> <./images/grid_comparison/acc62
-lr5e-4step4080gamma05_no_reg.png> <./images/grid_comparison/acc69lr5e-4step5010
-0gamma01_no_reg.png>]
-<images/mmaps_example/downsampling224x224_bw.png, id=244, 257.96375pt x 252.945
+ [13]
+<images/mmaps_example/downsampling224x224_bw.png, id=236, 257.96375pt x 252.945
 pt>
 File: images/mmaps_example/downsampling224x224_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling224x224_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling224x224_bw.png  used 
-on input line 762.
+on input line 748.
 (pdftex.def)             Requested size: 81.4828pt x 79.89809pt.
-<images/mmaps_example/downsampling7x7_bw.png, id=245, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_bw.png, id=237, 245.91875pt x 248.93pt>
 File: images/mmaps_example/downsampling7x7_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_bw.png  used on i
-nput line 766.
+nput line 752.
 (pdftex.def)             Requested size: 37.15805pt x 37.61136pt.
-<images/mmaps_example/downsampling14x14_bw.png, id=246, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling14x14_bw.png, id=238, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling14x14_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_bw.png  used on
- input line 769.
+ input line 755.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling28x28_bw.png, id=247, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling28x28_bw.png, id=239, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling28x28_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling28x28_bw.png  used on
- input line 772.
+ input line 758.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling7x7_gray.png, id=248, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_gray.png, id=240, 245.91875pt x 248.93pt>
 
 File: images/mmaps_example/downsampling7x7_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_gray.png  used on
- input line 775.
+ input line 761.
 (pdftex.def)             Requested size: 37.15805pt x 37.61136pt.
-<images/mmaps_example/downsampling14x14_gray.png, id=249, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling14x14_gray.png, id=241, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling14x14_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_gray.png  used 
-on input line 778.
+on input line 764.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
-<images/mmaps_example/downsampling28x28_gray.png, id=250, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling28x28_gray.png, id=242, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling28x28_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling28x28_gray.png  used 
-on input line 781.
+on input line 767.
 (pdftex.def)             Requested size: 37.15805pt x 36.71115pt.
- [15 <./images/Cams2/S2_take_honey/rgb0004.png (PNG copy)> <./images/Cams2/S2_t
-ake_honey/rgb0004_CAM.png (PNG copy)> <./images/Cams2/S2_take_honey/rgb0004_CAM
-_MS.png (PNG copy)> <./images/Cams2/S2_take_honey/rgb0007.png (PNG copy)> <./im
-ages/Cams2/S2_take_honey/rgb0007_CAM.png (PNG copy)> <./images/Cams2/S2_take_ho
-ney/rgb0007_CAM_MS.png (PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0057.png (
-PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0057_CAM.png (PNG copy)> <./images
-/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png (PNG copy)> <./images/Cams2/S2-take_ho
-tdog/rgb0076.png (PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0076_CAM.png (PN
-G copy)> <./images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png (PNG copy)> <./image
-s/mmaps_loss.jpg> <./images/mmaps_example/downsampling224x224_bw.png> <./images
-/mmaps_example/downsampling7x7_bw.png> <./images/mmaps_example/downsampling14x1
-4_bw.png> <./images/mmaps_example/downsampling28x28_bw.png> <./images/mmaps_exa
-mple/downsampling7x7_gray.png> <./images/mmaps_example/downsampling14x14_gray.p
-ng> <./images/mmaps_example/downsampling28x28_gray.png>]
-<images/step3.1_table.jpg, id=264, 289.08pt x 212.795pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<images/step3.1_table.jpg, id=244, 289.08pt x 212.795pt>
 File: images/step3.1_table.jpg Graphic file (type jpg)
 <use images/step3.1_table.jpg>
-Package pdftex.def Info: images/step3.1_table.jpg  used on input line 815.
+Package pdftex.def Info: images/step3.1_table.jpg  used on input line 801.
 (pdftex.def)             Requested size: 142.59647pt x 104.9653pt.
-
-Underfull \hbox (badness 5133) in paragraph at lines 833--834
+ [14 <./images/grid_comparison/acc75no_reg.png> <./images/grid_comparison/acc62
+lr5e-4step4080gamma05_no_reg.png> <./images/grid_comparison/acc69lr5e-4step5010
+0gamma01_no_reg.png>] [15 <./images/Cams2/S2_take_honey/rgb0004.png (PNG copy)>
+ <./images/Cams2/S2_take_honey/rgb0004_CAM.png (PNG copy)> <./images/Cams2/S2_t
+ake_honey/rgb0004_CAM_MS.png (PNG copy)> <./images/Cams2/S2_take_honey/rgb0007.
+png (PNG copy)> <./images/Cams2/S2_take_honey/rgb0007_CAM.png (PNG copy)> <./im
+ages/Cams2/S2_take_honey/rgb0007_CAM_MS.png (PNG copy)> <./images/Cams2/S2-take
+_hotdog/rgb0057.png (PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0057_CAM.png 
+(PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0057_CAM_MS.png (PNG copy)> <./im
+ages/Cams2/S2-take_hotdog/rgb0076.png (PNG copy)> <./images/Cams2/S2-take_hotdo
+g/rgb0076_CAM.png (PNG copy)> <./images/Cams2/S2-take_hotdog/rgb0076_CAM_MS.png
+ (PNG copy)> <./images/mmaps_loss.jpg> <./images/mmaps_example/downsampling224x
+224_bw.png> <./images/mmaps_example/downsampling7x7_bw.png> <./images/mmaps_exa
+mple/downsampling14x14_bw.png> <./images/mmaps_example/downsampling28x28_bw.png
+> <./images/mmaps_example/downsampling7x7_gray.png> <./images/mmaps_example/dow
+nsampling14x14_gray.png> <./images/mmaps_example/downsampling28x28_gray.png> <.
+/images/step3.1_table.jpg>]
+Underfull \hbox (badness 5133) in paragraph at lines 819--820
 []\OT1/ptm/m/n/10 training \OT1/ptm/m/it/10 con-vL-STM \OT1/ptm/m/n/10 and the 
 fi-nal static-
  []
 
 
-Underfull \hbox (badness 5133) in paragraph at lines 834--835
+Underfull \hbox (badness 5133) in paragraph at lines 820--821
 []\OT1/ptm/m/n/10 training \OT1/ptm/m/it/10 con-vL-STM \OT1/ptm/m/n/10 and the 
 fi-nal static-
  []
@@ -1068,25 +1065,27 @@ fi-nal static-
 <images/step3.2_table.jpg, id=270, 204.765pt x 143.53625pt>
 File: images/step3.2_table.jpg Graphic file (type jpg)
 <use images/step3.2_table.jpg>
-Package pdftex.def Info: images/step3.2_table.jpg  used on input line 845.
+Package pdftex.def Info: images/step3.2_table.jpg  used on input line 831.
 (pdftex.def)             Requested size: 122.22731pt x 85.67998pt.
 
-LaTeX Warning: Reference `summary_table' on page 16 undefined on input line 856
+LaTeX Warning: Reference `summary_table' on page 16 undefined on input line 842
 .
 
-[16 <./images/step3.1_table.jpg>]
-<images/summary_table.jpg, id=285, 298.11375pt x 125.46875pt>
+<images/summary_table.jpg, id=274, 298.11375pt x 125.46875pt>
 File: images/summary_table.jpg Graphic file (type jpg)
 <use images/summary_table.jpg>
-Package pdftex.def Info: images/summary_table.jpg  used on input line 860.
+Package pdftex.def Info: images/summary_table.jpg  used on input line 846.
 (pdftex.def)             Requested size: 162.96872pt x 68.58873pt.
- (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 875.
- [17 <./images/step3.2_table.jpg> <./images/summary_table.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 875.
+[16 <./images/step3.2_table.jpg> <./images/summary_table.jpg>] (./report.bbl)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 861.
+
+[17
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 861.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 875.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 875.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 861.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 861.
 
 
 LaTeX Warning: There were undefined references.
@@ -1094,12 +1093,12 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 875.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 861.
  ) 
 Here is how much of TeX's memory you used:
  12934 strings out of 481239
  204478 string characters out of 5920377
- 757656 words of memory out of 5000000
+ 760656 words of memory out of 5000000
  27796 multiletter control sequences out of 15000+600000
  563443 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1118,10 +1117,10 @@ are/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on report.pdf (17 pages, 3022859 bytes).
+Output written on report.pdf (17 pages, 3020607 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 256 compressed objects within 3 object streams
+ 362 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
  78 named destinations out of 1000 (max. 500000)
  291 words of extra memory for PDF output out of 10000 (max. 10000000)
 
