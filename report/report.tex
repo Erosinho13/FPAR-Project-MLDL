@@ -117,6 +117,76 @@ achieve the same representational power as traditional flow methods, and even be
 This last two works introduce a great way to encode motion clues in the features extracted, but none of them combine this information with a temporal representation of those features. Whereas \cite{egornn} fails to exploit RGB frames to get motion informations beyond appearances. Even though \cite{sparnet} tries to overcome this with the motion segmentation task, we found that their approach can sometimes lacks of precision in identifying the region of interest, since it acts on very high-level features.
 In this project we propose three new different approaches. First of all, we use an improved version of the self-supervised block adopted in \cite{sparnet}to integrate in the work of \cite{egornn}, eliminating the need of a second network and improving the granularity of the motion encoding using higher resolution maps matched with lower level features. Afterwards we adopt the representation-flow layer proposed by \cite{reprflow} together with a temporal encoding module to better exploit temporal relationships in the features extracted. Finally we experimented with a different approach: encoding the concept of dynamics directly into the convLSTM module, adding a discriminator classifier that has been trained to discern whether it has been fed with static frames, or actual video frames.
 
+\section{Methodologies overview}
+Here we describe the models that we have used to perform our experiments.
+
+\subsection{Egornn}
+\textit{Egornn} is a CNN-RNN joint architecture presented in \cite{egornn}. The overall architecture of \textit{Egornn} is shown in \reff{egornn_arch}. The CNN backbone is based on \textit{resnet34}\cite{resnet}, which has five main building blocks: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we will refer to these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}. It is pree-trained for generic image recognition and complemented with an attention mechanism for spatially selective feature extractin that we are now going to describe.
+
+The exit of \textit{conv5} is used to generate a \textit{Class Activation Map} (CAM). Let $f_l(i)$ be the activation of a unit l in the final convolutional layer
+at spatial location i and $w_c^l$ be the weight corresponding to class c for unit l. Then the CAM
+for class c, $M_c(i)$, can be represented as 
+\begin{equation*}
+M_c(i) = \sum_{l} w_l^c f_l(i)
+\end{equation*}
+Computing this using only the winning class results in a saliency map of the image highlighting the region in which this object is contained. They argue that this is enough to focus on the object handled by the observer, but we are going to show that this is not always the case. Finally the CAM is converted to a probability spatial map using  softmax along the pixel, and multiplied again with the \textit{conv5} output to get the final spatial attention maps.
+\begin{equation*}
+f_{SA}(i) = f(i) \odot \frac{e^{M_c(i)} }{ \sum_{i^{'}} e^{M_c(i^{'})}}
+\end{equation*}
+where $f(i)$ represents the output feature from the final convolutional layer of ResNet-34 at
+a spatial location i, $M_c(i)$ is the CAM obtained using the winning class c, 
+$f_{SA}(i)$ is the image feature after spatial attention is applied and $\odot$ represents the Hadamard product.
+
+Afterwards the spatial attention is used to feed e convLSTM module that aims at getting a spatial-temporal encoding of the frame-level features extracted by the CNN backbone. It takes into account, for each frame $i$, both the output of the SAM for the layer i and the output of the ConvLSTM for the layer $i-1$, constituting a recurrent structure
+This allows the network to learn relationship between spacial and temporal changes, though we argue that what this approach really does is memorize the appearance of an object throughout time, lacking the motion information, and we wll discuss more about this later. ConvLSTM is a RNN, and the difference with the standard LSTM is that it allows to track the spatial features thanks to its memory tensor, instead of the standard vectorial state. So all the multiplication with input, forget and output gates become convolutions. For each cell the equations are the following :
+\begin{align*}
+i_t = \sigma(w_x^i * f_{SA} + w_h^i * h_{t-1} + b^i)\\
+f_t = \sigma(w_x^f * f_{SA} + w_h^f * h_{t-1} + b^f)\\
+\tilde{c_t} = tanh(w_x^{\tilde{c}}*f_{SA}+w_h^{\tilde{c}}*h_{t-1} + b^{\tilde{c}})\\
+c_t = \tilde{c_t} \odot f_{SA} + c_{t-1} \odot f_{t}\\
+o_t = \sigma(w_x^o * f_{SA} + w_h^o * h_{t-1} + b^0)\\
+h_t = o_t \odot tanh(c_t) 
+\end{align*}
+where $\sigma$ is the sigmoid function, $i_t$, $f_t$, $o_t$, $c_t$ and $h_t$ represent the input state, forget state,
+output state, memory state and hidden state, respectively, of the convLSTM. The trainable
+weights and biases of the convLSTM are represented using w and b
+
+
+The last output of the ConvLSTM (the output obtained from the last frame of a particular video) is average pooled and reshaped to obtain a final classification layer with 61 neurons (i.e. the number of classes of our dataset).
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{images/egornn.png}
+  \caption{Architecture of \textit{egornn}}
+  \label{egornn_arch}
+\end{figure*}
+
+\subsection{Flow\_resnet34}
+
+\textit{Flow\_resnet34} is just a \textit{resnet34} edited to work with the warp flows. It gets five warp flows from \textit{processed\_frames\_x} and five from \textit{processed\_frames\_y} in form of a tensor of ten channels and tries to make predictions on the 61 classes.
+
+\subsection{Two stream model}
+
+\textit{Egornn} learns appearence features, while \textit{flow\_resnet34} learns motion features. The way to join the two nets is to concatenate the two output layers and to add at the end a fully connected layer to get the class category scores.
+
+\subsection{Motion Segmentation branch applied to egornn}
+
+The problem which \cite{sparnet} tries to overcome is that in the two stream model motion and appearence are actually separately learned, without taking into account the spatial-temporal relationships.
+
+We have built an architecture similar to \textit{sparnet}, where the \textit{motion segmentation block} is the same but the \textit{action recognition block} has been substituted by \textit{egornn} (like in one of the attempts in \cite{sparnet}). The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the main blocks are always as shown in \reff{msblock_arch}. The input of the convolutional layer of MS Block is taken from one of the convolutional layers of \textit{resnet34} of egornn (the actual layer varies with our experiments). Then, after the convolutional layer, there is a fully connected layer followed by a softmax which normalizes the weights between 0 and 1. \textit{mmaps ground truth} and \textit{rgb ground truth} represent the mmaps and the rgb after the trasformations. The trasformations applied to the mmaps are the same applied to the rgbs, plus a small amount of proper mmaps trasformations which always ends with a trasformation which linearizes the pixels (from a 2 dimensional tensor per mmap we get a 1 dimensional tensor per mmap). For the msblock these linearized pixels represent a real ground truth, because each of the output neurons of the MS Block is used to predict the values of the mmaps ground truth. The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the \textit{egornn} loss ($L_c$). The final loss is used to compute the gradients to update the weights.
+
+\begin{figure*}
+  \centering
+  \includegraphics[width=\linewidth]{images/egornn+msblock_architecture.png}
+  \caption{Generic architecture of motion segmentation branch applied to \textit{egornn}}
+  \label{msblock_arch}
+\end{figure*}
+
+\subsection{Static-dynamic discriminator}
+
+Starting from the model described above, we have added a final binary classifier to \textit{egornn} after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kind of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
+
+
 \subsection{Dataset description}
 
 The dataset under analysis is a modified version of GTEA61\footnote{Georgia Tech Egocentric Activity Datasets: \small{\url{http://cbs.ic.gatech.edu/fpv/}}}. The dataset contains the videos in form of frames, and also two kind of preprocessed images: \textit{motion maps} and \textit{optical flows}. The folder schema of the dataset is shown in \reff{folder_schema}. Videos represent 61 class actions performed by 4 different users (\textit{S1}, \textit{S2}, \textit{S3}, \textit{S4}). Sometimes for some actions more than one video is available. The total number of videos in the dataset is, however, 457, which actually means that it is a quite small dataset.
@@ -184,56 +254,6 @@ The dataset was almost clean already from the beginning, but we encountered two 
   \item some of the first mmaps of some videos were missing. In these cases we have simply duplicated the second mmap
 \end{itemize}
 
-\section{Descriptions of the models}
-
-Here we describe the models that we have used to perform our experiments.
-
-\subsection{Egornn}
-
-\textit{Egornn} is a Recurrent Neural Network. The overall architecture of \textit{Egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we will refer to these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
-
-At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It calculates a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax.
-
-% We can graphically see some of our CAMs in \reff{cams}.
-%%% ADD CAMS %%%
-
-The output of the CAM is then sent to a \textit{softmax} layer to obtain a probability map, which is called \textit{Spatial Attention Layer} (SAM). The output of the SAM is finally multiplied, cell by cell (Hadamard product), with the output of \textit{conv5}, obtaining another tensor of weights which is sent to a \textit{Convolutional Long Term Support Memory} block (ConvLSTM).
-
-The reason for the usage of the ConvLSTM block is that, up to now, what the net does is to take each frame and to try to make predictions based only on the features that the net can extract from those frames, without taking into consideration the temporal encoding of frame level features. The convLSTM block take into consideration, for each frame $i$, both the output of the SAM for the layer i and the output of the ConvLSTM for the layer $i-1$, constituting a recursive structure.
-
-The last output of the ConvLSTM (the output obtained from the last frame of a particular video) is average pooled and reshaped to obtain a final classification layer with 61 neurons (i.e. the number of classes of our dataset).
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=\linewidth]{images/egornn.png}
-	\caption{Architecture of \textit{egornn}}
-	\label{egornn_arch}
-\end{figure*}
-
-\subsection{Flow\_resnet34}
-
-\textit{Flow\_resnet34} is just a \textit{resnet34} edited to work with the warp flows. It gets five warp flows from \textit{processed\_frames\_x} and five from \textit{processed\_frames\_y} in form of a tensor of ten channels and tries to make predictions on the 61 classes.
-
-\subsection{Two stream model}
-
-\textit{Egornn} learns appearence features, while \textit{flow\_resnet34} learns motion features. The way to join the two nets is to concatenate the two output layers and to add at the end a fully connected layer to get the class category scores.
-
-\subsection{Motion Segmentation branch applied to egornn}
-
-The problem which \cite{sparnet} tries to overcome is that in the two stream model motion and appearence are actually separately learned, without taking into account the spatial-temporal relationships.
-
-We have built an architecture similar to \textit{sparnet}, where the \textit{motion segmentation block} is the same but the \textit{action recognition block} has been substituted by \textit{egornn} (like in one of the attempts in \cite{sparnet}). The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the main blocks are always as shown in \reff{msblock_arch}. The input of the convolutional layer of MS Block is taken from one of the convolutional layers of \textit{resnet34} of egornn (the actual layer varies with our experiments). Then, after the convolutional layer, there is a fully connected layer followed by a softmax which normalizes the weights between 0 and 1. \textit{mmaps ground truth} and \textit{rgb ground truth} represent the mmaps and the rgb after the trasformations. The trasformations applied to the mmaps are the same applied to the rgbs, plus a small amount of proper mmaps trasformations which always ends with a trasformation which linearizes the pixels (from a 2 dimensional tensor per mmap we get a 1 dimensional tensor per mmap). For the msblock these linearized pixels represent a real ground truth, because each of the output neurons of the MS Block is used to predict the values of the mmaps ground truth. The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the \textit{egornn} loss ($L_c$). The final loss is used to compute the gradients to update the weights.
-
-\begin{figure*}
-	\centering
-	\includegraphics[width=\linewidth]{images/egornn+msblock_architecture.png}
-	\caption{Generic architecture of motion segmentation branch applied to \textit{egornn}}
-	\label{msblock_arch}
-\end{figure*}
-
-\subsection{Static-dynamic discriminator}
-\label{ds_section}
-Starting from the model described above, we have added a final binary classifier to \textit{egornn} after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kinds of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
 
 \section{Experiments}
 
