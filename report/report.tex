@@ -163,7 +163,7 @@ The last output of the ConvLSTM (the output obtained from the last frame of a pa
 
 \subsection{Flow\_resnet34}
 
-\textit{Flow\_resnet34} is the second network used by \cite{egornn}. It is mainly just a \textit{resnet34}, trained separately to work with warp flows. As 
+\textit{Flow\_resnet34} is the second network used by \cite{egornn}. It is mainly just a \textit{resnet34}, trained separately to work with warp flows. As
 warp flow are supposed to contain motion clues tied to spatial location, the purpose of this network is to encode the motion changes occurring during an input video. Other than this conceptual difference, it is just and adaption of \textit{resnet34} to accept 10-channel inputs, since it is fed with 5 stacked flow images, each one consisting of a x-flow frame and a y-flow. It can be pointed out that a whole new network is not the most efficient way to extract motion clues, especially since this informations is kept separated from the rest of the network which spatio-temporally encodes features, and only late-fused at the classification step.
 
 
@@ -178,28 +178,28 @@ Our experiments show that the performance boost obtained joining the two streams
 
 This is the architecture proposed in \cite{sparnet}, which argues that appearance and motion informations are to be jointly learned, as separating the learning of the 2 is not only heavier but also may lead to lose some of the correlation amongst them without taking into account the spatial-temporal relationships.
 
-The \textit{sparnet} architecture takes on the \textit{egornn} clue of having a CNN backbone feeding a convLSTM module. The objective is achieving the same state-of-the-art result using a single stream network, and moreover leveraging only a limited amount of frames. To achieve this, a secondary task is introduced, consisting in a \textit{Motion Segmentation} (MS) task, formalizable as a binary classification problem on a pixel map, to determine whether each pixel is \textit{moving} or \textit{static}. To implement this task in a self-supervised way, the ground truths for this task are obtained using the \textit{Improved Dense Trajectories} (IDT). This MS block consists in a shallow head attached to the \textit{conv5} output of CNN backbone, so it works with 7x7 feature maps, and after downsampling the channels uses a fully connected layer to produce the predictions for each pixel. In the base version the ground truth is obtained with a simple downsampling of the motion maps from 224x224 to 7x7.  
-The important aspects of this approach are that once the network solved this task at training time, it is supposed to have learned how to extract meaningful features that include motion clues, and so at test time is not needed anymore speeding up inference. Moreover it puts a prior on the feature representation that the network should extract, hence adding a regularization terms which only relies on data. In the end the global training procedure can be formalized as follows:  
+The \textit{sparnet} architecture takes on the \textit{egornn} clue of having a CNN backbone feeding a convLSTM module. The objective is achieving the same state-of-the-art result using a single stream network, and moreover leveraging only a limited amount of frames. To achieve this, a secondary task is introduced, consisting in a \textit{Motion Segmentation} (MS) task, formalizable as a binary classification problem on a pixel map, to determine whether each pixel is \textit{moving} or \textit{static}. To implement this task in a self-supervised way, the ground truths for this task are obtained using the \textit{Improved Dense Trajectories} (IDT). This MS block consists in a shallow head attached to the \textit{conv5} output of CNN backbone, so it works with 7x7 feature maps, and after downsampling the channels uses a fully connected layer to produce the predictions for each pixel. In the base version the ground truth is obtained with a simple downsampling of the motion maps from 224x224 to 7x7.
+The important aspects of this approach are that once the network solved this task at training time, it is supposed to have learned how to extract meaningful features that include motion clues, and so at test time is not needed anymore speeding up inference. Moreover it puts a prior on the feature representation that the network should extract, hence adding a regularization terms which only relies on data. In the end the global training procedure can be formalized as follows:
 $S_i = {H_i , y_i }_{ni=1}$ , where $H_i$ is a set of N times-
 tamped images ${(h^k_i , t^k_i )}_{k=1}^N$
 uniformly sampled from the
 video segment. Let also $x = f_M(H|\theta_f , \theta_c )$ be the embed-
 ding of sample S computed by our model M , where param-
 eters $\theta_f$ and $\theta_c$ define, respectively, the image embedding
-and the classification spaces. Finally, let $(p(y|x, \theta_c, \theta_f)$ be the 
+and the classification spaces. Finally, let $(p(y|x, \theta_c, \theta_f)$ be the
 model probability estimator on the embedding x :
 \begin{align*}
 L_c(x,y) = - \sum_{i=1}^{n} y_i log(p(y|x, \theta_c, \theta_f))\\
-L_{ms}(x,m) = - \sum_{i=1}^{n} \sum_{k=1}^{N} \sum_{j=1}^{s^2} m_i^k(j)log(l_i^k(j)) 
+L_{ms}(x,m) = - \sum_{i=1}^{n} \sum_{k=1}^{N} \sum_{j=1}^{s^2} m_i^k(j)log(l_i^k(j))
 \end{align*}
 
  The pixel losses are summed together (obtaining as result $L_{ms}$) and then are summed again with the \textit{egornn} loss ($L_c$). The final loss is used to compute the gradients to update the weights.
 
 \begin{align*}
-L(x,y,m| \theta_M) = L(x,y|\theta_f, \theta_c) + L(x,m| \theta_f, \theta_ms ) 
+L(x,y,m| \theta_M) = L(x,y|\theta_f, \theta_c) + L(x,m| \theta_f, \theta_ms )
 \end{align*}
 
-The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the basic blocks are always as shown in \reff{msblock_arch}. 
+The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the basic blocks are always as shown in \reff{msblock_arch}.
 
 
 \begin{figure*}
@@ -210,9 +210,8 @@ The architecture is shown in \reff{msblock_arch}. We have used this architecture
 \end{figure*}
 
 \subsection{Static-dynamic discriminator}
-
+\label{ds_section}
 Starting from the model described above, we have added a final binary classifier to \textit{egornn} after the convLSTM, parallel to the other classifier already present which still tries to predict the actual class of the video. The idea was to force the net to learn the motion features from the rgbs. During the training phase this classifier gets 2 kind of sequences of frames: one is the same of the original classifier, while the other gets a sequence of identical frames. This discriminator should be able to recognize the actual videos from the static frames. In this way the gradients should adapt to focus the attention on the motion.
-
 
 \subsection{Dataset description}
 
@@ -564,7 +563,7 @@ To assert if there is an actual contribution of the Motion Segmentation branch a
 
 We better studied this behaviour by analyzing the CAMs.
 
-To overcome these problems we have tried to increase the resolution of the downsampled mmaps and to treat the problem as regression problem or binary classification problem, and various combinations of this. When handling with the regression problem, we have also tried to use different kind of downsampled motion maps, with a simple technique that we called \textit{grid technique} for the sake of comprehensibility. With a brutal downsampling there is an high risk to loss information. For example, we could take a black pixel contoured by white pixels. This is not good for the net and could bring to misclassification. So, we divided the original 224x224 mmap (obtained after the application of the same kind of trasformations applied to the rgbs without the \textit{normalize} transform) in $l$x$l$ blocks of ($224/l$)x($224/l$) pixels, where $l$ is 7, 14 or 28. The corresponding pixel in the final downsampled mmap is the average of the values of the pixels of its block (so, the image becomes a gray scale image). We applied this last kind of downsampling transformation together with only the regression methodology, due to the particular nature of this image (which in so more easily discretizable).
+To overcome these problems we have tried to increase the resolution of the downsampled mmaps and to treat the problem as regression problem or binary classification problem, and various combinations of this. When handling with the regression problem, we have also tried to use different kind of downsampled motion maps, with a simple technique developed by us that we called \textit{grid technique} for the sake of comprehensibility. Our base downsampling technique is inspired by \cite{downsampling}, but we observed that with a brutal downsampling like this one there is an high risk to loss information. For example, we could take a black pixel contoured by white pixels. This is not good for the net and could bring to misclassification. So, we divided the original 224x224 mmap (obtained after the application of the same kind of trasformations applied to the rgbs without the \textit{normalize} transform) in $l$x$l$ blocks of ($224/l$)x($224/l$) pixels, where $l$ is 7, 14 or 28. The corresponding pixel in the final downsampled mmap is the average of the values of the pixels of its block (so, the image becomes a gray scale image). We applied this last kind of downsampling transformation together with only the regression methodology, due to the particular nature of this image (which in so more easily discretizable).
 
 An example of the described images is shown in \reff{mmaps}.
 
@@ -632,7 +631,9 @@ We have performed three experiments for each one of the selected configurations 
 
 The first 2 rows of \reff{mmaps_table} act as baseline for our experiments. They are nothing but the experiments proposed in \cite{sparnet}, despite with a lower number of frames due to the already highlighted problems of available memory in Colab. We can observe that:
 \begin{itemize}
-  \item the regression over the small 7x7 mmaps with th
+  \item the regression over the small 7x7 gray-scale mmaps performed slightly worse than with the 7x7 black-and-white mmaps, but still better than the binary classification baseline version. However, this tell us that the regression technique paired with the gray-scale mmaps is not a good imporvement taken alone
+  \item increasing the resolution from 7x7 to 28x28 is too much. This is not strongly due to the resolution: higher resolutions should give better results. The problem is that to deal with this high resolution downsampled mmaps we have to extract features from preliminary layers, and this bring us to force the training on more low level layers (conv3) to give sense to the Motion Segmentation branch backward phase of gradients updating
+  \item the best trade-off between training the most high level layers possible and to have good high quality representations of the mmaps is for resolution 14x14. Both the techniques performe a lot better then the respective baselines (binary and regression baselines respectively): we get an increase in performances of roughly 7 points of accuracy with respect to the corresponding baseline, which is an awesome result! Considering instead as baseline only the first row, with our best solution we obtained an increase in performances of 13 points of accuracy, which is a substantial improvement!
 \end{itemize}
 
 \subsubsection{Static-dynamic discriminator}
@@ -645,12 +646,35 @@ The reasons for this approach are explained in Section \ref{ds_section}. Also he
   \item training \textit{convLSTM} and the final static-dynamic classifier when forwarding the static frames. The static-dynamic loss is multiplied by a constant ALPHA = 0.1
 \end{enumerate}
 
+The reason for the ALPHA constant is to modulate the importance of the Static-dynamic discriminator block.
+
+The Motion Segmentation branch has been used as in \cite{sparnet}, and so the downsampled mmaps are black and white 7x7 resolution mmaps and the technique used is the binary classification one.
+
+The results are shown in \reff{DS_table}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.6\linewidth]{images/step3.2_table.jpg}
+  \caption{Summary of the mean accuracy values for the Static-Dynamic experiments}
+  \label{DS_table}
+\end{figure}
+
+The results show that all our attempts have at least a mean accuracy which is comparable to the corresponding baseline (binary classification baseline on the first row of the table in \reff{mmaps_table}). In particular, in the case with ALPHA = 0.1 we get a significant improvement of 8 points of accuracy.
 
 \subsubsection{Flow di Gabriele} %%%%CHANGE!!
 
 \section{Conclusion}
 
-In this paper we presented a further analysis of the methods proposed in \cite{egornn} and \cite{sparnet}. We integreted these studies with three custom ideas, trying to spot the bad points of the proposed methodologies, to improve them with our solutions or joining them with other approaches taken from other researches. Possible lines to follow for further works could try to overcome the still unsolved problems that we have found in our study. These span from the research of a good way to integrate of the warp flows directly in the backbone of the net to a more concrete way to extract motion features. The increases in the performances for the two-stream solution was not so astonishing, and this should bring to try to find innovative solutions in this path. The possibility that we exploited from \cite{reprflow} and \cite{motfilt} was original thought for a ...gabri sistema..., and so...., but ... , so we excluded the possibility to use this in other work based on egocentric action regognition despite of third person action recognition (sistema!!!). Other possibilities for this are...
+In this paper we presented a further analysis of the methods proposed in \cite{egornn} and \cite{sparnet}. We integreted these studies with three custom ideas, trying to spot the bad points of the proposed methodologies, to improve them with our solutions or joining them with other approaches taken from other researches. The summary of our results is shown in \reff{summary_table}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.8\linewidth]{images/summary_table.jpg}
+  \caption{Summary of the results of our original experiments}
+  \label{DS_table}
+\end{figure}
+
+Possible lines to follow for further works could try to overcome the still unsolved problems that we have found in our study. These span from the research of a good way to integrate of the warp flows directly in the backbone of the net to a more concrete way to extract motion features. The increases in the performances for the two-stream solution was not so astonishing, and this should bring to try to find innovative solutions in this path. The possibility that we exploited from \cite{reprflow} and \cite{motfilt} was original thought for a ...gabri sistema..., and so...., but ... , so we excluded the possibility to use this in other work based on egocentric action regognition despite of third person action recognition (sistema!!!). Other possibilities for this are...
 Following the same ideas we also tried to enforce the net to learn the motion features through the Static-Dynamic block with a discretely good result. But the results tell us that our main contribution goes in the direction of the motion maps. We got really high improvements with a simple and elegant idea, based on strong observations on the loss decay of the Motion Segmentation branch. This results give also strength to the study in \cite{sparnet} because the main components of the net that we used are the same of the net in \cite{sparnet}. We hope we could reply (and also improve!) these results in some future work by exploiting a more adequate hardware infrastructure, which would be capable to handle also 16 and 25 frames for each video in our batches. Finally, other attempts that are possible to improve this work is to combine the two-stream methodology with the different downsampling of the mmaps, by treating the motion segmentation branch as regression problem together with the usage of the Static-Dynamic block at the top of \textit{egornn}, and all the other possible combinations of our ideas and of the paper's approaches that have not been explored.
 
 

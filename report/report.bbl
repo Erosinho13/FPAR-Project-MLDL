@@ -9,6 +9,10 @@ M.~Lee, S.~Lee, S.~Son, G.~Park, and N.~Kwak.
 \newblock Motion feature network: Fixed motion filter for action recognition,
   2018.
 
+\bibitem{downsampling}
+D.~Pathak, R.~Girshick, P.~Dollàr, T.~Darrel, and B.~Hariharan.
+\newblock Learning features by watching objects move, 2017.
+
 \bibitem{reprflow}
 A.~Piergiovanni and M.~S. Ryoo.
 \newblock Representation flow for action recognition, 2019.
