@@ -374,7 +374,7 @@ The size of our batches has always been left to 32, as well as the number of hid
 
 \subsection{Egornn}
 
-We have replied some of the same experiments of \cite{egornn} on the original egornn. We have run each of these experiments three times and then we have averaged the results.
+We have replicated some of the same experiments of \cite{egornn} on the original egornn. We have run each of these experiments three times and then we have averaged the results.
 
 First, we have performed the classification by using the \textit{egornn} without and with the CAM. The training phase has been divided in two parts, as in the original paper:
 
@@ -545,7 +545,7 @@ In \reff{cams1_1} and \reff{cams1_2} are shown the CAMs from a couple of video f
 
 \subsection{Motion Segmentation branch applied to egornn}
 
-The wrong focus of the CAMs  highly justifies the implementation of the self-supervised task which exploits the motion maps. First of all we have replied the same experiment of \cite{sparnet} (the one in which \textit{egornn} is the Action Recognition Block). The hyperparameters used are:
+The wrong focus of the CAMs  highly justifies the implementation of the self-supervised task which exploits the motion maps. First of all we have replicated the same experiment of \cite{sparnet} (the one in which \textit{egornn} is the Action Recognition Block). The hyperparameters used are:
 
 \begin{center}
 	\setstretch{1}
@@ -602,8 +602,7 @@ The results with the same values for the hyperparameters are shown in \reff{ms_t
 
 As expected, the best performances are achieved after the second stage of training and with 16 frames.
 
-We have also replied this experiment as a regression problem.
-[REGRESSION IMPLEMENTATION]
+We have also replicated this experiment as a regression problem.
 
 In \reff{ms_reg_table} are shown the results.
 
@@ -614,7 +613,7 @@ In \reff{ms_reg_table} are shown the results.
 	\label{ms_reg_table}
 \end{figure}
 
-Also in this case the highest value of the accuracy is obtained for 16 frames. The first stage is exactly the same so we have not replied it three times more. For the second stage we observe that with this combination of values for the hyperparameters the regression performs more than 4 points better than classification with 16 frames, while the accuracies are roughly the same when the number of frames is 7.
+Also in this case the highest value of the accuracy is obtained for 16 frames. The first stage is exactly the same so we have not replicated it three times more. For the second stage we observe that with this combination of values for the hyperparameters the regression performs more than 4 points better than classification with 16 frames, while the accuracies are roughly the same when the number of frames is 7.
 
 We have performed also a complete grid search to improve the performances of the net.
 
