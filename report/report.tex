@@ -537,7 +537,9 @@ To assert if there is an actual contribution of the Motion Segmentation branch a
 
 We better studied this behaviour by analyzing the CAMs.
 
-To overcome these problems we have tried to increase the resolution of the downsampled mmaps and to treat the problem as.
+To overcome these problems we have tried to increase the resolution of the downsampled mmaps and to treat the problem as regression problem or binary classification problem, and various combinations of this. When handling with the regression problem, we have also tried to use different kind of downsampled motion maps, with a simple technique that we called \textit{grid technique} for the sake of comprehensibility. With a brutal downsampling there is an high risk to loss information. For example, we could take a black pixel contoured by white pixels. This is not good for the net and could bring to misclassification. So, we divided the original 224x224 mmap (obtained after the application of the same kind of trasformations applied to the rgbs without the \textit{normalize} transform) in $l$x$l$ blocks of ($224/l$)x($224/l$) pixels, where $l$ is 7, 14 or 28. The corresponding pixel in the final downsampled mmap is the average of the values of the pixels of its block (so, the image becomes a gray scale image). We applied this last kind of downsampling transformation together with only the regression methodology, due to the particular nature of this image (which in so more easily discretizable).
+
+An example of the described images is shown in \reff{mmaps}.
 
 \begin{figure}[t]
 	\centering
@@ -569,6 +571,42 @@ To overcome these problems we have tried to increase the resolution of the downs
 	\caption{Example of mmap. In the left: original resolution mmap cropped at 224x224. In the right: from left to right mmaps downsampled at 7x7, 14x14 and 28x28 respectively, from top to bottom mmaps classically downsampled and mmaps generated with the \quotes{grid technique}}
 	\label{mmaps}
 \end{figure}
+
+To assert which is the best strategy we have trained the net a first time as in the previouses stages 1, with the last set of values for the hyperparameters already showed for stage1, and we have used these weights as starting point for all the stages 2 of the various implementations. The set of hyperparameters chosen for all the implementations for the stages 2 of this section is the following. The choice is based on the observations that we have already done during the grid search analysis, where we have seen that with these values the net performs good.
+
+\begin{center}
+	\setstretch{1}
+ \scalebox{0.7}{
+ 	\begin{tabular}{|c|c|}
+ 		 \hline
+ 		 \textbf{LR} & 1e-4 \\
+  		 \hline
+ 		 \textbf{WEIGHT\_DECAY} & 4e-5 \\
+ 		 \hline
+ 		 \textbf{NUM\_EPOCHS} & 150 \\
+ 		 \hline
+ 		 \textbf{STEP\_SIZE} & [30, 80] \\
+ 		 \hline
+ 		 \textbf{GAMMA} & 0.2 \\
+ 		 \hline
+ 	\end{tabular}
+ }
+	\setstretch{0.1}
+\end{center}
+
+We have performed three experiments for each one of the selected configurations and then averaged the results, as before. The experiments are summarized in \reff{mmaps_table}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=.7\linewidth]{images/step3.1_table.jpg}
+  \caption{Summary of the mean accuracy values with different combinations of mmaps downsampling techinque and final resolution}
+  \label{mmaps_table}
+\end{figure}
+
+The first 2 rows of \reff{mmaps_table} act as baseline for our experiments. They are nothing but the experiments proposed in \cite{sparnet}, despite with a lower number of frames due to the already highlighted problems of available memory in Colab. We can observe that:
+\begin{itemize}
+  \item the regression over the small 7x7 mmaps with th
+\end{itemize}
 
 \subsubsection{Static-dynamic discriminator}
 
