@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 00:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.4.25)  15 JUN 2020 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -769,100 +769,123 @@ File: images/step2.1_table.jpg Graphic file (type jpg)
 <use images/step2.1_table.jpg>
 Package pdftex.def Info: images/step2.1_table.jpg  used on input line 420.
 (pdftex.def)             Requested size: 122.22731pt x 86.97118pt.
+<images/step2.3_table.jpg, id=114, 183.68625pt x 149.55875pt>
+File: images/step2.3_table.jpg Graphic file (type jpg)
+<use images/step2.3_table.jpg>
+Package pdftex.def Info: images/step2.3_table.jpg  used on input line 434.
+(pdftex.def)             Requested size: 105.93013pt x 86.25119pt.
+<images/grid_no_reg_table.jpg, id=117, 336.25626pt x 311.1625pt>
+File: images/grid_no_reg_table.jpg Graphic file (type jpg)
+<use images/grid_no_reg_table.jpg>
+Package pdftex.def Info: images/grid_no_reg_table.jpg  used on input line 445.
+(pdftex.def)             Requested size: 203.71013pt x 188.5079pt.
+<images/grid_reg_table.jpg, id=118, 342.27875pt x 270.00874pt>
+File: images/grid_reg_table.jpg Graphic file (type jpg)
+<use images/grid_reg_table.jpg>
+Package pdftex.def Info: images/grid_reg_table.jpg  used on input line 452.
+(pdftex.def)             Requested size: 203.71013pt x 160.70044pt.
 
-
-LaTeX Warning: Reference `ms_reg_table' on page 7 undefined on input line 429.
-
-
-Underfull \hbox (badness 3229) in paragraph at lines 437--438
-[]\OT1/ptm/m/n/10 [DESCRIZIONE PROB-LEMA LOSS E MIS-
+Underfull \hbox (badness 1142) in paragraph at lines 457--458
+[]\OT1/ptm/m/n/10 As we can ob-serve the best per-for-mances are
  []
 
-<images/mmaps_example/downsampling224x224_bw.png, id=113, 257.96375pt x 252.945
+[7 <./images/step2.1_table.jpg> <./images/step2.3_table.jpg>]
+
+LaTeX Warning: Reference `grid_comparison' on page 8 undefined on input line 46
+5.
+
+<images/mmaps_example/downsampling224x224_bw.png, id=133, 257.96375pt x 252.945
 pt>
 File: images/mmaps_example/downsampling224x224_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling224x224_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling224x224_bw.png  used 
-on input line 445.
+on input line 479.
 (pdftex.def)             Requested size: 171.99922pt x 168.65788pt.
-<images/mmaps_example/downsampling7x7_bw.png, id=114, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_bw.png, id=134, 245.91875pt x 248.93pt>
 File: images/mmaps_example/downsampling7x7_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_bw.png  used on i
-nput line 449.
+nput line 483.
 (pdftex.def)             Requested size: 82.45209pt x 83.46138pt.
-<images/mmaps_example/downsampling14x14_bw.png, id=115, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling14x14_bw.png, id=135, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling14x14_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_bw.png  used on
- input line 452.
+ input line 486.
 (pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
-<images/mmaps_example/downsampling28x28_bw.png, id=116, 251.94125pt x 248.93pt>
+<images/mmaps_example/downsampling28x28_bw.png, id=136, 251.94125pt x 248.93pt>
 
 File: images/mmaps_example/downsampling28x28_bw.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_bw.png>
 Package pdftex.def Info: images/mmaps_example/downsampling28x28_bw.png  used on
- input line 455.
+ input line 489.
 (pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
-<images/mmaps_example/downsampling7x7_gray.png, id=117, 245.91875pt x 248.93pt>
+<images/mmaps_example/downsampling7x7_gray.png, id=137, 245.91875pt x 248.93pt>
 
 File: images/mmaps_example/downsampling7x7_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling7x7_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling7x7_gray.png  used on
- input line 458.
+ input line 492.
 (pdftex.def)             Requested size: 82.45209pt x 83.46138pt.
-<images/mmaps_example/downsampling14x14_gray.png, id=118, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling14x14_gray.png, id=138, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling14x14_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling14x14_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling14x14_gray.png  used 
-on input line 461.
+on input line 495.
 (pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
-<images/mmaps_example/downsampling28x28_gray.png, id=119, 251.94125pt x 248.93p
+<images/mmaps_example/downsampling28x28_gray.png, id=139, 251.94125pt x 248.93p
 t>
 File: images/mmaps_example/downsampling28x28_gray.png Graphic file (type png)
 <use images/mmaps_example/downsampling28x28_gray.png>
 Package pdftex.def Info: images/mmaps_example/downsampling28x28_gray.png  used 
-on input line 464.
+on input line 498.
 (pdftex.def)             Requested size: 82.45209pt x 81.46724pt.
+
+Underfull \vbox (badness 1275) has occurred while \output is active []
+
+
 (./report.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 486.
- [7 <./images/step2.1_table.jpg>] [8 <./images/mmaps_example/downsampling224x22
-4_bw.png> <./images/mmaps_example/downsampling7x7_bw.png> <./images/mmaps_examp
-le/downsampling14x14_bw.png> <./images/mmaps_example/downsampling28x28_bw.png> 
-<./images/mmaps_example/downsampling7x7_gray.png> <./images/mmaps_example/downs
-ampling14x14_gray.png> <./images/mmaps_example/downsampling28x28_gray.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 486.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
+ [8 <./images/grid_no_reg_table.jpg> <./images/grid_reg_table.jpg>] [9 <./image
+s/mmaps_example/downsampling224x224_bw.png> <./images/mmaps_example/downsamplin
+g7x7_bw.png> <./images/mmaps_example/downsampling14x14_bw.png> <./images/mmaps_
+example/downsampling28x28_bw.png> <./images/mmaps_example/downsampling7x7_gray.
+png> <./images/mmaps_example/downsampling14x14_gray.png> <./images/mmaps_exampl
+e/downsampling28x28_gray.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
  (./report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 486.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 486.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 520.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 486.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 520.
  ) 
 Here is how much of TeX's memory you used:
- 12436 strings out of 481239
- 193762 string characters out of 5920377
- 751253 words of memory out of 5000000
- 27372 multiletter control sequences out of 15000+600000
- 561840 words of font info for 86 fonts, out of 8000000 for 9000
+ 12461 strings out of 481239
+ 194361 string characters out of 5920377
+ 751740 words of memory out of 5000000
+ 27390 multiletter control sequences out of 15000+600000
+ 562347 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,10n,46p,1559b,709s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb
-8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (8 pages, 1209106 bytes).
+ype1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (9 pages, 1303383 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 204 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
+ 43 named destinations out of 1000 (max. 500000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 

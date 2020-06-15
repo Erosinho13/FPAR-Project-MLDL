@@ -418,23 +418,57 @@ The results with the same values for the hyperparameters are shown in \reff{ms_t
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=.6\linewidth]{images/step2.1_table.jpg}
-	\caption{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames}
+	\caption{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - classification experiment}
 	\label{ms_table}
 \end{figure}
 
-Thereafter, we have performed a grid search for the tuning of the hyperparameters.
+As expected, the best performances are achieved after the second stage of training and with 16 frames.
 
 We have also replied this experiment as a regression problem.
-[GABRIELE SPIEGA]
+[REGRESSION IMPLEMENTATION]
+
 In \reff{ms_reg_table} are shown the results.
 
-[RISULTATI, QUALE È IL MIGLIORE, LOSS E ACCURACY...]
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=.52\linewidth]{images/step2.3_table.jpg}
+	\caption{Mean accuracies over three identical experiments with the same fixed set of values for the hyperparameters, by varying only the stage of training and the number of frames - regression experiment}
+	\label{ms_reg_table}
+\end{figure}
 
-[GRID SEARCH NORMALE]
+Also in this case the highest value of the accuracy is obtained for 16 frames. The first stage is exactly the same so we have not replied it three times more. For the second stage we observe that with this combination of values for the hyperparameters the regression performs more than 4 points better than classification with 16 frames, while the accuracies are roughly the same when the number of frames is 7.
 
-[GRID SEARCH REGRESSION]
+We have performed also a complete grid search to improve the performances of the net. The number of selected frames is 16, for which we have seen that the performances are better than for 7. For the classification strategy the results are shown in \reff{ms_grid}, while for the regression they are shown in \reff{ms_reg_grid}.
 
-[DESCRIZIONE PROBLEMA LOSS E MISCLASSIFIED VIDEOS]
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{images/grid_no_reg_table.jpg}
+	\caption{Accuracies at various combinations of hyperparameters for the classification strategy}
+	\label{ms_grid}
+\end{figure}
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\linewidth]{images/grid_reg_table.jpg}
+	\caption{Accuracies at various combinations of hyperparameters for the regression strategy}
+	\label{ms_reg_grid}
+\end{figure}
+
+As we can observe the best performances are achieved:
+\begin{itemize}
+  \item with $LR = 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-3}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 75.00
+    \item with $LR = 5 \cdot 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-5}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 72.41
+\end{itemize}
+
+In general we can say that the performances are better with the classification method, and this is a surprisingly relult based on the observations without the grid. The reason for the previous result was that, as emerges from \reff{ms_grid} and \reff{ms_reg_grid}, the optimal values for the hyperparameters falls in a total different region with respect to the two different methodologies.
+
+In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss.
+
+
+
+
+
+
 
 To overcome these problems we have tried to increase the resolution of the downsampled mmaps and to treat the problem as.
 
