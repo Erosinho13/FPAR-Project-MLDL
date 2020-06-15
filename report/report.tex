@@ -182,7 +182,7 @@ Here we describe the models that we have used to perform our experiments.
 
 \textit{Egornn} is a Recurrent Neural Network. The overall architecture of \textit{Egornn} is shown in \reff{egornn_arch}. This net is based on \textit{resnet34}\cite{resnet}, which constitutes the main block. \textit{resnet34} has five convolutional layers inside itself: with respect to \reff{egornn_arch} they are: \textit{Conv}, \textit{Layer1}, \textit{Layer2}, \textit{Layer3} and , \textit{Layer4}. From now on we will refer to these blocks respectively \textit{conv1}, \textit{conv2}, \textit{conv3}, \textit{conv4} and \textit{conv5}.
 
-At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It includes a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax.
+At the termination of the \textit{resnet34} is placed a \textit{Spatial Attention Layer}. It calculates a \textit{Class Activation Map} (CAM) that is capable to identify the image regions that have been used by the CNN to identify the class under analysis. It is computed by taking the output of the \textit{softmax} layer and the output of \textit{conv5} and taking the linear combination of all the weights of \textit{conv5} and the weights of the softmax.
 
 % We can graphically see some of our CAMs in \reff{cams}.
 %%% ADD CAMS %%%
@@ -438,7 +438,11 @@ In \reff{ms_reg_table} are shown the results.
 
 Also in this case the highest value of the accuracy is obtained for 16 frames. The first stage is exactly the same so we have not replied it three times more. For the second stage we observe that with this combination of values for the hyperparameters the regression performs more than 4 points better than classification with 16 frames, while the accuracies are roughly the same when the number of frames is 7.
 
-We have performed also a complete grid search to improve the performances of the net. The number of selected frames is 16, for which we have seen that the performances are better than for 7. For the classification strategy the results are shown in \reff{ms_grid}, while for the regression they are shown in \reff{ms_reg_grid}.
+We have performed also a complete grid search to improve the performances of the net.
+
+Before starting, it has been execuded a brief tuning step for the stage 1 of training, which is the same for both the classification and the regression methodologies. The values of interest have been STEP\_SIZE and GAMMA only. From this we obtained that the optimal values for the stage1 are exaclty the same used in the previous experiment.
+
+After this preliminary step, the complete grid search has been executed only on the stage 2, which is the most important one. The number of selected frames is 16, for which we have seen that the performances are better than for 7. We have reduced NUM\_EPOCHS to 100 to save computational time (in addition the highest accuracy is rarely obtained after epoch 100). For the classification strategy the results are shown in \reff{ms_grid}, while for the regression they are shown in \reff{ms_reg_grid}.
 
 \begin{figure}[t]
 	\centering
@@ -454,18 +458,39 @@ We have performed also a complete grid search to improve the performances of the
 	\label{ms_reg_grid}
 \end{figure}
 
-As we can observe the best performances are achieved:
+As we can observe the best performances are achieved with:
 \begin{itemize}
-  \item with $LR = 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-3}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 75.00
-    \item with $LR = 5 \cdot 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-5}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 72.41
+  \item $LR = 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-3}, STEP\_SIZE = [40, 80]$ for the classification method, for an accuracy of 75.00
+    \item $LR = 5 \cdot 10^{-4}, WEIGHT\_DECAY = 4 \cdot 10^{-5}, STEP\_SIZE = [30, 80]$ for the classification method, for an accuracy of 72.41
 \end{itemize}
 
-In general we can say that the performances are better with the classification method, and this is a surprisingly relult based on the observations without the grid. The reason for the previous result was that, as emerges from \reff{ms_grid} and \reff{ms_reg_grid}, the optimal values for the hyperparameters falls in a total different region with respect to the two different methodologies.
+In general we can say that the performances are better with the classification method, and this is a surprisingly result based on the observations without the grid. The reason for the previous result was that, as emerges from \reff{ms_grid} and \reff{ms_reg_grid}, the optimal values for the hyperparameters falls in a total different region with respect to the two different methodologies.
 
-In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss.
+In \reff{grid_comparison} we can observe the effects of the values of the hyperparameters on the accuracy and on the loss of both train and validation and over three different experiments present in the grid search with the classification methodology. The colors underline the different learning rate before ad after each step of the optimizer. The steps are shown on the x axis and marked with a vertical gray line. In (a) is shown the best result obtained, while (b) and (c) are representative examples with different tuned values for the hyperparameters. In (a) the loss already start from a low value and the accuracy already starts from an high value. To explain this has been picked the example in (b), which has the same STEP\_SIZE but different values for the other parameters. We can observe that, from \reff{ms_grid}, there is not a tangible difference between the column with GAMMA = 0.1 and the column with GAMMA = 0.2, while it is more evident that with GAMMA = 0.5 the accuracy worsen a bit. So, it has been selected another example, (c),  with GAMMA = 0.1 (which is a different gamma with respect to (a)) and the same values of LR and WEIGHT\_DECAY (which differs from (a)), and with another STEP\_SIZE. The effect of this slight variation on the STEP\_SIZE seems to be not so meaningful, while the actual main characters of the different behaviour of the net are LR and WEIGHT\_DECAY, together with GAMMA which is good when it is 0.1 as well as when in is 0.2. As last observations:
+\begin{itemize}
+  \item is evident from all the three experiments that the train accuracy continue growing also when the validation accuracy starts flattening, and the behaviour is the relative one for the loss
+  \item both the losses and the accuracies are \quotes{noisier} when the learning rate is higher
+  \item the global behaviour is strongly influenced by the random batches which feed the net, and so the results should be intended within an error margin
+\end{itemize}
 
-
-
+\begin{figure*}
+  \centering
+  \captionsetup[subfigure]{justification=centering}
+  \begin{subfigure}{.325\linewidth}
+  	\includegraphics[width=\linewidth]{images/grid_comparison/acc75no_reg.png}
+    \subcaption{\\LR = 1e-4\\WEIGHT\_DECAY = 4e-3\\STEP\_SIZE = [40, 80]\\GAMMA = 0.2\\Highest accuracy = 75.00 at epoch 66}
+  \end{subfigure}
+  \begin{subfigure}{.325\linewidth}
+  	\includegraphics[width=\linewidth]{images/grid_comparison/acc62lr5e-4step4080gamma05_no_reg.png}
+    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [40, 80]\\GAMMA = 0.5\\Highest accuracy = 62.07 at epoch 57}
+  \end{subfigure}
+  \begin{subfigure}{.325\linewidth}
+  	\includegraphics[width=\linewidth]{images/grid_comparison/acc69lr5e-4step50100gamma01_no_reg.png}
+    \subcaption{\\LR = 5e-4\\WEIGHT\_DECAY = 4e-5\\STEP\_SIZE = [50, 100]\\GAMMA = 0.1\\Highest accuracy = 68.97 at epoch 98}
+  \end{subfigure}
+  \caption{Comparison between three representative experiments in the grid search with the classification method}
+  \label{grid_comparison}
+\end{figure*}
 
 
 
