@@ -201,7 +201,6 @@ L(x,y,m| \theta_M) = L(x,y|\theta_f, \theta_c) + L(x,m| \theta_f, \theta_ms )
 
 The architecture is shown in \reff{msblock_arch}. We have used this architecture with some granular variations during our experiments, but the basic blocks are always as shown in \reff{msblock_arch}.
 
-
 \begin{figure*}
   \centering
   \includegraphics[width=\linewidth]{images/egornn+msblock_architecture.png}
@@ -420,6 +419,27 @@ In \reff{step1_acc} and \reff{step1_loss} are shown respectively the validation 
 \end{figure}
 
 From \reff{step1_acc} and \reff{step1_loss} is even more evident that \textit{flow\_resnet34} is highly inefficient alone, and that the results with the CAM are heavily better than the results without the CAM (higher accuracy and lower loss at every epoch). The two-stream model requieres more time to get high accuracies, and overall it seems to have the same behaviour of \textit{egornn} when at full capacity, but it is noisier and so it is easier that for some epoch the accuracy is higher.
+
+In \reff{cams1} are shown the CAMs from a couple of video frames exctracted from \textit{egornn}. As we can observe, the precision is not so high: the CAM often miss to focus on the motion.
+
+\begin{figure*}
+  \centering
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/Cams1/S2_take_cheese/rgb0020.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/Cams1/S2_take_cheese/rgb0020_CAM.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/Cams1/S2_take_cheese/rgb0027.png}
+  \end{subfigure}
+  \begin{subfigure}{.24\linewidth}
+  	\includegraphics[width=\linewidth]{images/Cams1/S2_take_cheese/rgb0027_CAM.png}
+  \end{subfigure}
+  \caption{}
+  \label{cams1}
+\end{figure*}
+
 
 \subsection{Motion Segmentation branch applied to egornn}
 
