@@ -22,6 +22,10 @@ M.~Planamente, A.~Bottino, and B.~Caputo.
 \newblock Joint encoding of appearance and motion features with
   self-supervision for first person action recognition, 2020.
 
+\bibitem{flowcit1}
+L.~Sevilla-Lara, Y.~Liao, F.~Güney, V.~Jampani, A.~Geiger, and M.~Black.
+\newblock On the integration of optical flow and action recognition, 2018.
+
 \bibitem{egornn}
 S.~Sudhakaran and O.~Lanz.
 \newblock Attention is all we need: Nailing down object-centric attention for
