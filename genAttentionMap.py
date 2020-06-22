@@ -136,7 +136,7 @@ def genCAMS(rgbModel, rgbModel_MS, DATA_DIR, n_videos = 5, num_classes = 61, mem
 def genCAMSForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61, mem_size = 512):
 
   FRAME_FOLDER = "processed_frames2/S2"
-  CAM_FOLDER = "../Gen_Specific_CAMS"
+  CAM_FOLDER = "../CAMS"
   
   model1 = attentionModel(num_classes = num_classes, mem_size = mem_size)
   model2 = attention_model_ms(num_classes = num_classes, mem_size = mem_size)
@@ -165,17 +165,20 @@ def genCAMSForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61
   #   raise FileNotFoundError("you specified the wrong directory")
 
   #generate the folder
-  os.mkdir("../Gen_Specific_CAMS")
+  os.mkdir("../CAMS")
   images = []
+  numbers = []
+  repeted_actions = []
 
     
   for action in actions:
-    frame_dir = os.path.join(rgb_dir, action, "1", "rgb")
-    frames = np.array(sorted(os.listdir(frame_dir)))
-    select_indices = np.linspace(0, len(frames), 5, endpoint=False, dtype=int)
-    select_frames = frames[select_indices]
-    selected_images = [os.path.join(frame_dir, frame) for frame in select_frames]
-    images.append(selected_images)
+    for num in os.listdir(os.path.join(rgb_dir, action)):
+      numbers.append(num)
+      repeted_actions.append(action)
+      frame_dir = os.path.join(rgb_dir, action, num, "rgb")
+      frames = np.array(sorted(os.listdir(frame_dir)))
+      selected_images = [os.path.join(frame_dir, frame) for frame in frames]
+      images.append(selected_images)
 
     
   #use default transfomations
@@ -193,8 +196,8 @@ def genCAMSForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61
       normalize])
 
   #cicle all images
-  for frames, action in zip(images, actions):
-    path_folder = os.path.join(CAM_FOLDER, f"S2_{action}")
+  for frames, action, number in zip(images, repeted_actions, numbers):
+    path_folder = os.path.join(CAM_FOLDER, f"S2_{action}_{number}")
     os.mkdir(path_folder)
     for frame in frames:
       
@@ -219,4 +222,3 @@ def genCAMSForActions(rgbModel, rgbModel_MS, DATA_DIR, actions, num_classes = 61
       #save the new images
       cv2.imwrite(fl_cam, attentionMap_image)
       cv2.imwrite(fl_cam_MS, attentionMap_image_MS)
-
